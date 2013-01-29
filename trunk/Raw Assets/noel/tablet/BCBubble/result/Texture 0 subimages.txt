@@ -1,0 +1,9 @@
+plus_off.png:0:0:220:171
+plus_down.png:220:0:220:171
+pass_off.png:0:171:220:171
+pass_down.png:220:171:220:171
+minus_off.png:0:342:220:171
+minus_down.png:220:342:220:171
+control_bid_bubble.png:0:513:220:171
+bid_off.png:220:513:220:171
+bid_down.png:0:684:220:171

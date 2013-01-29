@@ -1,0 +1,821 @@
+﻿Build started 1/28/2013 2:45:25 PM.
+     1>Project "C:\Users\Bobby\Documents\Projects\Delaware\Source\template.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "C:\Users\Bobby\Documents\Projects\Delaware\Source\..\Temp\DelwareWin32Debug_2010\Delware.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IC:\Users\Bobby\Documents\Projects\Delaware\Source\..\Engine\common\include\ /I"C:\Program Files (x86)\Intel\IntelAppUpSDK\\Cpp\include" /I/c/include /ZI /nologo /W3 /WX- /Od /Oy- /D CODE_ANALYSIS /D AGKWINDOWS /D IDE_VS2008 /D WIN32 /D _DEBUG /D _WINDOWS /D IDE_VS2008 /D _CRT_SECURE_NO_WARNINGS /Gm- /EHsc /MTd /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\Bobby\Documents\Projects\Delaware\Source\..\Temp\DelwareWin32Debug_2010\\" /Fd"C:\Users\Bobby\Documents\Projects\Delaware\Source\..\Temp\DelwareWin32Debug_2010\vc100.pdb" /Gd /TP /wd4996 /analyze /errorReport:prompt Ancient.cpp Bubbles.cpp Card.cpp Core.cpp Deck.cpp Electric.cpp Future.cpp Green.cpp HandScore.cpp Noel.cpp Player.cpp Red.cpp template.cpp Theme.cpp TrickGame.cpp TrumpSelect.cpp
+         Ancient.cpp
+         Bubbles.cpp
+         Card.cpp
+         Core.cpp
+         Deck.cpp
+         Electric.cpp
+         Future.cpp
+         Green.cpp
+         HandScore.cpp
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(86): error C2065: 'MeldAmount' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(86): error C2228: left of '.hide' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(87): error C2065: 'TapScreen' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(87): error C2228: left of '.hide' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(88): error C2065: 'turn' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(88): error C2065: 'NewTrickGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(88): error C2228: left of '.getLead' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(89): error C2065: 'ingamebutton' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(91): error C2065: 'bid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(91): error C2065: 'NewBidGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(91): error C2228: left of '.getBid' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(93): error C2065: 'bid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(94): error C2065: 'bid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(97): error C2065: 'turn' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(100): error C2065: 'calcOnce' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(102): error C2065: 'turn' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(103): error C2065: 'NewTrickGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(103): error C2228: left of '.lastTrick' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(105): error C2065: 'NewTrickGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(105): error C2228: left of '.lastTrick' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(107): error C2065: 'hTricks' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(107): error C2065: 'NewTrickGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(107): error C2228: left of '.getHTricks' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(108): error C2065: 'vTricks' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(108): error C2065: 'NewTrickGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(108): error C2228: left of '.getVTricks' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(110): error C2065: 'HandResults' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(110): error C2227: left of '->checkForSaves' must point to class/struct/union/generic type
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(110): error C2065: 'NewTrickGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(110): error C2227: left of '->getHTricks' must point to class/struct/union/generic type
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(110): error C2065: 'NewTrickGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(110): error C2227: left of '->getVTricks' must point to class/struct/union/generic type
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(110): error C2065: 'bidWinner' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(110): error C2065: 'bid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(112): error C2065: 'calcOnce' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(114): error C2065: 'calcOnce' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(116): error C2065: 'bidWinner' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(118): error C2065: 'vMeld' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(119): error C2065: 'NewGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(119): error C2228: left of '.addToScore' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(119): error C2065: 'vMeld' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(123): error C2065: 'hMeld' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(124): error C2065: 'NewGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(124): error C2228: left of '.addToScore' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(124): error C2065: 'hMeld' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(127): error C2065: 'NewGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(127): error C2228: left of '.addToScore' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(127): error C2065: 'bidWinner' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(127): error C2065: 'bid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(128): error C2065: 'calcOnce' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(134): error C2065: 'mouseClick' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(134): error C2065: 'visScreen' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(136): error C2065: 'vMeld' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(137): error C2065: 'vMeld' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(138): error C2065: 'hMeld' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(139): error C2065: 'hMeld' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(144): error C2065: 'vTricks' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(147): error C2065: 'vTricks' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(149): error C2065: 'hTricks' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(152): error C2065: 'hTricks' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(154): error C2065: 'HandResults' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(154): error C2228: left of '.HandScoreData' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(154): error C2228: left of '.showAll' must have class/struct/union
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(156): error C2065: 'bidWinner' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(158): error C2065: 'HandResults' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(158): error C2228: left of '.HandScoreData' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(158): error C2228: left of '.getValue' must have class/struct/union
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(158): error C2065: 'bid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(160): error C2065: 'HandResults' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(160): error C2228: left of '.HandScoreData' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(160): error C2228: left of '.incrementTo' must have class/struct/union
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(160): error C2065: 'bid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(161): error C2065: 'PointClick' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(161): error C2228: left of '.playOnce' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(164): error C2065: 'HandResults' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(164): error C2228: left of '.HandScoreData' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(164): error C2228: left of '.hideAll' must have class/struct/union
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(166): error C2065: 'CurrentTheme' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(166): error C2228: left of '.V2Get' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(166): error C2228: left of '.getValue' must have class/struct/union
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(168): error C2065: 'HandResults' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(168): error C2228: left of '.HandScoreData' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(168): error C2228: left of '.getValue' must have class/struct/union
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(168): error C2065: 'vMeld' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(170): error C2065: 'HandResults' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(170): error C2228: left of '.HandScoreData' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(170): error C2228: left of '.incrementTo' must have class/struct/union
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(170): error C2065: 'vMeld' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(171): error C2065: 'PointClick' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(171): error C2228: left of '.playOnce' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(174): error C2065: 'HandResults' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(174): error C2228: left of '.VCheckOn' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(174): error C2228: left of '.show' must have class/struct/union
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(178): error C2065: 'HandResults' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(178): error C2228: left of '.HandScoreData' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(178): error C2228: left of '.getValue' must have class/struct/union
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(178): error C2065: 'bid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(180): error C2065: 'HandResults' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(180): error C2228: left of '.HandScoreData' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(180): error C2228: left of '.incrementTo' must have class/struct/union
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(180): error C2065: 'bid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\handscore.cpp(180): fatal error C1003: error count exceeds 100; stopping compilation
+         Noel.cpp
+         Player.cpp
+         Red.cpp
+         template.cpp
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1079): error C2660: 'HandScore::init' : function does not take 0 arguments
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1111): error C2065: 'NewGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1111): error C2228: left of '.getState' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1117): error C2065: 'West' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1117): error C2228: left of '.getCard' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1129): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1137): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1148): error C2228: left of '.getPass' must have class/struct/union
+                 type is 'BidGame *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1152): error C2228: left of '.getPassRound' must have class/struct/union
+                 type is 'BidGame *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1162): error C2065: 'West' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1164): error C2065: 'North' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1166): error C2065: 'East' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1168): error C2065: 'South' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1178): error C2065: 'ShuffledDeck' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1178): error C2228: left of '.getCard' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1201): error C2065: 'West' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1201): error C2228: left of '.getNumOfBids' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1203): error C2065: 'North' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1203): error C2228: left of '.getNumOfBids' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1205): error C2065: 'East' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1205): error C2228: left of '.getNumOfBids' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1207): error C2065: 'South' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1207): error C2228: left of '.getNumOfBids' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1220): error C2228: left of '.getLead' must have class/struct/union
+                 type is 'TrickGame *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1231): error C2065: 'NewGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1231): error C2228: left of '.verticalMeld' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1234): error C2065: 'NewGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1234): error C2228: left of '.horizontalMeld' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1237): error C2228: left of '.getBidWinner' must have class/struct/union
+                 type is 'BidGame *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1261): error C2065: 'NewGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1261): error C2228: left of '.toggleXState' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1261): error C2065: 'NewGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1261): error C2228: left of '.getState' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1262): error C2065: 'NewGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1262): error C2228: left of '.toggleXState' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1289): error C2228: left of '.unMute' must have class/struct/union
+                 type is 'MyOptions *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1290): error C2228: left of '.setMasterVolume' must have class/struct/union
+                 type is 'Sound *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1295): error C2228: left of '.mute' must have class/struct/union
+                 type is 'MyOptions *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1296): error C2228: left of '.setMasterVolume' must have class/struct/union
+                 type is 'Sound *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1307): error C2065: 'West' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1308): error C2065: 'North' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1309): error C2065: 'East' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1310): error C2065: 'South' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1333): error C2065: 'ShuffledDeck' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1333): error C2228: left of '.setDeck' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1339): error C2228: left of '.setBid' must have class/struct/union
+                 type is 'BidGame *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1340): error C2065: 'West' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1340): error C2228: left of '.tabulateMeld' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1341): error C2065: 'North' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1341): error C2228: left of '.tabulateMeld' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1342): error C2065: 'East' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1342): error C2228: left of '.tabulateMeld' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1343): error C2065: 'South' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1343): error C2228: left of '.tabulateMeld' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1349): error C2065: 'West' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1349): error C2228: left of '.incrementNumOfBids' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1354): error C2065: 'North' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1354): error C2228: left of '.incrementNumOfBids' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1359): error C2065: 'East' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1359): error C2228: left of '.incrementNumOfBids' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1364): error C2065: 'South' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1364): error C2228: left of '.incrementNumOfBids' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1370): error C2228: left of '.setLead' must have class/struct/union
+                 type is 'TrickGame *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1381): error C2065: 'NewGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1381): error C2228: left of '.verticalMeld' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1384): error C2065: 'NewGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1384): error C2228: left of '.horizontalMeld' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1388): error C2228: left of '.setBidder' must have class/struct/union
+                 type is 'BidGame *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1392): error C2228: left of '.setPass' must have class/struct/union
+                 type is 'BidGame *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1396): error C2228: left of '.setBid' must have class/struct/union
+                 type is 'BidGame *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1406): error C2065: 'West' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1406): error C2228: left of '.getCardsInHand' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1407): error C2065: 'North' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1407): error C2228: left of '.getCardsInHand' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1408): error C2065: 'East' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1408): error C2228: left of '.getCardsInHand' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1409): error C2065: 'South' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1409): error C2228: left of '.getCardsInHand' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1418): error C2228: left of '.Deck' must have class/struct/union
+                 type is 'Theme *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1418): error C2228: left of '.updateCardLocs' must have class/struct/union
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1418): error C2228: left of '.Deck' must have class/struct/union
+                 type is 'Theme *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1418): error C2065: 'West' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1418): error C2228: left of '.getCard' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1418): error C2065: 'West' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1418): error C2228: left of '.getCard' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1418): error C2065: 'West' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1418): error C2228: left of '.getCard' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1418): error C2065: 'West' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1418): error C2228: left of '.getCard' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1420): error C2228: left of '.Deck' must have class/struct/union
+                 type is 'Theme *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1420): error C2228: left of '.updateCardLocs' must have class/struct/union
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1420): error C2228: left of '.Deck' must have class/struct/union
+                 type is 'Theme *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1420): error C2065: 'North' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1420): error C2228: left of '.getCard' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1420): error C2065: 'North' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1420): error C2228: left of '.getCard' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1420): error C2065: 'North' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1420): error C2228: left of '.getCard' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1420): error C2065: 'North' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1420): error C2228: left of '.getCard' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1422): error C2228: left of '.Deck' must have class/struct/union
+     1>c:\users\bobby\documents\projects\delaware\source\template.cpp(1422): fatal error C1003: error count exceeds 100; stopping compilation
+         Theme.cpp
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(6): error C2065: 'themeReady' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(7): error C2065: 'themeHasGrown' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(53): error C2065: 'selectedTheme' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(69): error C2248: 'Deck::FullDeck' : cannot access private member declared in class 'Deck'
+                 c:\users\bobby\documents\projects\delaware\source\deck.h(51) : see declaration of 'Deck::FullDeck'
+                 c:\users\bobby\documents\projects\delaware\source\deck.h(12) : see declaration of 'Deck'
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(70): error C2248: 'Deck::FullDeck' : cannot access private member declared in class 'Deck'
+                 c:\users\bobby\documents\projects\delaware\source\deck.h(51) : see declaration of 'Deck::FullDeck'
+                 c:\users\bobby\documents\projects\delaware\source\deck.h(12) : see declaration of 'Deck'
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(71): error C2248: 'Deck::FullDeck' : cannot access private member declared in class 'Deck'
+                 c:\users\bobby\documents\projects\delaware\source\deck.h(51) : see declaration of 'Deck::FullDeck'
+                 c:\users\bobby\documents\projects\delaware\source\deck.h(12) : see declaration of 'Deck'
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(72): error C2248: 'Deck::FullDeck' : cannot access private member declared in class 'Deck'
+                 c:\users\bobby\documents\projects\delaware\source\deck.h(51) : see declaration of 'Deck::FullDeck'
+                 c:\users\bobby\documents\projects\delaware\source\deck.h(12) : see declaration of 'Deck'
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(73): error C2248: 'Deck::FullDeck' : cannot access private member declared in class 'Deck'
+                 c:\users\bobby\documents\projects\delaware\source\deck.h(51) : see declaration of 'Deck::FullDeck'
+                 c:\users\bobby\documents\projects\delaware\source\deck.h(12) : see declaration of 'Deck'
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(81): error C2065: 'BidBubbles' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(81): error C2227: left of '->setSize' must point to class/struct/union/generic type
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(82): error C2065: 'MeldBubbles' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(82): error C2227: left of '->setSize' must point to class/struct/union/generic type
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(87): error C2065: 'BidBubbles' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(87): error C2227: left of '->offsetBidNumberBy' must point to class/struct/union/generic type
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(87): error C2661: 'Point::Point' : no overloaded function takes 2 arguments
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(88): error C2065: 'BidBubbles' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(88): error C2227: left of '->offsetBidNumberBy' must point to class/struct/union/generic type
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(88): error C2661: 'Point::Point' : no overloaded function takes 2 arguments
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(89): error C2065: 'BidBubbles' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(89): error C2227: left of '->offsetPassBy' must point to class/struct/union/generic type
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(89): error C2661: 'Point::Point' : no overloaded function takes 2 arguments
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(90): error C2065: 'BidBubbles' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(90): error C2227: left of '->offsetBidNumberBy' must point to class/struct/union/generic type
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(90): error C2661: 'Point::Point' : no overloaded function takes 2 arguments
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(91): error C2065: 'BidBubbles' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(91): error C2227: left of '->offsetBidNumberBy' must point to class/struct/union/generic type
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(91): error C2661: 'Point::Point' : no overloaded function takes 2 arguments
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(92): error C2065: 'BidBubbles' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(92): error C2227: left of '->offsetPassBy' must point to class/struct/union/generic type
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(92): error C2661: 'Point::Point' : no overloaded function takes 2 arguments
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(102): error C2601: 'Theme::initNumbers' : local function definitions are illegal
+                 c:\users\bobby\documents\projects\delaware\source\theme.cpp(57): this line contains a '{' which has not yet been matched
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(137): error C2601: 'Theme::setNumberPrio' : local function definitions are illegal
+                 c:\users\bobby\documents\projects\delaware\source\theme.cpp(57): this line contains a '{' which has not yet been matched
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(155): error C2601: 'Theme::setNumberLoc' : local function definitions are illegal
+                 c:\users\bobby\documents\projects\delaware\source\theme.cpp(57): this line contains a '{' which has not yet been matched
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(217): error C2601: 'Theme::setSizeNumbers' : local function definitions are illegal
+                 c:\users\bobby\documents\projects\delaware\source\theme.cpp(57): this line contains a '{' which has not yet been matched
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(238): error C2601: 'Theme::initNumbers' : local function definitions are illegal
+                 c:\users\bobby\documents\projects\delaware\source\theme.cpp(57): this line contains a '{' which has not yet been matched
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(254): error C2601: 'Theme::show' : local function definitions are illegal
+                 c:\users\bobby\documents\projects\delaware\source\theme.cpp(57): this line contains a '{' which has not yet been matched
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(286): error C2601: 'Theme::hide' : local function definitions are illegal
+                 c:\users\bobby\documents\projects\delaware\source\theme.cpp(57): this line contains a '{' which has not yet been matched
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(311): error C2601: 'Theme::isSetup' : local function definitions are illegal
+                 c:\users\bobby\documents\projects\delaware\source\theme.cpp(57): this line contains a '{' which has not yet been matched
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(316): error C2601: 'Theme::showPastBid' : local function definitions are illegal
+                 c:\users\bobby\documents\projects\delaware\source\theme.cpp(57): this line contains a '{' which has not yet been matched
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(321): error C2601: 'Theme::hidePastBid' : local function definitions are illegal
+                 c:\users\bobby\documents\projects\delaware\source\theme.cpp(57): this line contains a '{' which has not yet been matched
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(326): error C2601: 'Theme::growBackground' : local function definitions are illegal
+                 c:\users\bobby\documents\projects\delaware\source\theme.cpp(57): this line contains a '{' which has not yet been matched
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(327): error C2059: syntax error : ')'
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(329): error C2065: 'Options' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(329): error C2228: left of '.Background' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(329): error C2228: left of '.updateShrinkClose' must have class/struct/union
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(333): error C2065: 'CurrentTheme' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(333): error C2228: left of '.Background' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(333): error C2228: left of '.isGrowing' must have class/struct/union
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(335): error C2065: 'CurrentTheme' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(335): error C2228: left of '.Background' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(335): error C2228: left of '.updateGrowOpen' must have class/struct/union
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(338): error C2065: 'CurrentTheme' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(338): error C2228: left of '.Background' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(338): error C2228: left of '.hasGrown' must have class/struct/union
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(340): error C2065: 'CurrentTheme' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(340): error C2228: left of '.Background' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(340): error C2228: left of '.updateGrowOpen' must have class/struct/union
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(341): error C2065: 'CurrentTheme' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(341): error C2228: left of '.Background' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(341): error C2228: left of '.setPriority' must have class/struct/union
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(345): error C2065: 'NewGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(345): error C2228: left of '.toggleXState' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(346): error C2065: 'NewGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(346): error C2228: left of '.toggleXState' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(346): error C2065: 'NewGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(346): error C2228: left of '.getPrevState' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(349): error C2065: 'CurrentTheme' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(349): error C2228: left of '.show' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(349): error C2065: 'NewGame' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(349): error C2228: left of '.getState' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(354): error C2065: 'themeHasGrown' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(126): error C2065: 'PastNorthBid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(126): error C2227: left of '->setValue' must point to class/struct/union/generic type
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(127): error C2065: 'PastSouthBid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(127): error C2227: left of '->setValue' must point to class/struct/union/generic type
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(128): error C2065: 'PastEastBid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(128): error C2227: left of '->setValue' must point to class/struct/union/generic type
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(129): error C2065: 'PastWestBid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(129): error C2227: left of '->setValue' must point to class/struct/union/generic type
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(130): error C2065: 'PastNorthBid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(130): error C2227: left of '->hideAll' must point to class/struct/union/generic type
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(131): error C2065: 'PastSouthBid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(131): error C2227: left of '->hideAll' must point to class/struct/union/generic type
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(132): error C2065: 'PastEastBid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(132): error C2227: left of '->hideAll' must point to class/struct/union/generic type
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(133): error C2065: 'PastWestBid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(133): error C2227: left of '->hideAll' must point to class/struct/union/generic type
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(148): error C2065: 'PastNorthBid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(148): error C2227: left of '->setDepth' must point to class/struct/union/generic type
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(149): error C2065: 'PastSouthBid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(149): error C2227: left of '->setDepth' must point to class/struct/union/generic type
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(150): error C2065: 'PastEastBid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(150): error C2227: left of '->setDepth' must point to class/struct/union/generic type
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(151): error C2065: 'PastWestBid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(151): error C2227: left of '->setDepth' must point to class/struct/union/generic type
+                 type is ''unknown-type''
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(163): error C2065: 'currentDir' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(173): error C2065: 'currentDir' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(183): error C2065: 'currentDir' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(187): error C2065: 'currentDir' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(209): error C2065: 'PastNorthBid' : undeclared identifier
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(209): error C2227: left of '->setLocation' must point to class/struct/union/generic type
+     1>c:\users\bobby\documents\projects\delaware\source\theme.cpp(209): fatal error C1003: error count exceeds 100; stopping compilation
+         TrickGame.cpp
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(239): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(581): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(581): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(602): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(605): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(606): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(607): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(611): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(612): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(619): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(622): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(623): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(627): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(628): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(629): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(639): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(648): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(649): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(650): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(651): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(655): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(664): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(667): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(673): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(678): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(685): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(690): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(692): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(701): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(702): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(703): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(705): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(707): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(708): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(836): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(836): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(836): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(838): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(845): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(846): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(847): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(848): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(852): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(865): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(901): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(906): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(909): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(910): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(912): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(913): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(1056): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(1056): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(1056): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(1069): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(1069): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(1071): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(1071): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(1122): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(1122): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(1122): error C2248: 'Player::trumpingSuit' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(149) : see declaration of 'Player::trumpingSuit'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(1177): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(1182): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(1184): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(1186): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(1233): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(1240): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(1271): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(1278): error C2248: 'Player::known' : cannot access private member declared in class 'Player'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(122) : see declaration of 'Player::known'
+                 c:\users\bobby\documents\projects\delaware\source\player.h(13) : see declaration of 'Player'
+     1>c:\users\bobby\documents\projects\delaware\source\trickgame.cpp(1413): error C2661: 'Point::Point' : no overloaded function takes 2 arguments
+         TrumpSelect.cpp
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(16): error C2440: 'initializing' : cannot convert from 'Text' to 'Text *'
+                 No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(18): error C2440: '<function-style-cast>' : cannot convert from 'const char [13]' to 'Text'
+                 No constructor could take the source type, or constructor overload resolution was ambiguous
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(20): error C2661: 'Sprite::init' : no overloaded function takes 2 arguments
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(23): error C2664: 'void Buttons::init(unsigned int,Text)' : cannot convert parameter 2 from 'const char [17]' to 'Text'
+                 No constructor could take the source type, or constructor overload resolution was ambiguous
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(24): error C2664: 'void Buttons::init(unsigned int,Text)' : cannot convert parameter 2 from 'const char [16]' to 'Text'
+                 No constructor could take the source type, or constructor overload resolution was ambiguous
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(25): error C2664: 'void Buttons::init(unsigned int,Text)' : cannot convert parameter 2 from 'const char [19]' to 'Text'
+                 No constructor could take the source type, or constructor overload resolution was ambiguous
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(26): error C2664: 'void Buttons::init(unsigned int,Text)' : cannot convert parameter 2 from 'const char [17]' to 'Text'
+                 No constructor could take the source type, or constructor overload resolution was ambiguous
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(28): error C2664: 'Text::Text(const Text &)' : cannot convert parameter 1 from 'const char [27]' to 'const Text &'
+                 Reason: cannot convert from 'const char [27]' to 'const Text'
+                 No constructor could take the source type, or constructor overload resolution was ambiguous
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(28): error C2661: 'Sprite::init' : no overloaded function takes 2 arguments
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(45): error C2228: left of '.hide' must have class/struct/union
+                 type is 'Buttons *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(46): error C2228: left of '.hide' must have class/struct/union
+                 type is 'Buttons *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(47): error C2228: left of '.hide' must have class/struct/union
+                 type is 'Buttons *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(48): error C2228: left of '.hide' must have class/struct/union
+                 type is 'Buttons *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(49): error C2228: left of '.hide' must have class/struct/union
+                 type is 'Sprite *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(54): error C2228: left of '.setSize' must have class/struct/union
+                 type is 'Sprite *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(56): error C2228: left of '.setSize' must have class/struct/union
+                 type is 'Buttons *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(57): error C2228: left of '.setSize' must have class/struct/union
+                 type is 'Buttons *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(58): error C2228: left of '.setSize' must have class/struct/union
+                 type is 'Buttons *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(59): error C2228: left of '.setSize' must have class/struct/union
+                 type is 'Buttons *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(64): error C2228: left of '.setPriority' must have class/struct/union
+                 type is 'Buttons *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(65): error C2228: left of '.setPriority' must have class/struct/union
+                 type is 'Buttons *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(66): error C2228: left of '.setPriority' must have class/struct/union
+                 type is 'Buttons *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(67): error C2228: left of '.setPriority' must have class/struct/union
+                 type is 'Buttons *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(69): error C2228: left of '.setPriority' must have class/struct/union
+                 type is 'Sprite *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(74): error C2228: left of '.display' must have class/struct/union
+                 type is 'Buttons *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(75): error C2228: left of '.display' must have class/struct/union
+                 type is 'Buttons *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(76): error C2228: left of '.display' must have class/struct/union
+                 type is 'Buttons *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(77): error C2228: left of '.display' must have class/struct/union
+                 type is 'Buttons *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(79): error C2228: left of '.display' must have class/struct/union
+                 type is 'Sprite *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(87): error C2228: left of '.animation' must have class/struct/union
+                 type is 'Buttons *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(90): error C2228: left of '.animation' must have class/struct/union
+                 type is 'Buttons *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(93): error C2228: left of '.animation' must have class/struct/union
+                 type is 'Buttons *'
+                 did you intend to use '->' instead?
+     1>c:\users\bobby\documents\projects\delaware\source\trumpselect.cpp(96): error C2228: left of '.animation' must have class/struct/union
+                 type is 'Buttons *'
+                 did you intend to use '->' instead?
+         Running Code Analysis for C/C++...
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(173): warning C6385: Invalid data: accessing 'm_iPrevButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 172, 173
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(173): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 172, 173
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(180): warning C6385: Invalid data: accessing 'm_iPrevButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 179, 180
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(180): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 179, 180
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(187): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 186, 187
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(173): warning C6385: Invalid data: accessing 'm_iPrevButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 172, 173
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(173): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 172, 173
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(180): warning C6385: Invalid data: accessing 'm_iPrevButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 179, 180
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(180): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 179, 180
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(187): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 186, 187
+     1>c:\users\bobby\documents\projects\delaware\source\player.cpp(1201): warning C6385: Invalid data: accessing 'known[i]', the readable size is '8' bytes, but '10' bytes might be read: Lines: 1197, 1199, 1201
+     1>c:\users\bobby\documents\projects\delaware\source\player.cpp(1202): warning C6386: Buffer overrun: accessing 'known[i]', the writable size is '8' bytes, but '10' bytes might be written: Lines: 1197, 1199, 1201, 1204, 1209, 1197, 1199, 1201, 1204, 1209, 1197, 1199, 1201, 1202
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(173): warning C6385: Invalid data: accessing 'm_iPrevButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 172, 173
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(173): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 172, 173
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(180): warning C6385: Invalid data: accessing 'm_iPrevButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 179, 180
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(180): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 179, 180
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(187): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 186, 187
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(173): warning C6385: Invalid data: accessing 'm_iPrevButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 172, 173
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(173): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 172, 173
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(180): warning C6385: Invalid data: accessing 'm_iPrevButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 179, 180
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(180): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 179, 180
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(187): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 186, 187
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(173): warning C6385: Invalid data: accessing 'm_iPrevButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 172, 173
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(173): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 172, 173
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(180): warning C6385: Invalid data: accessing 'm_iPrevButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 179, 180
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(180): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 179, 180
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(187): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 186, 187
+     1>c:\users\bobby\documents\projects\delaware\source\deck.cpp(34): warning C6001: Using uninitialized memory 'j': Lines: 21, 23, 25, 27, 29, 30, 39, 23, 25, 27, 34
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(173): warning C6385: Invalid data: accessing 'm_iPrevButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 172, 173
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(173): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 172, 173
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(180): warning C6385: Invalid data: accessing 'm_iPrevButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 179, 180
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(180): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 179, 180
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(187): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 186, 187
+     1>c:\users\bobby\documents\projects\delaware\source\core.cpp(518): warning C6031: Return value ignored: '_getcwd'
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(173): warning C6385: Invalid data: accessing 'm_iPrevButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 172, 173
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(173): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 172, 173
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(180): warning C6385: Invalid data: accessing 'm_iPrevButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 179, 180
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(180): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 179, 180
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(187): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 186, 187
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(173): warning C6385: Invalid data: accessing 'm_iPrevButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 172, 173
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(173): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 172, 173
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(180): warning C6385: Invalid data: accessing 'm_iPrevButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 179, 180
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(180): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 179, 180
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(187): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 186, 187
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(173): warning C6385: Invalid data: accessing 'm_iPrevButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 172, 173
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(173): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 172, 173
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(180): warning C6385: Invalid data: accessing 'm_iPrevButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 179, 180
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(180): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 179, 180
+     1>c:\users\bobby\documents\projects\delaware\engine\common\include\joystick.h(187): warning C6385: Invalid data: accessing 'm_iButtons', the readable size is '32' bytes, but '33' bytes might be read: Lines: 186, 187
+         Generating Code...
+     1>Done Building Project "C:\Users\Bobby\Documents\Projects\Delaware\Source\template.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:33.63

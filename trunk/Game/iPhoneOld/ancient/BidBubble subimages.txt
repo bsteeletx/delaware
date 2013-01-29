@@ -1,0 +1,9 @@
+west_meld.png:0:0:235:235
+south_meld.png:0:235:235:235
+north_meld.png:235:0:235:235
+east_meld.png:235:235:235:235
+west_bid.png:470:0:165:165
+north_bid.png:470:165:165:165
+south_bid.png:470:330:165:165
+east_bid.png:635:0:165:165
+pass_bid.png:800:0:100:100
