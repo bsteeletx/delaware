@@ -1,0 +1,13 @@
+trump_selection_bubble.png:0:0:220:171
+spades_selection_off.png:220:0:220:171
+spades_selection_negative.png:440:0:220:171
+spades_selection_down.png:660:0:220:171
+hearts_selection_off.png:0:171:220:171
+hearts_selection_negative.png:220:171:220:171
+hearts_selection_down.png:440:171:220:171
+diamonds_selection_off.png:660:171:220:171
+diamonds_selection_negative.png:0:342:220:171
+diamonds_selection_down.png:0:513:220:171
+clubs_selection_off.png:0:684:220:171
+clubs_selection_negative.png:220:342:220:171
+clubs_selection_down.png:440:342:220:171

@@ -1,0 +1,1 @@
+menu_fire_off.png:0:0:1024:600

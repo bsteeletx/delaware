@@ -1,0 +1,9 @@
+board_background.png:0:0:512:250
+board table.png:512:0:512:225
+check_box_on.png:0:250:240:240
+check_box_off.png:0:490:240:240
+scoreboardpiece.png:240:250:300:150
+board_hand score.png:540:250:471:50
+board_total score.png:540:300:471:50
+board_header.png:540:350:471:50
+woodoval.png:0:730:108:58

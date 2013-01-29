@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="AGK Core">
+      <UniqueIdentifier>{d0942d33-b7fa-4acd-bf06-e9a9e4ac7b20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{ec4364f6-6286-4564-bd55-9143ff21d5d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI">
+      <UniqueIdentifier>{e805ac25-9be2-4abf-b38b-20c5edea5ef8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ArtHandlers">
+      <UniqueIdentifier>{06c43b2c-da06-436b-9dee-c7dd7dca6556}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Info-Control">
+      <UniqueIdentifier>{1e2c3765-a608-406b-b9c2-92c500d63d26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Themes">
+      <UniqueIdentifier>{aebf3b6f-0ff3-4be4-b239-005c5cd91ebf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Core.cpp">
+      <Filter>AGK Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\AnimatedSprite.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\EditBox.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\File.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\HTTP.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Image.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Joint.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Music.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\MyParticles.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Network.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\NetworkMessage.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\PhysicsForce.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\PhysicsSprite.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Point.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\RGBA.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Sound.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Sprite.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Text.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Timer.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Vector.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\VirtualButton.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\VirtualJoystick.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="template.cpp" />
+    <ClCompile Include="Ancient.cpp">
+      <Filter>Themes</Filter>
+    </ClCompile>
+    <ClCompile Include="Future.cpp">
+      <Filter>Themes</Filter>
+    </ClCompile>
+    <ClCompile Include="Green.cpp">
+      <Filter>Themes</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="TrickGame.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Card.cpp">
+      <Filter>ArtHandlers</Filter>
+    </ClCompile>
+    <ClCompile Include="Deck.cpp">
+      <Filter>ArtHandlers</Filter>
+    </ClCompile>
+    <ClCompile Include="Theme.cpp">
+      <Filter>ArtHandlers</Filter>
+    </ClCompile>
+    <ClCompile Include="TrumpSymbol.cpp">
+      <Filter>ArtHandlers</Filter>
+    </ClCompile>
+    <ClCompile Include="BidControl.cpp">
+      <Filter>Info-Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Buttons.cpp">
+      <Filter>Info-Control</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScore.cpp">
+      <Filter>Info-Control</Filter>
+    </ClCompile>
+    <ClCompile Include="HandScore.cpp">
+      <Filter>Info-Control</Filter>
+    </ClCompile>
+    <ClCompile Include="MyMenu.cpp">
+      <Filter>Info-Control</Filter>
+    </ClCompile>
+    <ClCompile Include="MyOptions.cpp">
+      <Filter>Info-Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Numbers.cpp">
+      <Filter>Info-Control</Filter>
+    </ClCompile>
+    <ClCompile Include="TrumpSelect.cpp">
+      <Filter>Info-Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Red.cpp">
+      <Filter>Themes</Filter>
+    </ClCompile>
+    <ClCompile Include="Bubbles.cpp">
+      <Filter>Info-Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Electric.cpp">
+      <Filter>Themes</Filter>
+    </ClCompile>
+    <ClCompile Include="Noel.cpp">
+      <Filter>Themes</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CoreForApp.h">
+      <Filter>AGK Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\AnimatedSprite.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\EditBox.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\File.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\HTTP.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Image.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Joint.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Music.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\MyParticles.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Network.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\NetworkMessage.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\PhysicsForce.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\PhysicsSprite.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Point.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\RGBA.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Sound.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Sprite.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Text.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Timer.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Vector.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\VirtualButton.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\VirtualJoystick.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="template.h" />
+    <ClInclude Include="Ancient.h">
+      <Filter>Themes</Filter>
+    </ClInclude>
+    <ClInclude Include="Defines.h" />
+    <ClInclude Include="Future.h">
+      <Filter>Themes</Filter>
+    </ClInclude>
+    <ClInclude Include="Green.h">
+      <Filter>Themes</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="TrickGame.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Card.h">
+      <Filter>ArtHandlers</Filter>
+    </ClInclude>
+    <ClInclude Include="Deck.h">
+      <Filter>ArtHandlers</Filter>
+    </ClInclude>
+    <ClInclude Include="Theme.h">
+      <Filter>ArtHandlers</Filter>
+    </ClInclude>
+    <ClInclude Include="TrumpSymbol.h">
+      <Filter>ArtHandlers</Filter>
+    </ClInclude>
+    <ClInclude Include="BidControl.h">
+      <Filter>Info-Control</Filter>
+    </ClInclude>
+    <ClInclude Include="Buttons.h">
+      <Filter>Info-Control</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScore.h">
+      <Filter>Info-Control</Filter>
+    </ClInclude>
+    <ClInclude Include="HandScore.h">
+      <Filter>Info-Control</Filter>
+    </ClInclude>
+    <ClInclude Include="MyMenu.h">
+      <Filter>Info-Control</Filter>
+    </ClInclude>
+    <ClInclude Include="MyOptions.h">
+      <Filter>Info-Control</Filter>
+    </ClInclude>
+    <ClInclude Include="Numbers.h">
+      <Filter>Info-Control</Filter>
+    </ClInclude>
+    <ClInclude Include="TrumpSelect.h">
+      <Filter>Info-Control</Filter>
+    </ClInclude>
+    <ClInclude Include="Red.h">
+      <Filter>Themes</Filter>
+    </ClInclude>
+    <ClInclude Include="Bubbles.h">
+      <Filter>Info-Control</Filter>
+    </ClInclude>
+    <ClInclude Include="Noel.h">
+      <Filter>Themes</Filter>
+    </ClInclude>
+    <ClInclude Include="Electric.h">
+      <Filter>Themes</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="AGK Core">
+      <UniqueIdentifier>{d0942d33-b7fa-4acd-bf06-e9a9e4ac7b20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="App">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{6c332e44-1a2f-4af7-8fae-5b37c5250bea}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Core.cpp">
+      <Filter>AGK Core</Filter>
+    </ClCompile>
+    <ClCompile Include="BidGame.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Deck.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="PinochleGame.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="TrickGame.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedSprite.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Card.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Numbers.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="BidControl.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="TrumpSelect.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Bubbles.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Buttons.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScore.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="HandScore.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="MyMenu.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Theme.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="MyOptions.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Checkbox.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="ParentImage.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="template.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CoreForApp.h">
+      <Filter>AGK Core</Filter>
+    </ClInclude>
+    <ClInclude Include="template.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="TrickGame.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="BidGame.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Deck.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Pinochle.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="PinochleGame.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Card.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedSprite.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Numbers.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Theme.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Buttons.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="TrumpSelect.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="BidControl.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Bubbles.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="MyMenu.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="HandScore.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScore.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="MyOptions.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Checkbox.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="ParentImage.h">
+      <Filter>App</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\AGK\C_Users_Bobby_Documents_VisualStudio2010_Projects_Double_Pinochle_Debug_DoublePinochleexe\SSDPS.DAT">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="Bugs.txt">
+      <Filter>App</Filter>
+    </None>
+    <None Include="template.ico">
+      <Filter>App</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="template.rc">
+      <Filter>App</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

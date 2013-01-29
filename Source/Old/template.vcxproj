@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DD70E2E6-C062-4A2D-82EA-6247DE822C9B}</ProjectGuid>
+    <RootNamespace>interpreter</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>Delware</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <CLRSupport>false</CLRSupport>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)..\Game\$(PlatformName)$(Configuration)_2010\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)..\Temp\$(ProjectName)$(PlatformName)$(Configuration)_2010\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)..\Game\$(PlatformName)$(Configuration)_2010\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)..\Temp\$(ProjectName)$(PlatformName)$(Configuration)_2010\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)..\Engine\common\include\;$(SolutionDir)\Core\;$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)..\Engine\platform\windows\Lib\VS2010\Debug\</LibraryPath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)..\Engine\common\include\;$(SolutionDir)\Core\;$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Program Files (x86)\The Game Creators\AGK\IDE\platform\windows\Lib\Release;$(LibraryPath)</LibraryPath>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectName)$(PlatformName)$(Configuration)</TargetName>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</RunCodeAnalysis>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName)$(PlatformName)$(Configuration)</TargetName>
+    <CodeAnalysisIgnoreGeneratedCode Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CodeAnalysisIgnoreGeneratedCode>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\Engine\common\include\;$(IADP_SDK_DIR)\Cpp\include;/c/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>AGKWINDOWS;IDE_VS2008;WIN32;_DEBUG;_WINDOWS;IDE_VS2008;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <EnablePREfast>true</EnablePREfast>
+      <Optimization>Disabled</Optimization>
+      <CompileAsManaged>
+      </CompileAsManaged>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <BrowseInformation>
+      </BrowseInformation>
+      <CallingConvention>Cdecl</CallingConvention>
+      <OpenMPSupport>
+      </OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>winmm.lib;AGKWindows.lib;Wininet.lib;OpenGL32.lib;Glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(IADP_SDK_DIR)\Cpp\Lib;/c/lib;..\Engine\platform\windows\Lib\VS2010\Debug;$(WindowsSdkDir)Lib;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
+      <OutputFile>$(OutDir)/$(TargetName)$(TargetExt)</OutputFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>$(TargetDir)$(TargetName).map</MapFileName>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\Engine\common\include\;$(IADP_SDK_DIR)\Cpp\include;/c/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>AGKWINDOWS;IDE_VS2008;WIN32;NDEBUG;_WINDOWS;IDE_VS2008;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <BrowseInformation>
+      </BrowseInformation>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>winmm.lib;AGKWindows.lib;Wininet.lib;OpenGL32.lib;Glu32.lib;adpcorevc10.lib;adpcppfvc10.lib;adpcorevc10.lib;adpcppfvc10.lib;psapi.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)/$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories> $(IADP_SDK_DIR)\Cpp\Lib; $(IADP_SDK_DIR)\Cpp\Lib;$(IADP_SDK_DIR)\Cpp\Lib;$(IADP_SDK_DIR)\Cpp\Lib;..\..\platform\windows\Lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>false</GenerateMapFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Ancient.cpp" />
+    <ClCompile Include="BidControl.cpp" />
+    <ClCompile Include="Bubbles.cpp" />
+    <ClCompile Include="Buttons.cpp" />
+    <ClCompile Include="Card.cpp" />
+    <ClCompile Include="Core.cpp" />
+    <ClCompile Include="Core\AnimatedSprite.cpp" />
+    <ClCompile Include="Core\EditBox.cpp" />
+    <ClCompile Include="Core\File.cpp" />
+    <ClCompile Include="Core\HTTP.cpp" />
+    <ClCompile Include="Core\Image.cpp" />
+    <ClCompile Include="Core\Joint.cpp" />
+    <ClCompile Include="Core\Music.cpp" />
+    <ClCompile Include="Core\MyParticles.cpp" />
+    <ClCompile Include="Core\Network.cpp" />
+    <ClCompile Include="Core\NetworkMessage.cpp" />
+    <ClCompile Include="Core\PhysicsForce.cpp" />
+    <ClCompile Include="Core\PhysicsSprite.cpp" />
+    <ClCompile Include="Core\Point.cpp" />
+    <ClCompile Include="Core\RGBA.cpp" />
+    <ClCompile Include="Core\Sound.cpp" />
+    <ClCompile Include="Core\Sprite.cpp" />
+    <ClCompile Include="Core\Text.cpp" />
+    <ClCompile Include="Core\Timer.cpp" />
+    <ClCompile Include="Core\Vector.cpp" />
+    <ClCompile Include="Core\VirtualButton.cpp" />
+    <ClCompile Include="Core\VirtualJoystick.cpp" />
+    <ClCompile Include="Deck.cpp" />
+    <ClCompile Include="Electric.cpp" />
+    <ClCompile Include="Future.cpp" />
+    <ClCompile Include="GameScore.cpp" />
+    <ClCompile Include="Green.cpp" />
+    <ClCompile Include="HandScore.cpp" />
+    <ClCompile Include="MyMenu.cpp" />
+    <ClCompile Include="MyOptions.cpp" />
+    <ClCompile Include="Noel.cpp" />
+    <ClCompile Include="Numbers.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Red.cpp" />
+    <ClCompile Include="template.cpp" />
+    <ClCompile Include="Theme.cpp" />
+    <ClCompile Include="TrickGame.cpp" />
+    <ClCompile Include="TrumpSelect.cpp" />
+    <ClCompile Include="TrumpSymbol.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Ancient.h" />
+    <ClInclude Include="BidControl.h" />
+    <ClInclude Include="Bubbles.h" />
+    <ClInclude Include="Buttons.h" />
+    <ClInclude Include="Card.h" />
+    <ClInclude Include="CoreForApp.h" />
+    <ClInclude Include="Core\AnimatedSprite.h" />
+    <ClInclude Include="Core\EditBox.h" />
+    <ClInclude Include="Core\File.h" />
+    <ClInclude Include="Core\HTTP.h" />
+    <ClInclude Include="Core\Image.h" />
+    <ClInclude Include="Core\Joint.h" />
+    <ClInclude Include="Core\Music.h" />
+    <ClInclude Include="Core\MyParticles.h" />
+    <ClInclude Include="Core\Network.h" />
+    <ClInclude Include="Core\NetworkMessage.h" />
+    <ClInclude Include="Core\PhysicsForce.h" />
+    <ClInclude Include="Core\PhysicsSprite.h" />
+    <ClInclude Include="Core\Point.h" />
+    <ClInclude Include="Core\RGBA.h" />
+    <ClInclude Include="Core\Sound.h" />
+    <ClInclude Include="Core\Sprite.h" />
+    <ClInclude Include="Core\Text.h" />
+    <ClInclude Include="Core\Timer.h" />
+    <ClInclude Include="Core\Vector.h" />
+    <ClInclude Include="Core\VirtualButton.h" />
+    <ClInclude Include="Core\VirtualJoystick.h" />
+    <ClInclude Include="Deck.h" />
+    <ClInclude Include="Electric.h" />
+    <ClInclude Include="Future.h" />
+    <ClInclude Include="GameScore.h" />
+    <ClInclude Include="Green.h" />
+    <ClInclude Include="Defines.h" />
+    <ClInclude Include="HandScore.h" />
+    <ClInclude Include="MyMenu.h" />
+    <ClInclude Include="MyOptions.h" />
+    <ClInclude Include="Noel.h" />
+    <ClInclude Include="Numbers.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Red.h" />
+    <ClInclude Include="template.h" />
+    <ClInclude Include="Theme.h" />
+    <ClInclude Include="TrickGame.h" />
+    <ClInclude Include="TrumpSelect.h" />
+    <ClInclude Include="TrumpSymbol.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,1 @@
+background_e.jpg:0:0:1024:768
