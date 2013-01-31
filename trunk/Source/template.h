@@ -12,7 +12,7 @@
 #include "MyMenu.h"
 #include "Numbers.h"
 #include "Sprite.h"
-#include "Pinochle.h"
+#include "Defines.h"
 #include <string>
 #include "agk.h"
 #include "Deck.h"
@@ -197,7 +197,7 @@ private:
     void formatScores(short unsigned int fileID);
 
     void getThemeDir(short int style, char buffer[]);
-    void growBackground();
+    //void growBackground();
 
     void handleMenu(void);
     void handleInGameMenu();

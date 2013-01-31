@@ -2,7 +2,7 @@
 
 #include "Buttons.h"
 #include "AnimatedSprite.h"
-#include "Pinochle.h"
+#include "Defines.h"
 #include "ParentImage.h"
 
 class MyMenu
@@ -14,7 +14,7 @@ public:
 	bool ButtonAnimation(short int stage, short int button);
 	void hide(void);
 	void update(void);
-	void setPriority(short unsigned int value);
+	void setDepth(short unsigned int value);
 	void setup(AnimatedSprite *Symbol);
 	void muteSound(void);
 	void unMuteSound(void);
@@ -23,7 +23,7 @@ public:
 	Buttons MainMenu; //2
 	Buttons ResumeGame; //3
 	Buttons Options; //4
-    ParentImage MenuParent;
+    Sprite MenuParent;
 
 private:
 

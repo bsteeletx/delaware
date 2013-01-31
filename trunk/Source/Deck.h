@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Pinochle.h"
+#include "Defines.h"
 
 class Deck
 {

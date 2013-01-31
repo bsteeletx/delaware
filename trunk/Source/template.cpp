@@ -18,7 +18,7 @@ unsigned short menuQueue[128];
 unsigned short menuQueuePointer;
 
 //for other things
-unsigned short int Sound::volume = 100;
+//unsigned short int Sound::v
 Sound Buttons::ButtonClick;
 ParentImage Numbers::Parent;
 ParentImage Card::Parent;
@@ -26,10 +26,6 @@ ParentImage Numbers::ScoreParent;
 unsigned int Card::cardBackImageNumber[3];
 unsigned short Numbers::thematicNumbers[10];
 unsigned short Numbers::defaultNumbers[10];
-
-#if (OS != ANDROID)
-	bool Sprite::inAnimation;
-#endif
 
 // the main entry point for the application is this function
 void app::Begin ( void )
@@ -144,9 +140,6 @@ void app::Loop(void)
 		case INGAMEOPTIONS:
 			handleInGameOptions();
 			break;
-		case GROWBACKGROUND:
-			growBackground();
-			break;
 		case DEALING:
 			handleDealing();
 			break;
@@ -181,10 +174,10 @@ void app::Loop(void)
 
 	if (gameState == BIDDING)
 	{
-		NBack.show();
-		EBack.show();
-		WBack.show();
-		SBack.show();
+		NBack.setVisible(true);
+		EBack.setVisible(true);
+		WBack.setVisible(true);
+		SBack.setVisible(true);
 
 		if (NewBidGame.playerBid(NORTH) || NewBidGame.getPass(NORTH))
 			CurrentTheme.PastNorthBid.showAll(true);
@@ -230,7 +223,7 @@ void app::Loop(void)
 			if (!DemoEndBack.hasGrown())
 				DemoEndBack.updateGrowOpen(DemoEndBack.getScaleSize(), DemoEndBack.getScaleSizeY());
 			else if (!mouseClick)
-				DemoEndText.show();
+				DemoEndText.setVisible(true)
 			else
 				*exit = true;
 
@@ -304,7 +297,7 @@ void app::Loop(void)
 	//updateScore(NewGame, NewTrickGame, NewBidGame, count, passInitialAnim);
 	if (gameState > START)
 	{
-		if (CurrentTheme.Background.getScaleSize() == 100.0f)
+		if (CurrentTheme.Background.getWidth() == 100.0f)
 		{
 			bid = NewBidGame.getBid();
 			updateBottomLeft();
@@ -314,12 +307,12 @@ void app::Loop(void)
 	}
 	else
 	{
-		if (TrumpSymbol.isValid())
+		if (TrumpSymbol.getExists())
 		{
-			if (TrumpSymbol.isVisible())
-                TrumpSymbol.hide();
+			if (TrumpSymbol.getVisible())
+                TrumpSymbol.setVisible(false);
 
-			for (short int i = 0; i < 3; i++)
+			for (int i = 0; i < 3; i++)
 			{
 				CurrentTheme.HScore.hide(i, CurrentTheme.HScore.getDigit(i));
 				CurrentTheme.VScore.hide(i, CurrentTheme.VScore.getDigit(i));
@@ -357,19 +350,15 @@ void app::Loop(void)
 
 	if (gameState <= INGAMEOPTIONS)
 	{
-		LoadingScreen.show();
-		LoadingScreen.setPriority(0);
+		LoadingScreen.setVisible(true);
+		LoadingScreen.setDepth(0);
 	}
 
 	else
-		LoadingScreen.hide();
+		LoadingScreen.setVisible(false);
 
-#if (OS != ANDROID)
-	if (delayStep || mouseClick || Sprite::inAnimation || (gameState == ANIMATION)
-#else
-	if (delayStep || mouseClick || (gameState == ANIMATION)
-#endif
-		|| (gameState == DEALING) || incrementing)
+
+	if (delayStep || mouseClick || (gameState == ANIMATION) || (gameState == DEALING) || incrementing)
 		update = 60;
 	
 	agk::SetSyncRate(update, 0);
@@ -467,7 +456,9 @@ void app::resetGame(bool startup)
 		HandResults.reset();
 		HandResults.hide();
 		CurrentTheme.hide();
-		CurrentTheme.Background.updateShrinkClose(-2);
+
+		for (float i = CurrentTheme.Background.getWidth(); i > 0.0f; CurrentTheme.Background.setSize(--i))
+			agk::Sync();
     }
     else
     {
@@ -479,34 +470,34 @@ void app::resetGame(bool startup)
 
 void app::setSoundData(void)
 {
-	Cards1.setFileName("sounds/cardshuffle1.wav");
-	Cards2.setFileName("sounds/cardshuffle2withbridge.wav");
-	Cards3.setFileName("sounds/cardshuffle3.wav");
-	Cards4.setFileName("sounds/cardslide2.wav");
-	Cards5.setFileName("sounds/cardslide1.wav");
-	Cards6.setFileName("sounds/cardslide3.wav");
-	Cards7.setFileName("sounds/cardslide4.wav");
-	Cards8.setFileName("sounds/cardslide5.wav");
-	Cards9.setFileName("sounds/cardbridge1.wav");
-	Cards10.setFileName("sounds/gettingcardsstraightend.wav");
+	Cards1 = Sound("sounds/cardshuffle1.wav");
+	Cards2 = Sound("sounds/cardshuffle2withbridge.wav");
+	Cards3 = Sound("sounds/cardshuffle3.wav");
+	Cards4 = Sound("sounds/cardslide2.wav");
+	Cards5 = Sound("sounds/cardslide1.wav");
+	Cards6 = Sound("sounds/cardslide3.wav");
+	Cards7 = Sound("sounds/cardslide4.wav");
+	Cards8 = Sound("sounds/cardslide5.wav");
+	Cards9 = Sound("sounds/cardbridge1.wav");
+	Cards10 = Sound("sounds/gettingcardsstraightend.wav");
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 
-	Trump[4].setFileName("sounds/glassbreak1.wav");
-	Trump[3].setFileName("sounds/glassbreak2.wav");
-	Trump[2].setFileName("sounds/glassbreak3.wav");
-	Trump[1].setFileName("sounds/carcrash1.wav");
-	Trump[0].setFileName("sounds/dynamite1.wav");
+	Trump[4] = Sound("sounds/glassbreak1.wav");
+	Trump[3] = Sound("sounds/glassbreak2.wav");
+	Trump[2] = Sound("sounds/glassbreak3.wav");
+	Trump[1] = Sound("sounds/carcrash1.wav");
+	Trump[0] = Sound("sounds/dynamite1.wav");
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 
 	//Ambient.setFileName("sounds/CasinoBG.wav");
 
-	PointClick.setFileName("sounds/mouseclick1.wav");
+	PointClick = Sound("sounds/mouseclick1.wav");
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 
 }
@@ -518,19 +509,19 @@ void app::loadSteeleLogo(void)
 	loadingImage[0] = myLoadImage(fileLoc("Loading.png", temp));
 
 #if (PLATFORM != MOBILE)
-    SteeleLogo.setData("steele_logo_plate.png", "default/");
+    SteeleLogo = Sprite(Text("default/steele_logo_plate.png"));
 #else
-    SteeleLogo.setData("steele_logo_480x320_plate.png", "default/");
+    SteeleLogo = Sprite(Text("default/steele_logo_480x320_plate.png"));
 #endif
 	//SteeleLogo.setData(loadingImage[0], "steele_logo_transparent.png");
 }
 
 void app::initSteeleLogo(void)
 {
-	SteeleLogo.setPriority(1);
+	SteeleLogo.setDepth(1);
 	SteeleLogo.setSize(100.0f);
-	SteeleLogo.show();
-	SteeleLogo.display(0.0f,  0.0f);
+	SteeleLogo.setVisible(true);
+	SteeleLogo.setPosition(0.0f,  0.0f);
     agk::Sync();
 
 #if (OS != IOS)
@@ -558,16 +549,16 @@ void app::fadeSteeleLogo(void)
 void app::loadLoadScreen(void)
 {
 #if (OS != IOS)
-	SteeleLogo.hide();
+	SteeleLogo.setVisible(false);
 #endif
-	LoadingScreen.setData(loadingImage[0], "load_landscape.png");
-	LoadScreen1.setData(loadingImage[0], "loading.jpg");
+	LoadingScreen = Sprite(loadingImage[0], Text("load_landscape.png"));
+	LoadScreen1 = Sprite(loadingImage[0], Text("loading.jpg"));
 #if (PLATFORM == MOBILE)
-	Loading.setAnimatedData(25, 25, 32, "Load Suit Rotation.png", loadingImage);
+	Loading = AnimatedSprite(25, 25, 32, loadingImage[0], Text("Load Suit Rotation.png"));
 #else
-    Loading.setAnimatedData(75, 75, 32, "Load Suit Rotation.png", loadingImage);
+    Loading = AnimatedSprite(75, 75, 32, loadingImage[0], Text("Load Suit Rotation.png"));
 #endif
-    Loading.hide();
+	Loading.setVisible(false);
     
     SteeleLogo.~Sprite();
 }
@@ -592,30 +583,15 @@ void app::handleMenu()
     const float yMaxValue = 89.0f;
 #endif
     
-    LoadScreen1.hide();
-    Legal.hide();
-    Loading.hide();
+	LoadScreen1.setVisible(false);
+    Legal.setVisible(false);
+    Loading.setVisible(false);
 	
-	if (CurrentTheme.Background.isVisible())
-	{
-        if (CurrentTheme.Background.isShrinking())
-        {
-            CurrentTheme.Background.updateShrinkClose(-1);
-            return;
-        }
-        else if (!CurrentTheme.Background.hasShrunk())
-        {
-            if (CurrentTheme.Background.isValid())
-            {
-                CurrentTheme.Background.updateShrinkClose(-1);
-                //CurrentTheme.Background.setPriority(1);
-                return;
-            }
-        }
-	}
+	for (float i = CurrentTheme.Background.getWidth(); i > 0.0f; CurrentTheme.Background.setSize(--i))
+		agk::Sync();
 
-	MainMenu.NewGame.ButtonUp.show();
-	MainMenu.Options.ButtonUp.show();
+	MainMenu.NewGame.ButtonUp.setVisible(true);
+	MainMenu.Options.ButtonUp.setVisible(true);
 
 	//MainMenu.update();
 
@@ -643,14 +619,14 @@ void app::handleMenu()
 			if (menuChoice == 1)
 			{
                 MainMenu.hide();
-                Loading.show();
-                LoadScreen1.show();
+                Loading.setVisible(true);
+                LoadScreen1.setVisible(true);
                 clearQueue(&Loading, 1);
                 CurrentTheme.setup(&Loading, themeDir, NewGame.getState(), aspect);
 				NewGame.toggleXState(MENU);
 				NewGame.toggleXState(START);
-                Loading.hide();
-                LoadScreen1.hide();
+                Loading.setVisible(false);
+                LoadScreen1.setVisible(false);
 			}
 			else if (menuChoice == 4)
 			{
@@ -669,18 +645,15 @@ void app::handleMenu()
 
 void app::handleInGameMenu()
 {
-	if (CurrentTheme.Background.isVisible())
-	{
-		CurrentTheme.Background.updateShrinkClose(-1);
-		return;
-	}
-
-	MainMenu.NewGame.ButtonUp.show();
-	MainMenu.Options.ButtonUp.show();
-	MainMenu.ResumeGame.ButtonUp.show();
-	MeldAmount.hide();
-	TapScreen.hide();
-	TextBackground.hide();
+	for (float i = CurrentTheme.Background.getWidth(); i > 0.0f; CurrentTheme.Background.setSize(--i))
+		agk::Sync();
+	
+	MainMenu.NewGame.ButtonUp.setVisible(true);
+	MainMenu.Options.ButtonUp.setVisible(true);
+	MainMenu.ResumeGame.ButtonUp.setVisible(true);
+	MeldAmount.setVisible(false);
+	TapScreen.setVisible(false);
+	TextBackground.setVisible(false);
 	//MainMenu.update();
 	CurrentTheme.BidMeldBubbles.hide();
 
@@ -792,11 +765,8 @@ void app::handleOptions(bool init)
     const float yMaxValues[3] = {51.5f, 80.0f, 94.0f};
 #endif
 	
-	if ((width != 100.0f) || (height != 100.0f))
-	{
-		Options.Background.updateGrowOpen(100.0f, 100.0f);
-		return;
-	}
+	for (float i = Options.Background.getWidth(); i < 100.0f; Options.Background.setSize(++i))
+		agk::Sync();
 
 	Options.show(tableTopStyle);
 
@@ -805,7 +775,7 @@ void app::handleOptions(bool init)
 
 	//Options.update();
 
-	if (mouseClick && !Options.ThemeOption[tableTopStyle].isMoving())
+	if (mouseClick)
 	{
         if ((xstartpos >= 40.0f) && (xstartpos <= 60.0f))
         {
@@ -886,9 +856,9 @@ void app::handleOptions(bool init)
 
 	if (swipe || (delayStep && (menuChoice >= 5)))
 	{
-		short newStyle;
-		short offDirection;
-		short onDirection;
+		short newStyle  = -1;
+		short offDirection = -1;
+		short onDirection = -1;
 
 		if(menuChoice == 5)
 		{//table top
@@ -915,18 +885,26 @@ void app::handleOptions(bool init)
             mouseDelay = agk::Timer();
 		}
 
-		if (Options.ThemeOption[tableTopStyle].isVisible())
+		if (offDirection == EAST)
 		{
-			Options.ThemeOption[tableTopStyle].moveOffScreen(offDirection);
+			//set new image off screen at -width
+			Options.ThemeOption[newStyle].setX(-Options.ThemeOption[newStyle].getWidth());
 
-			Options.ThemeOption[newStyle].moveOnScreen(onDirection);
+			for (float i = Options.ThemeOption[tableTopStyle].getX(); i < 100.0f; Options.ThemeOption[tableTopStyle].setX(++i))
+			{
+				for (float j = Options.ThemeOption[newStyle].getX(); ; Options.ThemeOption[newStyle].setX(++j))
+					agk::Sync();
+			}
 		}
-		else  if (Options.ThemeOption[newStyle].isMoving())
+		else if (offDirection == WEST)
 		{
-			if (Options.ThemeOption[tableTopStyle].isMoving())
-				Options.ThemeOption[tableTopStyle].moveOffScreen(offDirection);
+			Options.ThemeOption[newStyle].setX(100.0f);
 
-			Options.ThemeOption[newStyle].moveOnScreen(onDirection);
+			for (float i = Options.ThemeOption[tableTopStyle].getX(); i < -Options.ThemeOption[tableTopStyle].getWidth(); Options.ThemeOption[tableTopStyle].setX(--i))
+			{
+				for (float j = Options.ThemeOption[newStyle].getX(); ; Options.ThemeOption[newStyle].setX(--j))
+					agk::Sync();
+			}
 		}
 		else
 		{
@@ -960,8 +938,11 @@ void app::handleOptions(bool init)
 					setAnimatedSpriteData();
 				}
                 				           
-				Options.ThemeOption[tableTopStyle].hide();
-				Options.Background.updateShrinkClose(-1);
+				Options.ThemeOption[tableTopStyle].setVisible(false);
+
+				for (float i = Options.Background.getWidth(); i <= 0.0f; Options.Background.setSize(--i))
+					agk::Sync();
+
 				NewGame.toggleXState(OPTIONS);
                 
                 if (menuChoice == 2)
@@ -1003,11 +984,8 @@ void app::handleOptions(bool init)
 
 void app::handleInGameOptions(void)
 {
-	if (!Options.Background.hasGrown())
-	{
-		Options.Background.updateGrowOpen(100.0f);
-		return;
-	}
+	for (float i = Options.Background.getWidth(); i <= 100.0f; Options.Background.setSize(++i))
+		agk::Sync();
 
 	Options.show(tableTopStyle);
 	
@@ -1126,18 +1104,26 @@ void app::handleInGameOptions(void)
 			onDirection = WEST;
 		}
 
-		if (Options.ThemeOption[tableTopStyle].isVisible())
+		if (offDirection == EAST)
 		{
-			Options.ThemeOption[tableTopStyle].moveOffScreen(offDirection);
+			//set new image off screen at -width
+			Options.ThemeOption[newStyle].setX(-Options.ThemeOption[newStyle].getWidth());
 
-			Options.ThemeOption[newStyle].moveOnScreen(onDirection);
+			for (float i = Options.ThemeOption[tableTopStyle].getX(); i < 100.0f; Options.ThemeOption[tableTopStyle].setX(++i))
+			{
+				for (float j = Options.ThemeOption[newStyle].getX(); ; Options.ThemeOption[newStyle].setX(++j))
+					agk::Sync();
+			}
 		}
-		else  if (Options.ThemeOption[newStyle].isMoving())
+		else if (offDirection == WEST)
 		{
-			if (Options.ThemeOption[tableTopStyle].isMoving())
-				Options.ThemeOption[tableTopStyle].moveOffScreen(offDirection);
+			Options.ThemeOption[newStyle].setX(100.0f);
 
-			Options.ThemeOption[newStyle].moveOnScreen(onDirection);
+			for (float i = Options.ThemeOption[tableTopStyle].getX(); i < -Options.ThemeOption[tableTopStyle].getWidth(); Options.ThemeOption[tableTopStyle].setX(--i))
+			{
+				for (float j = Options.ThemeOption[newStyle].getX(); ; Options.ThemeOption[newStyle].setX(--j))
+					agk::Sync();
+			}
 		}
 		else
 		{
@@ -1157,8 +1143,8 @@ void app::handleInGameOptions(void)
 			{
 				changeTheme(tableTopStyle);
 				Options.hide();
-				Options.ThemeOption[tableTopStyle].hide();
-				Options.Background.hide();
+				Options.ThemeOption[tableTopStyle].setVisible(false);
+				Options.Background.setVisible(false);
 				Options.SoundCheck.hide();
 				NewGame.toggleXState(INGAMEOPTIONS);
 				if (menuChoice == 2)
@@ -1226,12 +1212,12 @@ bool app::changeTheme(short int style, bool init)
 	//int trumpSelectionNegativeStart = TRUMP_SELECTION_NEGATIVE_START + (4 * style);
 	bool returnValue = false;
 
-	Loading.show();
-	LoadScreen1.show();
-	LoadScreen1.setPriority(3);
+	Loading.setVisible(true);
+	LoadScreen1.setVisible(true);
+	LoadScreen1.setDepth(3);
 	agk::Sync();
 
-	char tempDir[64];
+	char tempDir[32];
 
 	getThemeDir(style, tempDir);
 
@@ -1245,33 +1231,21 @@ bool app::changeTheme(short int style, bool init)
         CurrentTheme.Deck[0].sortVisualCards(West, North, East, South, CurrentTheme.Deck, round, tableTopStyle);
 	}
 
-	//Loading.incrementSpriteFrame();
+	//Loading.incrementFrame();
 	//agk::Sync();
 
-	Loading.hide();
-	LoadScreen1.hide();
+	Loading.setVisible(false);
+	LoadScreen1.setVisible(false);
 
 	return returnValue;
 }
 
 void app::handleStart(void)
 {
-	if (Options.Background.isVisible())
-	{
-		Options.Background.updateShrinkClose(-1);
-		return;
-	}
-	if (CurrentTheme.Background.isGrowing())
-	{
-		CurrentTheme.Background.updateGrowOpen(100.0f, -1.0f);
-		return;
-	}
-	else if (!CurrentTheme.Background.hasGrown())
-	{
-		CurrentTheme.Background.updateGrowOpen(100.0f, -1.0f);
-		CurrentTheme.Background.setPriority(1);
-		return;
-	}
+	for (float i = Options.Background.getWidth(); i >= 0.0f; Options.Background.setSize(--i))
+		agk::Sync();
+
+	CurrentTheme.Background.setDepth(1);
 
 	CurrentTheme.show(START);
 	foundLocation = false;
@@ -1345,19 +1319,19 @@ void app::handleDealing(void)
 	switch (random)
 	{
 	case 1:
-		Cards1.playOnce();
+		Cards1.play();
 		break;
 	case 2:
-		Cards2.playOnce();
+		Cards2.play();
 		break;
 	case 3:
-		Cards3.playOnce();
+		Cards3.play();
 		break;
 	}
 
 
-	//Background.display(0, 0);
-	//Background.setPriority(1);
+	//Background.setPosition(0, 0);
+	//Background.setDepth(1);
 	for (short int i = 0; i < 80; i += 4)
 	{
 		ShuffledDeck.deal(cards);  //four at a time
@@ -1384,6 +1358,7 @@ void app::handleAnimation(void)
 		if (round < 5)
 		{
             bool themeCheck;
+			foundLocation = false;
             
             if (tableTopStyle == 0)
                 themeCheck = true;
@@ -1410,18 +1385,18 @@ void app::handleAnimation(void)
 					switch (randomSound)
 					{
 					case 4:
-						Cards4.playOnce();
+						Cards4.play();
 					case 5:
-						Cards5.playOnce();
+						Cards5.play();
 						break;
 					case 6:
-						Cards6.playOnce();
+						Cards6.play();
 						break;
 					case 7:
-						Cards7.playOnce();
+						Cards7.play();
 						break;
 					case 8:
-						Cards8.playOnce();
+						Cards8.play();
 						break;
 					}
 				}
@@ -1455,7 +1430,7 @@ void app::handleAnimation(void)
 				Selected = North;
 			else if (turn == EAST)
 				Selected = East;
-			else if (turn = SOUTH)
+			else if (turn == SOUTH)
 				Selected = South;
 				
 			foundLocation = CurrentTheme.Deck[0].updateCardThrowIn(Selected, CurrentTheme.Deck);
@@ -1479,18 +1454,19 @@ void app::handleAnimation(void)
 				switch (randomSound)
 				{
 				case 4:
-					Cards4.playOnce();
+					Cards4.play();
+					break;
 				case 5:
-					Cards5.playOnce();
+					Cards5.play();
 					break;
 				case 6:
-					Cards6.playOnce();
+					Cards6.play();
 					break;
 				case 7:
-					Cards7.playOnce();
+					Cards7.play();
 					break;
 				case 8:
-					Cards8.playOnce();
+					Cards8.play();
 					break;
 				}
 			}
@@ -1517,7 +1493,7 @@ void app::handleSorting(void)
 		North.sortHand();
 		East.sortHand();
 		South.sortHand();
-		Cards10.playOnce();
+		Cards10.play();
 		CurrentTheme.Deck[0].sortVisualCards(West, North, East, South, CurrentTheme.Deck, -1, tableTopStyle);
 		turn = 0;
 	}
@@ -1531,10 +1507,14 @@ void app::handleSorting(void)
 		count = -1;
 		NewGame.toggleXState(SORTING);
 		NewGame.toggleXState(BIDDING);
-		NBack.updateGrowOpen(13.5f);
-		SBack.updateGrowOpen(13.5f);
-		WBack.updateGrowOpen(13.5f);
-		EBack.updateGrowOpen(13.5f);
+		NBack.setSize(13.5);
+		SBack.setSize(13.5);
+		EBack.setSize(13.5);
+		WBack.setSize(13.5);
+		NBack.setVisible(true);
+		SBack.setVisible(true);
+		WBack.setVisible(true);
+		EBack.setVisible(true);
 	}
 }
 
@@ -1544,14 +1524,15 @@ void app::handleBidding(void)
 	bool playerBid = false;
 	char num[4]= {NULL};
 
-	if (NBack.isGrowing())
-	{
-		NBack.updateGrowOpen(13.5f);
-		EBack.updateGrowOpen(13.5f);
-		SBack.updateGrowOpen(13.5f);
-		WBack.updateGrowOpen(13.5f);
-		return;
-	}
+	NBack.setSize(13.5f);
+	EBack.setSize(13.5f);
+	SBack.setSize(13.5f);
+	WBack.setSize(13.5f);
+	NBack.setVisible(true);
+	EBack.setVisible(true);
+	SBack.setVisible(true);
+	WBack.setVisible(true);
+
 	if (CurrentTheme.BidScore.getValue() < bid)
 	{
 		incrementing = true;
@@ -1858,8 +1839,8 @@ void app::handleBidding(void)
 
 		strcat(temp, num);
 
-		gameResult.changeText(temp);
-		gameResult.centerText();
+		gameResult.setString(temp);
+		gameResult.setAlignment(1); // 1 = center
 		
 		bidWinner = NewBidGame.getBidWinner();
 		turn = bidWinner;
@@ -1904,86 +1885,86 @@ void app::handleBidding(void)
 			case ENGLISH:
 				switch (trumpSuit)
 				{
-				case 0: gameResult4.changeText("and Named Hearts as Trump"); break;
-				case 1: gameResult4.changeText("and Named Clubs as Trump"); break;
-				case 2: gameResult4.changeText("and Named Diamonds as Trump"); break;
-				case 3: gameResult4.changeText("and Named Spades as Trump"); break;
+				case 0: gameResult4.setString("and Named Hearts as Trump"); break;
+				case 1: gameResult4.setString("and Named Clubs as Trump"); break;
+				case 2: gameResult4.setString("and Named Diamonds as Trump"); break;
+				case 3: gameResult4.setString("and Named Spades as Trump"); break;
 				case 4:
 					char buffer[64] = {NULL};
 					sprintf(buffer, "and could not name trump.\nTeam loses %d points", bid);
-					gameResult4.changeText(buffer);
+					gameResult4.setString(buffer);
 					break;
 				}
 				break;
 			case FRENCH:
 				switch (trumpSuit)
 				{
-				case 0: gameResult4.changeText("coeurs et nommé commete atout"); break;
-				case 1: gameResult4.changeText("clubs et nommé commete atout"); break;
-				case 2: gameResult4.changeText("et a nommé les diamants commete atout"); break;
-				case 3: gameResult4.changeText("et a nommé pique commete atout"); break;
+				case 0: gameResult4.setString("coeurs et nommé commete atout"); break;
+				case 1: gameResult4.setString("clubs et nommé commete atout"); break;
+				case 2: gameResult4.setString("et a nommé les diamants commete atout"); break;
+				case 3: gameResult4.setString("et a nommé pique commete atout"); break;
 				case 4:
 					char buffer[64] = {NULL};
 					sprintf(buffer, "et ne pouvais pas le nom trump.\nÉquipe perd %d points.", bid);
-					gameResult4.changeText(buffer);
+					gameResult4.setString(buffer);
 					break;
 				}
 				break;
 			case ITALIAN:
 				switch (trumpSuit)
 				{
-				case 0: gameResult4.changeText("e nominator cuori come vincente"); break;
-				case 1: gameResult4.changeText("e nominator club come vincente"); break;
-				case 2: gameResult4.changeText("e nominato diamanti come vincente"); break;
-				case 3: gameResult4.changeText("e nominato come picche vincente"); break;
+				case 0: gameResult4.setString("e nominator cuori come vincente"); break;
+				case 1: gameResult4.setString("e nominator club come vincente"); break;
+				case 2: gameResult4.setString("e nominato diamanti come vincente"); break;
+				case 3: gameResult4.setString("e nominato come picche vincente"); break;
 				case 4:
 					char buffer[64] = {NULL};
 					sprintf(buffer, "e non il nome trump.\nSquadra perde %d punti.", bid);
-					gameResult4.changeText(buffer);
+					gameResult4.setString(buffer);
 					break;
 				}
 				break;
 			case GERMAN:
 				switch (trumpSuit)
 				{
-				case 0: gameResult4.changeText("und herzen als trumpf namens"); break;
-				case 1: gameResult4.changeText("und clubs als trumpf namens"); break;
-				case 2: gameResult4.changeText("und nannte diamanten als trumpf"); break;
-				case 3: gameResult4.changeText("und pik als trumpf namens"); break;
+				case 0: gameResult4.setString("und herzen als trumpf namens"); break;
+				case 1: gameResult4.setString("und clubs als trumpf namens"); break;
+				case 2: gameResult4.setString("und nannte diamanten als trumpf"); break;
+				case 3: gameResult4.setString("und pik als trumpf namens"); break;
 				case 4:
 					char buffer[64] = {NULL};
 					sprintf(buffer, "und nicht namen trumpf.\nTeam verliert %d punkte.", bid);
-					gameResult4.changeText(buffer);
+					gameResult4.setString(buffer);
 					break;
 				}
 				break;
 			case SPANISH:
 				switch (trumpSuit)
 				{
-				case 0: gameResult4.changeText("y el nombre corazones como triunfo"); break;
-				case 1: gameResult4.changeText("y el nombre de los clubes de triunfo"); break;
-				case 2: gameResult4.changeText("y el nombre de los diamantes de triunfo"); break;
-				case 3: gameResult4.changeText("y el nombre espadas como triunfo"); break;
+				case 0: gameResult4.setString("y el nombre corazones como triunfo"); break;
+				case 1: gameResult4.setString("y el nombre de los clubes de triunfo"); break;
+				case 2: gameResult4.setString("y el nombre de los diamantes de triunfo"); break;
+				case 3: gameResult4.setString("y el nombre espadas como triunfo"); break;
 				case 4:
 					char buffer[64] = {NULL};
 					sprintf(buffer, "y noel nombre de triunfo.\nEquipo pierde %d puntos.", bid);
-					gameResult4.changeText(buffer);
+					gameResult4.setString(buffer);
 					break;
 				}
 				break;
 			}
-			gameResult.centerText();
-			gameResult.show();
-			gameResult4.centerText();
-			gameResult4.show();
-			TapScreen.position(gameResult4.getX(), gameResult4.getY() + 9.0f);
-			TapScreen.show();
-			TextBackground.setPriority(9950);
-			TextBackground.display(22.0f, 28.0f);
-			TextBackground.setSize(60, 25, false);
+			gameResult.setAlignment(1);
+			gameResult.setVisible(true);
+			gameResult4.setAlignment(1);
+			gameResult4.setVisible(true);
+			TapScreen.setPosition(Point(gameResult4.getX(), gameResult4.getY() + 9.0f));
+			TapScreen.setVisible(true);
+			TextBackground.setDepth(50);
+			TextBackground.setPosition(22.0f, 28.0f);
+			TextBackground.setSize(60, 25);
 			TextBackground.setAlpha(192);
-			TextBackground.show();
-			//gameResult4.show();
+			TextBackground.setVisible(true);
+			//gameResult4.setVisible(true)
 		}
 	}
 }
@@ -2003,32 +1984,11 @@ void app::handleMelding(void)
 	CurrentTheme.PastWestBid.hideAll();
 	CurrentTheme.PastSouthBid.hideAll();
 
-	if (NBack.isVisible())
-	{
-		NBack.updateShrinkClose(-2);
-		return;
-	}
-	if (EBack.isVisible())
-	{
-		EBack.updateShrinkClose(-2);
-		return;
-	}
-	if (SBack.isVisible())
-	{
-		SBack.updateShrinkClose(-2);
-		return;
-	}
-	if (WBack.isVisible())
-	{
-		WBack.updateShrinkClose(-2);
-		return;
-	}
-	if (!count)
-	{
-		hMeld = East.getPMeld() + West.getPMeld();
-		vMeld = North.getPMeld() + South.getPMeld();
-	}
-    
+	NBack.setVisible(false);
+	EBack.setVisible(false);
+	SBack.setVisible(false);
+	WBack.setVisible(false);
+
 	if (count > 8)
 	{
 		if (( ( trumpSuit == 4 ) || ( NewGame.horizontalMeld < 20 ) ) && ( NewBidGame.getBidWinner() % 2 == BLUE) )
@@ -2038,7 +1998,7 @@ void app::handleMelding(void)
 				char buffer[256];
 				char buffer2[64];
 
-				//DemoEndBack.show();
+				//DemoEndBack.setVisible(true)
                 
                 hideAllText();
 
@@ -2091,20 +2051,20 @@ void app::handleMelding(void)
 					break;
 				}
 
-				MeldFail.changeText(buffer);
-                MeldFail.show();
+				MeldFail.setString(buffer);
+				MeldFail.setVisible(true);
                 
-                TapScreen.position(MeldFail.getX(), MeldFail.getY() + 18.0f);
-				TapScreen.show();
-				TextBackground.display(19.0f, 33.0f);
-				TextBackground.setSize(65, 42, false);
-				TextBackground.show();
+                TapScreen.setPosition(Point(MeldFail.getX(), MeldFail.getY() + 18.0f));
+				TapScreen.setVisible(true);
+				TextBackground.setPosition(19.0f, 33.0f);
+				TextBackground.setSize(65, 42);
+				TextBackground.setVisible(true);
 			}
 			else
 			{
 
-				DemoEndBack.hide();
-				MeldFail.hide();
+				DemoEndBack.setVisible(false);
+				MeldFail.setVisible(false);
 				NewGame.toggleXState(MELDING);
 				NewGame.toggleXState(SCOREBOARD);
 
@@ -2120,8 +2080,8 @@ void app::handleMelding(void)
 				char buffer[256] = {NULL};
 				char buffer2[64] = {NULL};
 
-				//DemoEndBack.show();
-				DemoEndBack.hide();
+				//DemoEndBack.setVisible(true)
+				DemoEndBack.setVisible(false);
                 
                 hideAllText();
 
@@ -2174,19 +2134,19 @@ void app::handleMelding(void)
 					break;
 				}
 
-				MeldFail.changeText(buffer);
-				MeldFail.show();
+				MeldFail.setString(buffer);
+				MeldFail.setVisible(true);
 
-                TapScreen.position(MeldFail.getX(), MeldFail.getY() + 18.0f);
-				TapScreen.show();
-				TextBackground.display(19.0f, 33.0f);
-				TextBackground.setSize(65, 42, false);
-				TextBackground.show();
+				TapScreen.setPosition(Point(MeldFail.getX(), MeldFail.getY() + 18.0f));
+				TapScreen.setVisible(true);
+				TextBackground.setPosition(19.0f, 33.0f);
+				TextBackground.setSize(65, 42);
+				TextBackground.setVisible(true);
 			}
 			else
 			{
-				DemoEndBack.hide();
-				MeldFail.hide();
+				DemoEndBack.setVisible(false);
+				MeldFail.setVisible(false);
 				NewGame.toggleXState(MELDING);
 				NewGame.toggleXState(SCOREBOARD);
 
@@ -2212,9 +2172,9 @@ void app::handleMelding(void)
 
 	if (count > 8)
 	{
-		MeldAmount.hide();
-		TapScreen.hide();
-		TextBackground.hide();
+		MeldAmount.setVisible(false);
+		TapScreen.setVisible(false);
+		TextBackground.setVisible(false);
 	}
 
 	switch (count)
@@ -2226,10 +2186,10 @@ void app::handleMelding(void)
 				skipTo = 3;
 			else
 				skipTo = 1;
-			gameResult.hide();
-			gameResult4.hide();
-			TextBackground.display(25.0f, 65.0f);
-			TextBackground.setSize(52, 13, false);
+			gameResult.setVisible(false);
+			gameResult4.setVisible(false);
+			TextBackground.setPosition(25.0f, 65.0f);
+			TextBackground.setSize(52, 13);
 		}
 
 		break; //else start with west
@@ -2409,12 +2369,12 @@ void app::handleMelding(void)
 
 	if (count && (count <= 4))
 	{
-		MeldAmount.position(50.0f, 66.0f);
-		MeldAmount.changeText(cMeldAmount);
-		MeldAmount.show();
+		MeldAmount.setPosition(Point(50.0f, 66.0f));
+		MeldAmount.setString(cMeldAmount);
+		MeldAmount.setVisible(true);
 
-		TapScreen.position(MeldAmount.getX(), MeldAmount.getY() + 5.0f);
-		TapScreen.show();
+		TapScreen.setPosition(Point(MeldAmount.getX(), MeldAmount.getY() + 5.0f));
+		TapScreen.setVisible(true);
 	}
 
 	if (mouseClick || !cardsDisplayed)
@@ -2434,9 +2394,9 @@ void app::handlePlaying(void)
 {
 	trump = NewTrickGame.getTrumpSuit();
 
-	MeldAmount.hide();
-	TapScreen.hide();
-	TextBackground.hide();
+	MeldAmount.setVisible(false);
+	TapScreen.setVisible(false);
+	TextBackground.setVisible(false);
 
 	if (count != 80)
 	{
@@ -2445,7 +2405,7 @@ void app::handlePlaying(void)
 		{//trick is finished
 			if (mouseClick)
 			{
-				TapScreen.hide();
+				TapScreen.setVisible(false);
 				turn = NewTrickGame.getLead();
 				foundLocation = CurrentTheme.Deck[cardPlayed[0]].updateShrinkCloseTrick(turn, &CurrentTheme.Deck[cardPlayed[1]], &CurrentTheme.Deck[cardPlayed[2]], &CurrentTheme.Deck[cardPlayed[3]]);
 				wipingCards = true;
@@ -2462,10 +2422,10 @@ void app::handlePlaying(void)
             }
 			else if (!allIn)
 			{
-				TapScreen.show();
-				TextBackground.setSize(50, 10, false);
-				TextBackground.display(26.0f, 68.5f);
-				TextBackground.show();
+				TapScreen.setVisible(true);
+				TextBackground.setSize(50, 10);
+				TextBackground.setPosition(26.0f, 68.5f);
+				TextBackground.setVisible(true);
 				foundLocation = false;
 			}
 		}
@@ -2588,10 +2548,10 @@ void app::handlePlaying(void)
 				{
 					if (!allIn)
 					{
-						SwipeHelp.show();
-						TextBackground.display(22.5f, 64.0f);
-						TextBackground.setSize(58, 13, false);
-						TextBackground.show();
+						SwipeHelp.setVisible(true);
+						TextBackground.setPosition(22.5f, 64.0f);
+						TextBackground.setSize(58, 13);
+						TextBackground.setVisible(true);
 						contFlag = false;
 						//sortVisualCards(South, CurrentTheme.Deck);
 						playOneTime = true;
@@ -2637,8 +2597,8 @@ void app::handlePlaying(void)
 
 							if (turn == SOUTH)
 							{
-								SwipeHelp.hide();
-								TextBackground.hide();
+								SwipeHelp.setVisible(false);
+								TextBackground.setVisible(false);
 							}
 
 							NewTrickGame.playCard(&South, West, North, East, count, cardPlayed[count%4]);
@@ -2679,19 +2639,19 @@ void app::handlePlaying(void)
 								switch (ShuffledDeck.getRank(cardPlayed[(count-1)%4]))
 								{
 								case ACE:
-									Trump[ACE].playOnce();
+									Trump[ACE].play();
 									break;
 								case TEN:
-									Trump[TEN].playOnce();
+									Trump[TEN].play();
 									break;
 								case KING:
-									Trump[KING].playOnce();
+									Trump[KING].play();
 									break;
 								case QUEEN:
-									Trump[QUEEN].playOnce();
+									Trump[QUEEN].play();
 									break;
 								case JACK:
-									Trump[JACK].playOnce();
+									Trump[JACK].play();
 									break;
 								}
 							}
@@ -2712,10 +2672,10 @@ void app::handlePlaying(void)
 		}
 		else
 		{
-			TapScreen.show();
-			TextBackground.setSize(50, 10, false);
-			TextBackground.display(26.0f, 68.5f);
-			TextBackground.show();
+			TapScreen.setVisible(true);
+			TextBackground.setSize(50, 10);
+			TextBackground.setPosition(26.0f, 68.5f);
+			TextBackground.setVisible(true);
 		}
 	}
 }
@@ -2723,8 +2683,8 @@ void app::handlePlaying(void)
 void app::handleScoreboard(void)
 {
 	bool meldFail = false;
-	MeldAmount.hide();
-	TapScreen.hide();
+	MeldAmount.setVisible(false);
+	TapScreen.setVisible(false);
 	turn = NewTrickGame.getLead();
 	ingamebutton=false;
 	incrementing = false;
@@ -2798,7 +2758,7 @@ void app::handleScoreboard(void)
 			if (HandResults.HandScoreData[0][3].getValue() != bid)
             {
 				HandResults.HandScoreData[0][3].incrementTo(bid); //TODO: change to 4 when new scoreboard in
-                PointClick.playOnce();
+                PointClick.play();
 				incrementing = true;
             }
 
@@ -2809,38 +2769,38 @@ void app::handleScoreboard(void)
 				if (HandResults.HandScoreData[0][0].getValue() != (vMeld + vTrickScore))
                 {
 					HandResults.HandScoreData[0][0].incrementTo(vMeld + vTrickScore);
-                    PointClick.playOnce();
+                    PointClick.play();
 					incrementing = true;
                 }
 
-				HandResults.VCheckOn.show();
+				HandResults.VCheckOn.setVisible(true);
 			}
 			else
 			{
 				if (HandResults.HandScoreData[0][0].getValue() != -bid)
                 {
 					HandResults.HandScoreData[0][0].incrementTo(-bid);
-                    PointClick.playOnce();
+                    PointClick.play();
 					incrementing = true;
                 }
 
-				HandResults.VCheck.show();
+				HandResults.VCheck.setVisible(true);
 			}
 			if ((CurrentTheme.H2Get.getValue() == 0) || meldFail)
 			{
 				if (HandResults.HandScoreData[1][0].getValue() != (hMeld + hTrickScore))
                 {
 					HandResults.HandScoreData[1][0].incrementTo(hMeld + hTrickScore);
-                    PointClick.playOnce();
+                    PointClick.play();
 					incrementing = true;
                 }
 
-				HandResults.HCheckOn.show();
+				HandResults.HCheckOn.setVisible(true);
 			}
 			else
 			{
 				HandResults.HandScoreData[1][0].incrementTo(0, true);
-				HandResults.HCheck.show();
+				HandResults.HCheck.setVisible(true);
 			}
 		}
 		else
@@ -2849,7 +2809,7 @@ void app::handleScoreboard(void)
             {
 				HandResults.HandScoreData[1][3].incrementTo(bid); //TODO: change to 4 when new scoreboard in
 				incrementing = true;
-                PointClick.playOnce();
+                PointClick.play();
             }
 
 			HandResults.HandScoreData[0][3].hideAll();
@@ -2860,10 +2820,10 @@ void app::handleScoreboard(void)
                 {
 					HandResults.HandScoreData[1][0].incrementTo(hMeld + hTrickScore);
 					incrementing = true;
-                    PointClick.playOnce();
+                    PointClick.play();
                 }
 
-				HandResults.HCheckOn.show();
+				HandResults.HCheckOn.setVisible(true);
 			}
 			else
 			{
@@ -2871,10 +2831,10 @@ void app::handleScoreboard(void)
                 {
 					HandResults.HandScoreData[1][0].incrementTo(-bid);
 					incrementing = true;
-                    PointClick.playOnce();
+                    PointClick.play();
                 }
 
-				HandResults.HCheck.show();
+				HandResults.HCheck.setVisible(true);
 			}
 
 			if ((CurrentTheme.V2Get.getValue() == 0) || meldFail)
@@ -2883,15 +2843,15 @@ void app::handleScoreboard(void)
                 {
 					HandResults.HandScoreData[0][0].incrementTo(vMeld + vTrickScore);
 					incrementing = true;
-                    PointClick.playOnce();
+                    PointClick.play();
                 }
 
-				HandResults.VCheckOn.show();
+				HandResults.VCheckOn.setVisible(true);
 			}
 			else
 			{
 				HandResults.HandScoreData[0][0].incrementTo(0, true);
-				HandResults.VCheck.show();
+				HandResults.VCheck.setVisible(true);
 			}
 		}
 
@@ -2899,54 +2859,54 @@ void app::handleScoreboard(void)
         {
             HandResults.HandScoreData[0][2].incrementTo(vMeld, true);
 			incrementing = true;
-            PointClick.playOnce();
+            PointClick.play();
         }
 		if (HandResults.HandScoreData[1][2].getValue() != hMeld)
         {
             HandResults.HandScoreData[1][2].incrementTo(hMeld, true);
 			incrementing = true;
-            PointClick.playOnce();
+            PointClick.play();
         }
 		if (HandResults.HandScoreData[0][1].getValue() != NewTrickGame.getVTricks())
         {
             HandResults.HandScoreData[0][1].incrementTo(NewTrickGame.getVTricks(), true);
 			incrementing = true;
-            PointClick.playOnce();
+            PointClick.play();
         }
 		if (HandResults.HandScoreData[1][1].getValue() != NewTrickGame.getHTricks())
         {
             HandResults.HandScoreData[1][1].incrementTo(NewTrickGame.getHTricks(), true);
 			incrementing = true;
-            PointClick.playOnce();
+            PointClick.play();
         }
 
 		for (int i = 0; i < 80; i++)
 			CurrentTheme.Deck[i].hide();
 
-		HandResults.Background.show();
-		//HandResults.Background.setPriority(50);
+		HandResults.Background.setVisible(true);
+		//HandResults.Background.setDepth(50);
 #if (PLATFORM == MOBILE)
-		TapScreen.position(TapScreen.getX() + 5.0f, 70.0f);
+		TapScreen.setPosition(Point((TapScreen.getX() + 5.0f, 70.0f);
 #else
-        TapScreen.position(TapScreen.getX(), 70.0f);
+		TapScreen.setPosition(Point(TapScreen.getX(), 70.0f));
 #endif
-		TapScreen.show();
-		TextBackground.setSize(50, 10, false);
-		TextBackground.display(26.0f, 68.5f);
-		TextBackground.show();
+		TapScreen.setVisible(true);
+		TextBackground.setSize(50, 10);
+		TextBackground.setPosition(26.0f, 68.5f);
+		TextBackground.setVisible(true);
 	}
 	else if ((visScreen == 1) && !mouseClick)
 	{
 		//incrementing = false;
-		TapScreen.position(50.0f, 7.0f);
-		TapScreen.show();
-		TextBackground.display(26.0f, 5.0f);
+		TapScreen.setPosition(Point(50.0f, 7.0f));
+		TapScreen.setVisible(true);
+		TextBackground.setPosition(26.0f, 5.0f);
 
 		HandResults.hide();
 
-		GameResults.Background.show();
+		GameResults.Background.setVisible(true);
 		GameResults.Background.setAlpha(255);
-		GameResults.Header.show();
+		GameResults.Header.setVisible(true);
 
 		if (hand > 0)
 		{
@@ -2970,7 +2930,7 @@ void app::handleScoreboard(void)
 				}
 				/*else
 				{
-					GameResults.MiddleSection[hand].display(GameResults.MiddleSection[hand-1].getX(), GameResults.MiddleSection[hand-1].getY() + (5.0f * (hand)));
+					GameResults.MiddleSection[hand].setPosition(GameResults.MiddleSection[hand-1].getX(), GameResults.MiddleSection[hand-1].getY() + (5.0f * (hand)));
 					copyOnce = true;
 				}*/
 			}
@@ -2981,10 +2941,10 @@ void app::handleScoreboard(void)
 			if (i > 10)
 				break;
 
-			GameResults.MiddleSection[i].show();
+			GameResults.MiddleSection[i].setVisible(true);
 		}
 
-		GameResults.Total.show();
+		GameResults.Total.setVisible(true);
 
 		short int temphand = hand;
 
@@ -3014,7 +2974,7 @@ void app::handleScoreboard(void)
 				if (GameResults.GameScoreData[temphand][0].getValue() != (hMeld + hTricks))
                 {
 					GameResults.GameScoreData[temphand][0].incrementTo(hMeld + hTricks);
-                    PointClick.playOnce();
+                    PointClick.play();
 					incrementing = true;
                 }
 			}
@@ -3023,7 +2983,7 @@ void app::handleScoreboard(void)
 				if (GameResults.GameScoreData[temphand][0].getValue() != -bid)
                 {
 					GameResults.GameScoreData[temphand][0].incrementTo(-bid); //need to make this negative somehow!
-                    PointClick.playOnce();
+                    PointClick.play();
 					incrementing = true;
                 }
 			}
@@ -3033,7 +2993,7 @@ void app::handleScoreboard(void)
 				if (GameResults.GameScoreData[temphand][1].getValue() != (vMeld + vTricks))
                 {
 					GameResults.GameScoreData[temphand][1].incrementTo(vMeld + vTricks);
-                    PointClick.playOnce();
+                    PointClick.play();
 					incrementing = true;
                 }
 			}
@@ -3049,7 +3009,7 @@ void app::handleScoreboard(void)
 				if (GameResults.GameScoreData[temphand][0].getValue() != (hMeld + hTricks))
                 {
 					GameResults.GameScoreData[temphand][0].incrementTo(hMeld + hTricks);
-                    PointClick.playOnce();
+                    PointClick.play();
 					incrementing = true;
                 }
 			}
@@ -3063,7 +3023,7 @@ void app::handleScoreboard(void)
 				if (GameResults.GameScoreData[temphand][1].getValue() != (vMeld + vTricks))
                 {
 					GameResults.GameScoreData[temphand][1].incrementTo(vMeld + vTricks);
-                    PointClick.playOnce();
+                    PointClick.play();
 					incrementing = true;
                 }
 			}
@@ -3072,7 +3032,7 @@ void app::handleScoreboard(void)
 				if (GameResults.GameScoreData[temphand][1].getValue() != -bid)
                 {
 					GameResults.GameScoreData[temphand][1].incrementTo(-bid); //need to make this negative
-                    PointClick.playOnce();
+                    PointClick.play();
 					incrementing = true;
                 }
 			}
@@ -3090,14 +3050,14 @@ void app::handleScoreboard(void)
         if (GameResults.GameScoreData[11][0].getValue() != hScore)
         {
             GameResults.GameScoreData[11][0].incrementTo(NewGame.getScore(BLUE), true);
-            PointClick.playOnce();
+            PointClick.play();
 			incrementing = true;
         }
         
         if (GameResults.GameScoreData[11][1].getValue() != vScore)
         {
             GameResults.GameScoreData[11][1].incrementTo(NewGame.getScore(RED), true);
-            PointClick.playOnce();
+            PointClick.play();
 			incrementing = true;
         }
 
@@ -3107,27 +3067,27 @@ void app::handleScoreboard(void)
 
 		if ((NewGame.getScore(0) >= 500) || (NewGame.getScore(1) >= 500))
 		{
-			GameOver.position(50.0f, 89.0f);
+			GameOver.setPosition(Point(50.0f, 89.0f));
 			if ((NewGame.getScore(0) >= 500) && (NewGame.getScore(1) < 500))
-				GameOver.changeText("Blue Team Wins!");
+				GameOver.setString("Blue Team Wins!");
 			else if ((NewGame.getScore(1) >= 500) && (NewGame.getScore(0) < 500))
-				GameOver.changeText("Red Team Wins!");
+				GameOver.setString("Red Team Wins!");
 			else
 			{
 				if (bidWinner % 2)
-					GameOver.changeText("Red Team Wins!");
+					GameOver.setString("Red Team Wins!");
 				else
-					GameOver.changeText("Blue Team Wins!");
+					GameOver.setString("Blue Team Wins!");
 			}
-			GameOver.incrementColor();
-			GameOver.show();
+			//GameOver.setColor(RGBA;
+			GameOver.setVisible(true);
 		}
 	}
 	else if (visScreen == 2)
 	{
 		GameResults.hide();
-		TapScreen.hide();
-		TextBackground.hide();
+		TapScreen.setVisible(false);
+		TextBackground.setVisible(false);
 
 		if ((NewGame.getScore(0) < 500) && (NewGame.getScore(1) < 500))
 		{
@@ -3157,9 +3117,10 @@ void app::handleScoreboard(void)
 
 		GameResults.hide();
 
-		CurrentTheme.Background.updateShrinkClose(-2);
-        
-        NewGame.toggleXState(SCOREBOARD);
+		for (float i = CurrentTheme.Background.getWidth(); i >= 0.0f; CurrentTheme.Background.setSize(--i))
+			agk::Sync();
+
+		NewGame.toggleXState(SCOREBOARD);
 		NewGame.toggleXState(MENU);
 	}
 	/*else if (!incrementing)
@@ -3416,13 +3377,13 @@ void app::parseFile(void)
 			{
 				soundOn = true;
 				Options.unMute();
-				PointClick.setMasterVolume(100);
+				PointClick.setSystemVolume(100);
 			}
 			else
 			{
 				soundOn = false;
 				Options.mute();
-				PointClick.setMasterVolume(0);
+				PointClick.setSystemVolume(0);
 			}
 		}
 		else if (query == "Turn")
@@ -3695,39 +3656,40 @@ void app::initLoadScreen(void)
     float factor = 1.0f;
     float offset = 0.0f;
     
-    if (PLATFORM == MOBILE)
+#if (PLATFORM == MOBILE)
     {
         factor = 1.5f;
         offset = -1.0f;
     }
-    
-	Legal.createT("Copyright 2012 Steele Game Studios, All Rights Reserved");
-	Legal.color(255, 255, 255);
-	Legal.position(32.5f, 92.5f + offset);
-	Legal.size(3.0f*factor);
-	Legal.show();
+#endif
+
+	Legal = Text("Copyright 2013 Steele Game Studios");
+	Legal.setColor(RGBA(255, 255, 255));
+	Legal.setPosition(Point(32.5f, 92.5f + offset));
+	Legal.setSize(3.0f*factor);
+	Legal.setVisible(true);
 
 	LoadingScreen.setSize(100.0f); //setSize(0.09f, 0.09f);
-	LoadingScreen.setPriority(0);
-	LoadingScreen.display(0.0f, 0.0f); //7.0f, (float)((50.0/768.0)*100));
-	LoadingScreen.show();
+	LoadingScreen.setDepth(0);
+	LoadingScreen.setPosition(0.0f, 0.0f); //7.0f, (float)((50.0/768.0)*100));
+	LoadingScreen.setVisible(true);
 
 	//loading test screen can be changed to a proper loading screen if needed
 	LoadScreen1.setSize(55.0f);
-	LoadScreen1.setPriority(1);
-	LoadScreen1.display(0.0f,90.0f);
-	LoadScreen1.show();
+	LoadScreen1.setDepth(1);
+	LoadScreen1.setPosition(0.0f,90.0f);
+	LoadScreen1.setVisible(true);
 
 	Loading.setSize(5.0f);
-	Loading.display(26.0f, 90.0f);
-	Loading.setPriority(5);
-	Loading.setAnimatedFrameTo(1);
+	Loading.setPosition(Point(26.0f, 90.0f));
+	Loading.setDepth(5);
+	Loading.setFrame(1);
 	agk::Sync();
 }
 
 void app::initSprites(void)
 {
-	TextBackground.setData("board_background.png", "xmas/"); 
+	TextBackground = Sprite("xmas/board_background.png"); 
 }
 
 void app::initNumbers(void)
@@ -3744,183 +3706,183 @@ void app::finalSetup(void)
 
 	fontImNum = myLoadImage("default/Corben.png");
 
-	gameResult.createT("");
-	gameResult.font(fontImNum);
-	gameResult.hide();
-	gameResult.size(4.75f);
-	gameResult.color(245, 245, 245);
-	gameResult.position(50.0f, 30.0f);
+	gameResult = Text("");
+	gameResult.setFontImage(fontImNum);
+	gameResult.setVisible(false);
+	gameResult.setSize(4.75f);
+	gameResult.setColor(RGBA(245, 245, 245));
+	gameResult.setPosition(Point(50.0f, 30.0f));
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 
-	gameResult4.createT("");
-	gameResult4.font(fontImNum);
-	gameResult4.size(4.75f);
-	gameResult4.color(245, 245, 245);
-	gameResult4.hide();
-	gameResult4.position(50.0f, 35.0f);
+	gameResult4 = Text("");
+	gameResult4.setFontImage(fontImNum);
+	gameResult4.setSize(4.75f);
+	gameResult4.setColor(RGBA(245, 245, 245));
+	gameResult4.setVisible(false);
+	gameResult4.setPosition(Point(50.0f, 35.0f));
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 
-	MeldFail.createT("");
-	MeldFail.font(fontImNum);
-	MeldFail.size(4.75f);
-	MeldFail.color(245, 245, 245);
-	MeldFail.hide();
-	MeldFail.position(50.0f, 35.0f);
+	MeldFail = Text("");
+	MeldFail.setFontImage(fontImNum);
+	MeldFail.setSize(4.75f);
+	MeldFail.setColor(RGBA(245, 245, 245));
+	MeldFail.setVisible(false);
+	MeldFail.setPosition(Point(50.0f, 35.0f));
     MeldFail.setDepth(9999);
-	MeldFail.centerText();
+	MeldFail.setAlignment(1);
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 
-	MeldAmount.createT("");
-	MeldAmount.size(4.75f);
-	MeldAmount.font(fontImNum);
-	MeldAmount.color(245, 245, 245);
-	MeldAmount.position(50.0f, 35.0f);
-	MeldAmount.centerText();
-	MeldAmount.hide();
+	MeldAmount = Text("");
+	MeldAmount.setSize(4.75f);
+	MeldAmount.setFontImage(fontImNum);
+	MeldAmount.setColor(RGBA(245, 245, 245));
+	MeldAmount.setPosition(Point(50.0f, 35.0f));
+	MeldAmount.setAlignment(1);
+	MeldAmount.setVisible(false);
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 
-	GameOver.createT("");
-	GameOver.size(4.75f);
-	GameOver.font(fontImNum);
-	GameOver.color(245, 245, 245);
-	GameOver.position(50.0f, 35.0f);
-	GameOver.centerText();
-	GameOver.hide();
+	GameOver = Text();
+	GameOver.setSize(4.75f);
+	GameOver.setFontImage(fontImNum);
+	GameOver.setColor(RGBA(245, 245, 245));
+	GameOver.setPosition(Point(50.0f, 35.0f));
+	GameOver.setAlignment(1);
+	GameOver.setVisible(false);
 
-	Loading.incrementSpriteFrame();
-	agk::Sync();
-
-	switch (language)
-	{
-	case ENGLISH:
-		TapScreen.createT("Tap Screen to Continue");
-		break;
-	case FRENCH:
-		TapScreen.createT("Appuyez sur l'écran pour continuer");
-		break;
-	case ITALIAN:
-		TapScreen.createT("Tocco dello schermo per continuare");
-		break;
-	case GERMAN:
-		TapScreen.createT("Tippen sie auf bildschirm, um fortzufahren");
-		break;
-	case SPANISH:
-		TapScreen.createT("Tocar la pantalla para continuar");
-		break;
-	}
-	TapScreen.font(fontImNum);
-	TapScreen.size(4.75f);
-	TapScreen.color(245, 245, 245);
-	TapScreen.position(50.0f, 35.0f);
-	TapScreen.centerText();
-	TapScreen.hide();
-
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 
 	switch (language)
 	{
 	case ENGLISH:
-		SwipeHelp.createT("Touch card to select a card.\nSwipe up to play selected card.");
+		TapScreen = Text("Tap Screen to Continue");
 		break;
 	case FRENCH:
-		SwipeHelp.createT("Touchez carte pour le sélectionner.\nGlisser pour jouer la carte sélectionnée.");
+		TapScreen = Text("Appuyez sur l'écran pour continuer");
 		break;
 	case ITALIAN:
-		SwipeHelp.createT("Tocco carta per selezionarla.\nScorrere fino a giocare la carta selezionato.");
+		TapScreen = Text("Tocco dello schermo per continuare");
 		break;
 	case GERMAN:
-		SwipeHelp.createT("Touch-karte, um sie auszuwählen.\nStreichen bis zur gewählten karte spielen.");
+		TapScreen = Text("Tippen sie auf bildschirm, um fortzufahren");
 		break;
 	case SPANISH:
-		SwipeHelp.createT("Tarjeta de contacto para seleccionarlo.\nPasa para jugar la carta elegida.");
+		TapScreen = Text("Tocar la pantalla para continuar");
 		break;
 	}
-	SwipeHelp.font(fontImNum);
-	SwipeHelp.size(4.75f);
-	SwipeHelp.color(245, 245, 245);
-	SwipeHelp.position(50.0f, 65.0f);
-	SwipeHelp.centerText();
-	SwipeHelp.hide();
+	TapScreen.setFontImage(fontImNum);
+	TapScreen.setSize(4.75f);
+	TapScreen.setColor(RGBA(245, 245, 245));
+	TapScreen.setPosition(Point(50.0f, 35.0f));
+	TapScreen.setAlignment(1);
+	TapScreen.setVisible(false);
+
+	Loading.incrementFrame();
+	agk::Sync();
+
+	switch (language)
+	{
+	case ENGLISH:
+		SwipeHelp = Text("Touch card to select a card.\nSwipe up to play selected card.");
+		break;
+	case FRENCH:
+		SwipeHelp = Text("Touchez carte pour le sélectionner.\nGlisser pour jouer la carte sélectionnée.");
+		break;
+	case ITALIAN:
+		SwipeHelp = Text("Tocco carta per selezionarla.\nScorrere fino a giocare la carta selezionato.");
+		break;
+	case GERMAN:
+		SwipeHelp = Text("Touch-karte, um sie auszuwählen.\nStreichen bis zur gewählten karte spielen.");
+		break;
+	case SPANISH:
+		SwipeHelp = Text("Tarjeta de contacto para seleccionarlo.\nPasa para jugar la carta elegida.");
+		break;
+	}
+	SwipeHelp.setFontImage(fontImNum);
+	SwipeHelp.setSize(4.75f);
+	SwipeHelp.setColor(RGBA(245, 245, 245));
+	SwipeHelp.setPosition(Point(50.0f, 65.0f));
+	SwipeHelp.setAlignment(1);
+	SwipeHelp.setVisible(false);
 	
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 
 	switch (language)
 	{
 	case ENGLISH:
-		ChooseTrump.createT("Choose your trump suit.\nPotential suits must have a marriage.");
+		ChooseTrump = Text("Choose your trump suit.\nPotential suits must have a marriage.");
 		break;
 	case FRENCH:
-		ChooseTrump.createT("Choisissez votre couler d'atout.\nCostumes potentiel doit avoir un mariage.");
+		ChooseTrump = Text("Choisissez votre couler d'atout.\nCostumes potentiel doit avoir un mariage.");
 		break;
 	case ITALIAN:
-		ChooseTrump.createT("Scegliere il seme di briscola.\nSi adatta alle potenzialità deve avere un matrimonio.");
+		ChooseTrump = Text("Scegliere il seme di briscola.\nSi adatta alle potenzialità deve avere un matrimonio.");
 		break;
 	case GERMAN:
-		ChooseTrump.createT("Wählen sie ihre trumpffarbe.\nPotenzial anzüge müssen eine ehe.");
+		ChooseTrump = Text("Wählen sie ihre trumpffarbe.\nPotenzial anzüge müssen eine ehe.");
 		break;
 	case SPANISH:
-		ChooseTrump.createT("Elige tu palo de triunfo.\nDemandas potenciales deben tener un matrimonio.");
+		ChooseTrump = Text("Elige tu palo de triunfo.\nDemandas potenciales deben tener un matrimonio.");
 		break;
 	}
-	ChooseTrump.font(fontImNum);
-	ChooseTrump.size(4.75f);
-	ChooseTrump.color(245, 245, 245);
-	ChooseTrump.position(50.0f, 65.0f);
-	ChooseTrump.centerText();
-	ChooseTrump.hide();
+	ChooseTrump.setFontImage(fontImNum);
+	ChooseTrump.setSize(4.75f);
+	ChooseTrump.setColor(RGBA(245, 245, 245));
+	ChooseTrump.setPosition(Point(50.0f, 65.0f));
+	ChooseTrump.setAlignment(1);
+	ChooseTrump.setVisible(false);
 	
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 
 	switch (language)
 	{
 	case ENGLISH:
-		OptionsHelp.createT("To choose another Theme,\nswipe left or right.");
+		OptionsHelp = Text("To choose another Theme,\nswipe left or right.");
 		break;
 	case FRENCH:
-		OptionsHelp.createT("De choisir un autre thème,\nfaites glisser à gauche ou à droite.");
+		OptionsHelp = Text("De choisir un autre thème,\nfaites glisser à gauche ou à droite.");
 		break;
 	case ITALIAN:
-		OptionsHelp.createT("Di scegliere un altro tema,\nscorrere a destra oa sinistra.");
+		OptionsHelp = Text("Di scegliere un altro tema,\nscorrere a destra oa sinistra.");
 		break;
 	case GERMAN:
-		OptionsHelp.createT("Zu wählen, ein weiteres thema,\nlinks oder rechts streichen.");
+		OptionsHelp = Text("Zu wählen, ein weiteres thema,\nlinks oder rechts streichen.");
 		break;
 	case SPANISH:
-		OptionsHelp.createT("A elegir otra tema,\ndeslizar a izquierda o derecha.");
+		OptionsHelp = Text("A elegir otra tema,\ndeslizar a izquierda o derecha.");
 		break;
 	}
-	OptionsHelp.font(fontImNum);
-	OptionsHelp.size(4.75f);
-	OptionsHelp.color(245, 245, 245);
-	OptionsHelp.position(50.0f, 65.0f);
-	OptionsHelp.centerText();
-	OptionsHelp.hide();
+	OptionsHelp.setFontImage(fontImNum);
+	OptionsHelp.setSize(4.75f);
+	OptionsHelp.setColor(RGBA(245, 245, 245));
+	OptionsHelp.setPosition(Point(50.0f, 65.0f));
+	OptionsHelp.setAlignment(1);
+	OptionsHelp.setVisible(false);
 	
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 
-	Legal.hide();
+	Legal.setVisible(false);
 	Legal.~Text();
 
 #if DEMOBUILD
-	DemoEndText.createT("Sorry, but your one hour has been reached.\nThe full game will be released soon,\nFind us on Facebook (Steele Studios)\nand on Twitter (@SteeleStudios)\nto get more details!");
-	DemoEndText.font(fontImNum);
+	DemoEndText = Text("Sorry, but your one hour has been reached.\nThe full game will be released soon,\nFind us on Facebook (Steele Studios)\nand on Twitter (@SteeleStudios)\nto get more details!");
+	DemoEndText.setFontImage(fontImNum);
 	DemoEndText.hide();
-	DemoEndText.size(4.75f);
-	DemoEndText.color(245, 245, 245);
-	DemoEndText.position(50.0f, 30.0f);
-	DemoEndText.centerText();
+	DemoEndText.setSize(4.75f);
+	DemoEndText.setColor(RGBA(245, 245, 245);
+	DemoEndText.setPosition(Point((50.0f, 30.0f);
+	DemoEndText.setAlignment(1);
 	DemoEndText.setDepth(10001);
 #endif
 
@@ -4019,7 +3981,7 @@ void app::finalSetup(void)
 			CurrentTheme.Deck[j].setSize(0.037f);
 			CurrentTheme.Deck[j].hide();
 
-			Loading.incrementSpriteFrame();
+			Loading.incrementFrame();
 			agk::Sync();
 		}
 	}
@@ -4029,12 +3991,12 @@ void app::setAnimatedSpriteData(void)
 {
     float factor = 0.0f;
 #if (PLATFORM == MOBILE)
-	TrumpSymbol.setAnimatedData(25, 25, 32, "Load Suit Rotation.png", loadingImage);
+	TrumpSymbol = AnimatedSprite(25, 25, 32, loadingImage[0], "Load Suit Rotation.png");
 #else
-    TrumpSymbol.setAnimatedData(75, 75, 32, "Load Suit Rotation.png", loadingImage);
+    TrumpSymbol = AnimatedSprite(75, 75, 32, loadingImage[0], "Load Suit Rotation.png");
 #endif
-	TrumpSymbol.setAnimatedFrameTo(1);
-	TrumpSymbol.setPriority(5);
+	TrumpSymbol.setFrame(1);
+	TrumpSymbol.setDepth(5);
     
 #if (PLATFORM == MOBILE)
     factor = -0.5;
@@ -4043,31 +4005,31 @@ void app::setAnimatedSpriteData(void)
 	if (tableTopStyle == 0)
 	{
 		TrumpSymbol.setSize(4.25f + factor);
-		TrumpSymbol.display(91.25f, 70.0f);
+		TrumpSymbol.setPosition(Point(91.25f, 70.0f));
 	}
 	else if (tableTopStyle == 1)
 	{
 		TrumpSymbol.setSize(5.0f + factor);
-		TrumpSymbol.display(91.5f, 69.0f);
+		TrumpSymbol.setPosition(Point(91.5f, 69.0f));
 	}
 	else if (tableTopStyle == 2)
 	{
 		TrumpSymbol.setSize(5.0f + factor);
-		TrumpSymbol.display(91.0f, 69.0f);
+		TrumpSymbol.setPosition(Point(91.0f, 69.0f));
 	}
 	else if (tableTopStyle == 3)
 	{
 		TrumpSymbol.setSize(5.0f + factor);
-		TrumpSymbol.display(91.0f, 72.0f);
+		TrumpSymbol.setPosition(Point(91.0f, 72.0f));
 	}
 	else
 	{
 		TrumpSymbol.setSize(5.0f + factor);
-		TrumpSymbol.display(90.0f, 69.0f);
+		TrumpSymbol.setPosition(Point(90.0f, 69.0f));
 	}
-	TrumpSymbol.hide();
+	TrumpSymbol.setVisible(false);
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 }
 
@@ -4088,16 +4050,16 @@ void app::setSpriteData(void)
     unsigned int imgNum;
     
     imgNum = HandResults.Parent.getImageNumber("woodoval.png");
-	NBack.setImageNumber(imgNum);
-	SBack.setImageNumber(imgNum);
-	WBack.setImageNumber(imgNum);
-	EBack.setImageNumber(imgNum);
+	NBack.setImage(imgNum);
+	SBack.setImage(imgNum);
+	WBack.setImage(imgNum);
+	EBack.setImage(imgNum);
     
 #if DEMOBUILD
 	DemoEndBack.setImageNumber(imgNum);
 #endif
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 	//End Step 1------------------------------------------------------
 
@@ -4106,20 +4068,20 @@ void app::setSpriteData(void)
 	EBack.setSize(13.5f);
 	SBack.setSize(13.5f);
 	WBack.setSize(13.5f);
-	DemoEndBack.setSize(85.0f, 35.0f, true);
+	DemoEndBack.setSize(85.0f, 35.0f);
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 	//End Step 2-------------------------------------------------------
 
 	//Start Step 3: Set Priority---------------------------------------
-	NBack.setPriority(30);  //need to be high to get over cards
-	SBack.setPriority(30);
-	WBack.setPriority(30);
-	EBack.setPriority(30);
-	DemoEndBack.setPriority(10000);
+	NBack.setDepth(30);  //need to be high to get over cards
+	SBack.setDepth(30);
+	WBack.setDepth(30);
+	EBack.setDepth(30);
+	DemoEndBack.setDepth(10000);
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 	//End Step 3--------------------------------------------------------
 
@@ -4131,33 +4093,33 @@ void app::setSpriteData(void)
 
 	//Options.hide();
 
-	NBack.hide();
-	SBack.hide();
-	WBack.hide();
-	EBack.hide();
-	DemoEndBack.hide();
+	NBack.setVisible(false);
+	SBack.setVisible(false);
+	WBack.setVisible(false);
+	EBack.setVisible(false);
+	DemoEndBack.setVisible(false);
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 	//End Step 5------------------------------------------------------------
 
 	//Optional Step 6: Setting Imprint, only for shrink close/grow open effects
-	NBack.setImprint(43.0f,8.0f);
+	/*NBack.setImprint(43.0f,8.0f);
 	SBack.setImprint(43.0f,84.5f);
 	WBack.setImprint(4.3f,36.5f);
-	EBack.setImprint(81.75f,36.5f);
+	EBack.setImprint(81.75f,36.5f);*/
 
 	if (DEMOBUILD)
 	{
-		DemoEndBack.setImprint(7.0f, 25.0f);
+		//DemoEndBack.setImprint(7.0f, 25.0f);
 		DemoEndBack.setAlpha(220);
 
 
-		while (!DemoEndBack.hasShrunk())
-			DemoEndBack.updateShrinkClose(-1);
+		/*while (!DemoEndBack.hasShrunk())
+			DemoEndBack.updateShrinkClose(-1);*/
 	}
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 	//End Step 6------------------------------------------------------------
 }
@@ -4220,7 +4182,7 @@ short unsigned int app::myLoadImage(const char fileLoc[], short unsigned int ima
 	myLoadImage(fileLoc("sound_btn_off.png", temp));
 	myLoadImage(fileLoc("sound_btn_on.png", temp));
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 
 	myLoadImage(fileLoc("board table.png", temp));
@@ -4231,20 +4193,20 @@ short unsigned int app::myLoadImage(const char fileLoc[], short unsigned int ima
 
 	myLoadImage(fileLoc("Suit Rotation.png", temp));
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 
 	myLoadImage(fileLoc("Options_Off.png", temp));
 	myLoadImage(fileLoc("Options_On.png", temp));
 	myLoadImage(fileLoc("Options_Down.png", temp));
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 
 	myLoadImage(fileLoc("Check box.png", temp));
 	myLoadImage(fileLoc("Check box with check.png", temp));
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 
 	myLoadImage(fileLoc("Resume_Off.png", temp));
@@ -4257,13 +4219,13 @@ short unsigned int app::myLoadImage(const char fileLoc[], short unsigned int ima
 	myLoadImage(fileLoc("New_Game_On.png", temp));
 	myLoadImage(fileLoc("New_Game_Down.png", temp));
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 
 	//Text Font
 
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 
 	myLoadImage(fileLoc("background_g.jpg", temp));    //themes
@@ -4273,7 +4235,7 @@ short unsigned int app::myLoadImage(const char fileLoc[], short unsigned int ima
 	myLoadImage(fileLoc("background_e.jpg", temp));    //themes
 	myLoadImage(fileLoc("background_w.jpg", temp));    //themes
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 }*/
 
@@ -4332,7 +4294,7 @@ void app::initVars()
 	delayStep = 0;
 	bidWinner = -1;
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 
 	West.setPlayerID(WEST);
@@ -4340,12 +4302,12 @@ void app::initVars()
 	East.setPlayerID(EAST);
 	South.setPlayerID(SOUTH);
 
-	Loading.incrementSpriteFrame();
+	Loading.incrementFrame();
 	agk::Sync();
 }
 
 
-void toggleLayout(Sprite *View)
+/*void toggleLayout(Sprite *View)
 {
 	View->updateShrinkClose(-1);
 
@@ -4366,7 +4328,7 @@ void toggleLayout(Sprite *View)
 	}
 
 	View->updateGrowOpen(100);
-}
+}*/
 
 void toggleDebug()
 {
@@ -4384,42 +4346,43 @@ short int app::displayKnown(int turn)
     float bubbleOffset = 0.0f;
 	Player *Selected;
 
-    if (PLATFORM == MOBILE)
+#if (PLATFORM == MOBILE)
         bubbleOffset = -5.0f;
+#endif
 
 	switch (turn)
 	{
 	case WEST:
-		CurrentTheme.BidMeldBubbles.WestMeld.display(19.5, 7.0);
-		CurrentTheme.BidMeldBubbles.WestMeld.show();
-		CurrentTheme.BidMeldBubbles.WestMeld.setPriority(2);
+		CurrentTheme.BidMeldBubbles.MeldBubble[WEST].setPosition(19.5, 7.0);
+		CurrentTheme.BidMeldBubbles.MeldBubble[WEST].setVisible(true);
+		CurrentTheme.BidMeldBubbles.MeldBubble[WEST].setDepth(2);
 		Selected = &West;
 		break;
 	case NORTH:
         if (tableTopStyle == 2)
-            CurrentTheme.BidMeldBubbles.NorthMeld.display(19.5f, 7.0f - (offset - 15));
+            CurrentTheme.BidMeldBubbles.MeldBubble[NORTH].setPosition(19.5f, 7.0f - (offset - 15));
         else
-            CurrentTheme.BidMeldBubbles.NorthMeld.display(19.5f, 7.0f);
-		CurrentTheme.BidMeldBubbles.NorthMeld.show();
-		CurrentTheme.BidMeldBubbles.NorthMeld.setPriority(2);
+            CurrentTheme.BidMeldBubbles.MeldBubble[NORTH].setPosition(19.5f, 7.0f);
+		CurrentTheme.BidMeldBubbles.MeldBubble[NORTH].setVisible(true);
+		CurrentTheme.BidMeldBubbles.MeldBubble[NORTH].setDepth(2);
 		Selected = &North;
 		break;
 	case EAST:
         if (tableTopStyle == 2)
-            CurrentTheme.BidMeldBubbles.EastMeld.display(22.0f, 8.0f - (offset - 10));
+            CurrentTheme.BidMeldBubbles.MeldBubble[EAST].setPosition(22.0f, 8.0f - (offset - 10));
         else
-            CurrentTheme.BidMeldBubbles.EastMeld.display(22.0f, 8.0f);
-		CurrentTheme.BidMeldBubbles.EastMeld.show();
-		CurrentTheme.BidMeldBubbles.EastMeld.setPriority(2);
+            CurrentTheme.BidMeldBubbles.MeldBubble[EAST].setPosition(22.0f, 8.0f);
+		CurrentTheme.BidMeldBubbles.MeldBubble[EAST].setVisible(true);
+		CurrentTheme.BidMeldBubbles.MeldBubble[EAST].setDepth(2);
 		Selected = &East;
 		break;
 	case SOUTH:
         //if ((tableTopStyle == 0) || (tableTopStyle == 5) || (tableTopStyle == 1))
-			CurrentTheme.BidMeldBubbles.SouthMeld.display(23.0f, 14.5f + bubbleOffset);
+			CurrentTheme.BidMeldBubbles.MeldBubble[SOUTH].setPosition(23.0f, 14.5f + bubbleOffset);
 		//else
-		//	CurrentTheme.BidMeldBubbles.SouthMeld.display(23.0f, 23.5f);
-		CurrentTheme.BidMeldBubbles.SouthMeld.show();
-		CurrentTheme.BidMeldBubbles.SouthMeld.setPriority(2);
+		//	CurrentTheme.BidMeldBubbles.MeldBubble[SOUTH].setPosition(23.0f, 23.5f);
+		CurrentTheme.BidMeldBubbles.MeldBubble[SOUTH].setVisible(true);
+		CurrentTheme.BidMeldBubbles.MeldBubble[SOUTH].setDepth(2);
 		Selected = &South;
 		break;
 	}
@@ -4466,7 +4429,7 @@ short int app::displayKnown(int turn)
 				CurrentTheme.Deck[cardNumber].turnFaceUp();
 
 				CurrentTheme.Deck[cardNumber].display(firstCardX + (float)((100*((offset * count)/1024.0))), firstCardY);
-				CurrentTheme.Deck[cardNumber].setPriority(count+3);
+				CurrentTheme.Deck[cardNumber].setDepth(count+3);
 				extras--;
 				count++;
 
@@ -4531,7 +4494,7 @@ void app::updateTopLeft()
 		{
 
 			CurrentTheme.HMeld.incrementTo(hMeld);
-			PointClick.playOnce();
+			PointClick.play();
 		}
 	}
 	else
@@ -4545,7 +4508,7 @@ void app::updateTopLeft()
 		if (CurrentTheme.VMeld.getValue() != vMeld)
 		{
 			CurrentTheme.VMeld.incrementTo(vMeld);
-			PointClick.playOnce();
+			PointClick.play();
 		}
 	}
 	else
@@ -4558,13 +4521,13 @@ void app::updateTopLeft()
 	if (CurrentTheme.H2Get.getValue() != hSaveAmount)
 	{
 		CurrentTheme.H2Get.incrementTo(hSaveAmount);
-		PointClick.playOnce();
+		PointClick.play();
 	}
 
 	if (CurrentTheme.V2Get.getValue() != vSaveAmount)
 	{
 		CurrentTheme.V2Get.incrementTo(vSaveAmount);
-		PointClick.playOnce();
+		PointClick.play();
 	}
 }
 
@@ -4574,8 +4537,8 @@ void app::updateTopRight(void)
 
 	/*if (bid >= 100)
 	{
-		CurrentTheme.BidScore.display(2, 1);
-		//CurrentTheme.Bid[0].display(75.5, 10.0);
+		CurrentTheme.BidScore.setPosition(2, 1);
+		//CurrentTheme.Bid[0].setPosition(75.5, 10.0);
 		CurrentTheme.BidScore.show(2, 1);
 	}*/
 
@@ -4585,9 +4548,9 @@ void app::updateTopRight(void)
 		if (CurrentTheme.BidScore.getValue() != bid)
 		{
 			CurrentTheme.BidScore.incrementTo(bid);
-			PointClick.playOnce();
+			PointClick.play();
 		}
-		//CurrentTheme.BidScore.display(0, bid%10);
+		//CurrentTheme.BidScore.setPosition(0, bid%10);
 
 		//CurrentTheme.BidScore.show(1, bid%100/10);
 		//CurrentTheme.BidScore.show(0, bid%10);
@@ -4609,18 +4572,18 @@ void app::updateTopRight(void)
 	{
 		if (gameState == PLAYING)
 		{
-			TrumpSymbol.pauseAnimation();
-			TrumpSymbol.setAnimatedFrameTo((8 * trump) + 1);
+			TrumpSymbol.stopSprite();
+			TrumpSymbol.setFrame((8 * trump) + 1);
 		}
 
-		if (!TrumpSymbol.isVisible())
+		if (!TrumpSymbol.getVisible())
 		{
-			TrumpSymbol.playAnimationFrames(5.0, true, (8 * trump) + 1, 8 * (trump + 1));
-			TrumpSymbol.show();
+			TrumpSymbol.play(5.0, true, (8 * trump) + 1, 8 * (trump + 1));
+			TrumpSymbol.setVisible(true);
 		}
 	}
 	else if (gameState != ANIMATION)
-		TrumpSymbol.hide();
+		TrumpSymbol.setVisible(false);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -4651,7 +4614,7 @@ void app::updateBottomLeft(void)
 #if (OS == ANDROID)
 			if(CurrentTheme.VScore.getValue()%5==0)
 #endif
-                PointClick.playOnce();
+                PointClick.play();
 		}
 	}
 	else if (vScore == 0)
@@ -4665,7 +4628,7 @@ void app::updateBottomLeft(void)
 #if (OS == ANDROID)
 			if(CurrentTheme.HScore.getValue()%5==0)
 #endif
-                PointClick.playOnce();
+                PointClick.play();
 		}
 	}
 	else if (hScore == 0)
@@ -4886,8 +4849,9 @@ void app::displayPlayerControlBubble(void)
     short int tempBid = bid + 1;
     float offset = 0.0f;
     
-    if (PLATFORM == MOBILE)
+#if (PLATFORM == MOBILE)
         offset = -2.0f;
+#endif
 
 	if (tableTopStyle != 4)
 		CurrentTheme.BCBubble.display(27.5f, 32.0f + offset);
@@ -4912,7 +4876,7 @@ void app::displayPlayerControlBubble(void)
 	else if (tableTopStyle == 3)
 	{
 		for (short i = 0; i < 10; i++)
-			CurrentTheme.BCBubble.BidValue.setLocation(i, 53.5 - (6.5f * i), 45.0f, 0);
+			CurrentTheme.BCBubble.BidValue.setLocation(i, 53.5f - (6.5f * i), 45.0f, 0);
 	}
 	else if (tableTopStyle == 4)
 	{
@@ -4973,7 +4937,7 @@ bool app::southBid()
 
 	if (CurrentTheme.BCBubble.BidValue.getValue() != VisualBid)
 	{
-		PointClick.playOnce();
+		PointClick.play();
 		CurrentTheme.BCBubble.BidValue.incrementTo(VisualBid);
 	}
 
@@ -5166,26 +5130,26 @@ void app::southTrumpSelection()
 
 	if (checkClubs == 0)
 	{
-		CurrentTheme.TSBubble.Clubs.ButtonUp.hide();
-		CurrentTheme.TSBubble.Clubs.ButtonGray.show();
+		CurrentTheme.TSBubble.Clubs.ButtonUp.setVisible(false);
+		CurrentTheme.TSBubble.Clubs.ButtonGray.setVisible(true);
 	}
 
 	if (checkDiamonds == 0)
 	{
-		CurrentTheme.TSBubble.Diamonds.ButtonUp.hide();
-		CurrentTheme.TSBubble.Diamonds.ButtonGray.show();
+		CurrentTheme.TSBubble.Diamonds.ButtonUp.setVisible(false);
+		CurrentTheme.TSBubble.Diamonds.ButtonGray.setVisible(true);
 	}
 
 	if (checkHearts == 0)
 	{
-		CurrentTheme.TSBubble.Hearts.ButtonGray.show();
-		CurrentTheme.TSBubble.Hearts.ButtonUp.hide();
+		CurrentTheme.TSBubble.Hearts.ButtonGray.setVisible(true);
+		CurrentTheme.TSBubble.Hearts.ButtonUp.setVisible(false);
 	}
 
 	if (checkSpades == 0)
 	{
-		CurrentTheme.TSBubble.Spades.ButtonGray.show();
-		CurrentTheme.TSBubble.Spades.ButtonUp.hide();
+		CurrentTheme.TSBubble.Spades.ButtonGray.setVisible(true);
+		CurrentTheme.TSBubble.Spades.ButtonUp.setVisible(false);
 	}
 
 	if (mouseClick)
@@ -5281,15 +5245,15 @@ void app::resetHand(void)
 	hand++;
 
 	//SBack.setImprint(44.0f,84.5f);
-	SBack.hide();
+	SBack.setVisible(false);
 
 	//WBack.setImprint(4.5f,40.0f);
-	WBack.hide();
+	WBack.setVisible(false);
 
 	//EBack.setImprint(81.7f,40.0f);
-	EBack.hide();
+	EBack.setVisible(false);
 
-	NBack.hide();
+	NBack.setVisible(false);
 }
 
 void app::inGameMenuButton(void)
@@ -5314,13 +5278,13 @@ void app::inGameMenuButton(void)
 				if (NewGame.getState() == MELDING)
 					CurrentTheme.BidMeldBubbles.hide();
 
-				NBack.hide();
-				EBack.hide();
-				WBack.hide();
-				SBack.hide();
+				NBack.setVisible(false);
+				EBack.setVisible(false);
+				WBack.setVisible(false);
+				SBack.setVisible(false);
 
-				gameResult.hide();
-				gameResult4.hide();
+				gameResult.setVisible(false);
+				gameResult4.setVisible(false);
 
 				hideAllText();
 
@@ -5333,7 +5297,9 @@ void app::inGameMenuButton(void)
                 //Options.setup(&Loading);
 
 				NewGame.toggleXState(OPTIONS);
-				Options.Background.updateGrowOpen(100.0f, 100.0f);
+
+				for (float i = Options.Background.getWidth(); i < 100.0f; Options.Background.setSize(++i))
+					agk::Sync();
 			}
 		}
 	}
@@ -5341,21 +5307,21 @@ void app::inGameMenuButton(void)
 
 void app::hideAllText(void)
 {
-	ChooseTrump.hide();
-	DemoEndText.hide();
-    gameResult.hide();
-    gameResult4.hide();
-    MeldFail.hide();
-    MeldAmount.hide();
-	OptionsHelp.hide();
-    Legal.hide();
-	SwipeHelp.hide();
-    TapScreen.hide();
-    GameOver.hide();
-	TextBackground.hide();
+	ChooseTrump.setVisible(false);
+	DemoEndText.setVisible(false);
+    gameResult.setVisible(false);
+    gameResult4.setVisible(false);
+    MeldFail.setVisible(false);
+    MeldAmount.setVisible(false);
+	OptionsHelp.setVisible(false);
+    Legal.setVisible(false);
+	SwipeHelp.setVisible(false);
+    TapScreen.setVisible(false);
+    GameOver.setVisible(false);
+	TextBackground.setVisible(false);
 }
 
-void app::growBackground()
+/*void app::growBackground()
 {
 	if (!Options.Background.hasShrunk())
 	{
@@ -5371,7 +5337,7 @@ void app::growBackground()
 	else if (!CurrentTheme.Background.hasGrown())
 	{
 		CurrentTheme.Background.updateGrowOpen(100.0f);
-		CurrentTheme.Background.setPriority(1);
+		CurrentTheme.Background.setDepth(1);
 		return;
 	}
 
@@ -5383,7 +5349,7 @@ void app::growBackground()
 
 	//if (NewGame.getState() == MELDING)
 	//	CurrentTheme.BidMeldBubbles.show(turn);
-}
+}*/
 
 void app::showAllCards(void)
 {
@@ -5391,12 +5357,12 @@ void app::showAllCards(void)
 		CurrentTheme.Deck[i].turnFaceUp();
 }
 
-void app::findValueForDebugging(float value)
+/*void app::findValueForDebugging(float value)
 {
     int tempValue;
     
     tempValue = value;
-}
+}*/
 
 void addToQueue(unsigned int imageNumber, short queue)
 {
@@ -5416,7 +5382,7 @@ void app::clearQueue(AnimatedSprite *Symbol, short queue)
         
             if (i % 5 == 0)
             {
-                Symbol->incrementSpriteFrame();
+                Symbol->incrementFrame();
                 agk::Sync();
             }
         }
@@ -5431,7 +5397,7 @@ void app::clearQueue(AnimatedSprite *Symbol, short queue)
             
             if (i % 5 == 0)
             {
-                Symbol->incrementSpriteFrame();
+                Symbol->incrementFrame();
                 agk::Sync();
             }
         }

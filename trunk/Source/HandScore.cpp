@@ -20,18 +20,18 @@ void HandScore::setup(AnimatedSprite *Symbol)
 	Parent.setImage("default/Scoreboards.png");
 
     imgNum = Parent.getImageNumber("board table.png");
-	Background.setImageNumber(imgNum);
+	Background.setImage(imgNum);
 	setNumberData();
 
     imgNum = Parent.getImageNumber("check_box_off.png");
-	HCheck.setImageNumber(imgNum);
-    VCheck.setImageNumber(imgNum);
+	HCheck.setImage(imgNum);
+    VCheck.setImage(imgNum);
 
     imgNum = Parent.getImageNumber("check_box_on.png");
-	HCheckOn.setImageNumber(imgNum);
-    VCheckOn.setImageNumber(imgNum);
+	HCheckOn.setImage(imgNum);
+    VCheckOn.setImage(imgNum);
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	///step 2: setSize
@@ -41,13 +41,13 @@ void HandScore::setup(AnimatedSprite *Symbol)
 	VCheckOn.setSize(5.0f);
 	Background.setSize(80.0f);
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	///step 3: setPriority
-	setPriority(50);
+	setDepth(50);
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	///step 4: set x, y with display
@@ -59,34 +59,34 @@ void HandScore::setup(AnimatedSprite *Symbol)
     vOffset = 0.0f;
 #endif
 
-	Background.display(10.0f, 25.0f);
-	HCheck.display(66.0f, 60.0f + hOffset);
-	HCheckOn.display(66.0f, 60.0f + hOffset);
-	VCheck.display(66.0f, 51.0f + vOffset);
-	VCheckOn.display(66.0f, 51.0f + vOffset);
+	Background.setPosition(10.0f, 25.0f);
+	HCheck.setPosition(66.0f, 60.0f + hOffset);
+	HCheckOn.setPosition(66.0f, 60.0f + hOffset);
+	VCheck.setPosition(66.0f, 51.0f + vOffset);
+	VCheckOn.setPosition(66.0f, 51.0f + vOffset);
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	///step 5: hide
-	HCheck.hide();
-	HCheckOn.hide();
-	VCheck.hide();
-	VCheckOn.hide();
+	HCheck.setVisible(false);
+	HCheckOn.setVisible(false);
+	VCheck.setVisible(false);
+	VCheckOn.setVisible(false);
 
 	///step 6 (optional): setimprint
 
 	/////TEXT
 
 
-	/*MinusSign[1].createT("-");
-	MinusSign[1].color(0, 0, 0);
-	MinusSign[1].size(5.5f);
+	/*MinusSign[1] = Text("-");
+	MinusSign[1].setColor(RGBA(0, 0, 0);
+	MinusSign[1].setSize(5.5f);
 	MinusSign[1].setDepth(55);
 	MinusSign[1].hide();
 
-	MinusSign[0].position(76.5f, 51.5f);
-	MinusSign[1].position(76.5f, 60.5f);*/
+	MinusSign[0].setPosition(Point((76.5f, 51.5f);
+	MinusSign[1].setPosition(Point((76.5f, 60.5f);*/
 }
 
 void HandScore::setNumberData(void)
@@ -128,8 +128,8 @@ void HandScore::setNumberData(void)
 
 	for (short int k = 0; k < 4; k++)
 	{
-		HandScoreData[0][k].setPriority(52);
-		HandScoreData[1][k].setPriority(52);
+		HandScoreData[0][k].setDepth(52);
+		HandScoreData[1][k].setDepth(52);
 		HandScoreData[0][k].setSize(2.5f);
 		HandScoreData[1][k].setSize(2.5f);
 		HandScoreData[0][k].setValue(0);
@@ -141,32 +141,32 @@ void HandScore::setNumberData(void)
 
 void HandScore::hide(void)
 {
-	Background.hide();
+	Background.setVisible(false);
 	for (short int i = 0; i < 2; i++)
 	{
 		for (short int j = 0; j < 4; j++)
 			HandScoreData[i][j].hideAll();
 	}
 
-	HCheck.hide();
-	HCheckOn.hide();
-	VCheck.hide();
-	VCheckOn.hide();
+	HCheck.setVisible(false);
+	HCheckOn.setVisible(false);
+	VCheck.setVisible(false);
+	VCheckOn.setVisible(false);
 }
 
-void HandScore::setPriority(short unsigned int value)
+void HandScore::setDepth(short unsigned int value)
 {
-	Background.setPriority(value);
+	Background.setDepth(value);
 
-	HCheck.setPriority(value+1);
-	HCheckOn.setPriority(value+1);
-	VCheck.setPriority(value+1);
-	VCheckOn.setPriority(value+1);
+	HCheck.setDepth(value - 1);
+	HCheckOn.setDepth(value - 1);
+	VCheck.setDepth(value - 1);
+	VCheckOn.setDepth(value - 1);
 
 	for (short int i = 0; i < 2; i++)
 	{
 		for (short int j = 0; j < 4; j++)
-			HandScoreData[i][j].setPriority(value+1);
+			HandScoreData[i][j].setDepth(value - 1);
 	}
 }
 

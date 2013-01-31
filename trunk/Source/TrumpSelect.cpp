@@ -12,18 +12,17 @@ TrumpSelect::~TrumpSelect(void)
 
 void TrumpSelect::setup(AnimatedSprite *Symbol, const char filename[])
 {
-    int imgNum;
-    Parent.setImage(filename);
+    //int imgNum;
+    Parent = Sprite(Text(filename));
 
 	Hearts.setup(Symbol, "hearts_selection", Parent);
 	Clubs.setup(Symbol, "clubs_selection", Parent);
 	Diamonds.setup(Symbol, "diamonds_selection", Parent);
 	Spades.setup(Symbol, "spades_selection", Parent);
 
-    imgNum = Parent.getImageNumber("trump_selection_bubble.png");
-	Frame.setImageNumber(imgNum);
-
-	Symbol->incrementSpriteFrame();
+	Frame = Sprite(Parent.getImageNumber(), Text("trump_selection_bubble.png"));
+    
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	display(28.0f, 30.0f);
@@ -36,7 +35,7 @@ void TrumpSelect::show(void)
 	Clubs.show();
 	Diamonds.show();
 	Spades.show();
-	Frame.show();
+	Frame.setVisible(true);
 }
 
 void TrumpSelect::hide(void)
@@ -45,7 +44,7 @@ void TrumpSelect::hide(void)
 	Clubs.hide();
 	Diamonds.hide();
 	Spades.hide();
-	Frame.hide();
+	Frame.setVisible(false);
 }
 
 void TrumpSelect::setSize(float x, float y)
@@ -60,12 +59,12 @@ void TrumpSelect::setSize(float x, float y)
 
 void TrumpSelect::setPriority(unsigned short int value)
 {
-	Hearts.setPriority(value + 1);
-	Clubs.setPriority(value + 1);
-	Diamonds.setPriority(value + 1);
-	Spades.setPriority(value + 1);
+	Hearts.setDepth(value + 1);
+	Clubs.setDepth(value + 1);
+	Diamonds.setDepth(value + 1);
+	Spades.setDepth(value + 1);
 
-	Frame.setPriority(value);
+	Frame.setDepth(value);
 }
 
 void TrumpSelect::display(float x, float y)
@@ -75,7 +74,7 @@ void TrumpSelect::display(float x, float y)
 	Diamonds.display(x, y);
 	Spades.display(x, y);
 
-	Frame.display(x, y);
+	Frame.setPosition(x, y);
 }
 
 bool TrumpSelect::animation(short int button, short int stage)

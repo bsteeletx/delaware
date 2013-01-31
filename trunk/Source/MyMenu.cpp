@@ -13,14 +13,14 @@ MyMenu::~MyMenu(void)
 
 void MyMenu::setup(AnimatedSprite *Symbol)
 {
-    MenuParent.setImage("default/MainMenu.png");
+    MenuParent = Sprite(Text("default/MainMenu.png"));
 
 	///step 1: setup or setData/////////////
 	NewGame.setup(Symbol, "new_game", MenuParent);
 	Options.setup(Symbol, "options", MenuParent);
 	ResumeGame.setup(Symbol, "resume", MenuParent);
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	///step 2: setSize
@@ -28,13 +28,13 @@ void MyMenu::setup(AnimatedSprite *Symbol)
 	Options.setSize(20.0f);
 	ResumeGame.setSize(20.0f);
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	///step 3: set priority
-	setPriority(1);
+	setDepth(1);
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	///step 4: set x, y with display
@@ -42,7 +42,7 @@ void MyMenu::setup(AnimatedSprite *Symbol)
 	ResumeGame.display(40.0, 80.0);
 	NewGame.display(15.0, 80.0);
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	///step 5: hide
@@ -63,7 +63,7 @@ void MyMenu::update()
 			choice = 1;
 	}
 
-	if (ResumeGame.ButtonUp.isVisible())
+	if (ResumeGame.ButtonUp.getVisible())
 	{
 		if ((mouseX >= 40) && (mouseX <= 60))
 		{
@@ -80,15 +80,15 @@ void MyMenu::update()
 
 	if (choice == 0)
 	{
-		NewGame.ButtonOver.hide();
-		Options.ButtonOver.hide();
-		ResumeGame.ButtonOver.hide();
-		MainMenu.ButtonOver.hide();
+		NewGame.ButtonOver.setVisible(false);
+		Options.ButtonOver.setVisible(false);
+		ResumeGame.ButtonOver.setVisible(false);
+		MainMenu.ButtonOver.setVisible(false);
 		return;
 	}
 
 	if (choice == 1)
-		NewGame.ButtonOver.show();
+		NewGame.ButtonOver.setVisible(true);
 	/*else
 	{
 		Options.ButtonOver.hide();
@@ -96,7 +96,7 @@ void MyMenu::update()
 	}*/
 
 	if (choice == 4)
-		Options.ButtonOver.show();
+		Options.ButtonOver.setVisible(true);
 	/*else
 	{
 		ResumeGame.ButtonOver.hide();
@@ -104,7 +104,7 @@ void MyMenu::update()
 	}*/
 
 	if (choice == 3)
-		ResumeGame.ButtonOver.show();
+		ResumeGame.ButtonOver.setVisible(true);
 	/*else
 	{
 		NewGame.ButtonOver.hide();
@@ -154,11 +154,11 @@ void MyMenu::hide(void)
 	//Background.hide();
 }
 
-void MyMenu::setPriority(short unsigned int value)
+void MyMenu::setDepth(short unsigned int value)
 {
-	//Background.setPriority(value);
+	//Background.setDepth(value);
 
-	NewGame.setPriority(value + 1);
-	ResumeGame.setPriority(value + 1);
-	Options.setPriority(value + 1);
+	NewGame.setDepth(value - 1);
+	ResumeGame.setDepth(value - 1);
+	Options.setDepth(value - 1);
 }

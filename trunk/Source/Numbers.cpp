@@ -48,6 +48,9 @@ void Numbers::initThematicNumbers(const char *dir)
     char tempFileName[8];
     char tempFileLoc[32] = {NULL};
 
+	if(std::strlen(dir) > 32)
+		return;
+
     strcpy(tempFileLoc, dir);
     strcat(tempFileLoc, "Numbers.png");
 
@@ -68,6 +71,9 @@ void Numbers::setData(const char dir[], bool useParentheses)
     unsigned imgNum;
     char tempDir[32] = {NULL};
 
+	if (std::strlen(dir) > 32)
+		return;
+
     strcpy(tempDir, dir);
 
     strcat(tempDir, "Numbers.png");
@@ -87,15 +93,15 @@ void Numbers::setData(const char dir[], bool useParentheses)
 	{
         if (strcmp(dir, "default/") == 0)
         {
-            digitOne[i].setImageNumber(defaultNumbers[i]);
-            digitTwo[i].setImageNumber(defaultNumbers[i]);
-            digitThree[i].setImageNumber(defaultNumbers[i]);
+            digitOne[i].setImage(defaultNumbers[i]);
+            digitTwo[i].setImage(defaultNumbers[i]);
+            digitThree[i].setImage(defaultNumbers[i]);
         }
         else
         {
-            digitOne[i].setImageNumber(thematicNumbers[i]);
-            digitTwo[i].setImageNumber(thematicNumbers[i]);
-            digitThree[i].setImageNumber(thematicNumbers[i]);
+            digitOne[i].setImage(thematicNumbers[i]);
+            digitTwo[i].setImage(thematicNumbers[i]);
+            digitThree[i].setImage(thematicNumbers[i]);
         }
 	}
 
@@ -105,22 +111,22 @@ void Numbers::setData(const char dir[], bool useParentheses)
 
         imgNum = Parent.getImageNumber("left_parenthesis.png");
 
-		Parentheses[0].setImageNumber(imgNum);
+		Parentheses[0].setImage(imgNum);
 
         imgNum = Parent.getImageNumber("right_parenthesis.png");
 
-		Parentheses[1].setImageNumber(imgNum);
+		Parentheses[1].setImage(imgNum);
 		Parentheses[0].setSize(1.5f);
 		Parentheses[1].setSize(1.5f);
-		Parentheses[0].setPriority(5);
-		Parentheses[1].setPriority(5);
+		Parentheses[0].setDepth(5);
+		Parentheses[1].setDepth(5);
 	}
 	else
 	{
 		if (MinusSign.getID() == 0)
 		{
-			MinusSign.createT("-");
-			MinusSign.color(0, 0, 0);
+			MinusSign = Text("-");
+			MinusSign.setColor(RGBA(0, 0, 0));
 		}
 		useMinus = true;
 	}
@@ -132,8 +138,9 @@ void Numbers::setSize(float x, float y)
 {
     float factor = 1.0f;
 
-    if (PLATFORM == MOBILE)
+#if (PLATFORM == MOBILE)
         factor = 1.5;
+#endif
 
 	for (short int i = 0; i < 10; i++)
 	{
@@ -143,16 +150,16 @@ void Numbers::setSize(float x, float y)
 	}
 
 	if (useMinus)
-		MinusSign.size(x*2.5f*factor); //5.5f?
+		MinusSign.setSize(x*2.5f*factor); //5.5f?
 }
 
-void Numbers::setDigitData(short int digit, char desc[])
+/*void Numbers::setDigitData(short int digit, char desc[])
 {
 	switch (digit)
 	{
 	case 0:
 		for (short int i = 0; i < 10; i++)
-			digitOne[i].setData(digitOne[i].getImageNumber(), desc);
+			digitOne[i].setImage(setData(digitOne[i].getImageNumber(), desc);
 		break;
 	case 1:
 		for (short int i = 0; i < 10; i++)
@@ -168,18 +175,18 @@ void Numbers::setDigitData(short int digit, char desc[])
 
 
 	//updateValue(getSeparatedValue());
-}
+}*/
 
-void Numbers::setPriority(short unsigned int prioValue)
+void Numbers::setDepth(short unsigned int prioValue)
 {
 	for (short int j = 0; j < 10; j++)
 	{
 		if (digitOne[j].getImageNumber() != 0)
-			digitOne[j].setPriority(prioValue);
+			digitOne[j].setDepth(prioValue);
 		if (digitTwo[j].getImageNumber() != 0)
-			digitTwo[j].setPriority(prioValue);
+			digitTwo[j].setDepth(prioValue);
 		if (digitThree[j].getImageNumber() != 0)
-			digitThree[j].setPriority(prioValue);
+			digitThree[j].setDepth(prioValue);
 	}
 
 	if (useMinus)
@@ -193,24 +200,24 @@ void Numbers::setLocation(short int digit, float x, float y, float negOffsetX, f
 	case 0:
 		for (short int i = 0; i < 10; i++)
 		{
-			digitOne[i].display(x, y);
-			digitOne[i].hide();
+			digitOne[i].setPosition(x, y);
+			digitOne[i].setVisible(false);
 		}
 		visDigit1 = 0;
 		break;
 	case 1:
 		for (short int i = 0; i < 10; i++)
 		{
-			digitTwo[i].display(x, y);
-			digitTwo[i].hide();
+			digitTwo[i].setPosition(x, y);
+			digitTwo[i].setVisible(false);
 		}
 		visDigit2 = 0;
 		break;
 	case 2:
 		for (short int i = 0; i < 10; i++)
 		{
-			digitThree[i].display(x, y);
-			digitThree[i].hide();
+			digitThree[i].setPosition(x, y);
+			digitThree[i].setVisible(false);
 		}
 		visDigit3 = 0;
 		break;
@@ -219,11 +226,11 @@ void Numbers::setLocation(short int digit, float x, float y, float negOffsetX, f
 	}
 
 	if ((digit == 1) && useMinus)
-		MinusSign.position(x + negOffsetX, y + negOffsetY);
+		MinusSign.setPosition(Point(x + negOffsetX, y + negOffsetY));
 	else if ((digit == 0) && !useMinus)
 	{
-		Parentheses[0].display(x + negOffsetX, y + negOffsetY); //12.f, 92.4f
-		Parentheses[1].display(x + negOffsetX + 7.25f, y + negOffsetY); //21.0f
+		Parentheses[0].setPosition(x + negOffsetX, y + negOffsetY); //12.f, 92.4f
+		Parentheses[1].setPosition(x + negOffsetX + 7.25f, y + negOffsetY); //21.0f
 	}
 }
 
@@ -232,25 +239,25 @@ void Numbers::display(short int digit, short int number, float x, float y)
 	switch (digit)
 	{
 	case 0:
-		digitOne[visDigit1].hide();
-		digitOne[number].display(x, y);
-		digitOne[number].show();
+		digitOne[visDigit1].setVisible(false);
+		digitOne[number].setPosition(x, y);
+		digitOne[number].setVisible(true);
 		visDigit1 = number;
 		break;
 	case 1:
-		digitTwo[visDigit2].hide();
-		digitTwo[number].display(x, y);
-		digitTwo[number].show();
+		digitTwo[visDigit2].setVisible(false);
+		digitTwo[number].setPosition(x, y);
+		digitTwo[number].setVisible(true);
 		visDigit2 = number;
 		break;
 	case 2:
 		if (number == 0)
-			digitThree[visDigit3].hide();
+			digitThree[visDigit3].setVisible(false);
 		else
 		{
-			digitThree[visDigit3].hide();
-			digitThree[number].display(x, y);
-			digitThree[number].show();
+			digitThree[visDigit3].setVisible(false);
+			digitThree[number].setPosition(x, y);
+			digitThree[number].setVisible(true);
 			visDigit3 = number;
 		}
 		break;
@@ -264,30 +271,30 @@ void Numbers::display(short int digit, short int number)
 	switch (digit)
 	{
 	case 0:
-        digitOne[visDigit1].hide();
-		digitOne[number].display();
-		digitOne[number].show();
+		digitOne[visDigit1].setVisible(false);
+		//digitOne[number].setPosition();
+		digitOne[number].setVisible(true);
 		visDigit1 = number;
 		break;
 	case 1:
-		digitTwo[visDigit2].hide();
+		digitTwo[visDigit2].setVisible(false);
 
-		digitTwo[number].display();
-		digitTwo[number].show();
+		//digitTwo[number].setPosition();
+		digitTwo[number].setVisible(true);
 		visDigit2 = number;
 		break;
 	case 2:
-		digitThree[visDigit3].hide();
+		digitThree[visDigit3].setVisible(false);
 
 		if (number == 0)
 		{
-			digitThree[visDigit3].hide();
+			digitThree[visDigit3].setVisible(false);
 			visDigit3 = 0;
 		}
 		else
 		{
-			digitThree[number].display();
-			digitThree[number].show();
+			//digitThree[number].setPosition();
+			digitThree[number].setVisible(true);
 			visDigit3 = number;
 		}
 		break;
@@ -304,15 +311,15 @@ void Numbers::hide(short int digit, short int number)
 	switch (digit)
 	{
 	case 0:
-		digitOne[number].hide();
+		digitOne[number].setVisible(false);
 		visDigit1 = 0;
 		break;
 	case 1:
-		digitTwo[number].hide();
+		digitTwo[number].setVisible(false);
 		visDigit2 = 0;
 		break;
 	case 2:
-		digitThree[number].hide();
+		digitThree[number].setVisible(false);
 		visDigit3 = 0;
 		break;
 	default:
@@ -320,39 +327,39 @@ void Numbers::hide(short int digit, short int number)
 	}
 
 	if (useMinus)
-		MinusSign.hide();
+		MinusSign.setVisible(false);
 	else
 	{
-		Parentheses[0].hide();
-		Parentheses[1].hide();
+		Parentheses[0].setVisible(false);
+		Parentheses[1].setVisible(false);
 	}
 }
 
-void Numbers::changeImage(short int theme)
+/*void Numbers::changeImage(short int theme)
 {
 	for (short int i = 0; i < 10; i++)
 	{
-		digitOne[i].changeImage(100 + (theme*10) + i);
+		digitOne[i].setImage(100 + (theme*10) + i);
 		digitTwo[i].changeImage(100 + (theme*10) + i);
 		digitThree[i].changeImage(100 + (theme*10) + i);
 	}
-}
+}*/
 
 void Numbers::hideAll(void)
 {
 	for (short int j = 0; j < 10; j++)
 	{
-		digitOne[j].hide();
-		digitTwo[j].hide();
-		digitThree[j].hide();
+		digitOne[j].setVisible(false);
+		digitTwo[j].setVisible(false);
+		digitThree[j].setVisible(false);
 	}
 
 	if (useMinus)
-		MinusSign.hide();
+		MinusSign.setVisible(false);
 	else
 	{
-		Parentheses[0].hide();
-		Parentheses[1].hide();
+		Parentheses[0].setVisible(false);
+		Parentheses[1].setVisible(false);
 	}
 }
 
@@ -364,40 +371,40 @@ void Numbers::showAll(bool always)
 		{
 			for (short int i = 0; i < 10; i++)
 			{
-				digitOne[i].hide();
-				digitTwo[i].hide();
-				digitThree[i].hide();
+				digitOne[i].setVisible(false);
+				digitTwo[i].setVisible(false);
+				digitThree[i].setVisible(false);
 			}
-			digitOne[0].show();
+			digitOne[0].setVisible(true);
 		}
 	}
 	else
 	{
 		visDigit1 = abs(value) % 10;
 
-		digitOne[visDigit1].show();
+		digitOne[visDigit1].setVisible(true);
 	}
 	if (abs(value) > 9)
 	{
 		visDigit2 = abs(value) % 100 / 10;
 
-		digitTwo[visDigit2].show();
+		digitTwo[visDigit2].setVisible(true);
 	}
 	if (abs(value) > 99)
 	{
 		visDigit3 = abs(value) / 100;
 
-		digitThree[visDigit3].show();
+		digitThree[visDigit3].setVisible(true);
 	}
 
 	if (!isPositive)
 	{
 		if (useMinus)
-			MinusSign.show();
+			MinusSign.setVisible(true);
 		else
 		{
-			Parentheses[0].show();
-			Parentheses[1].show();
+			Parentheses[0].setVisible(true);
+			Parentheses[1].setVisible(true);
 		}
 	}
 }
@@ -407,15 +414,15 @@ void Numbers::show(short int digit, short int number)
 	switch (digit)
 	{
 	case 0:
-		digitOne[number].show();
+		digitOne[number].setVisible(true);
 		visDigit1 = number;
 		break;
 	case 1:
-		digitTwo[number].show();
+		digitTwo[number].setVisible(true);
 		visDigit2 = number;
 		break;
 	case 2:
-		digitThree[number].show();
+		digitThree[number].setVisible(true);
 		visDigit3 = number;
 		break;
 	default:
@@ -504,7 +511,7 @@ bool Numbers::getVisible(void)
 			direction = -1;
 
 		if (!digitOne[testDigit+direction].isVisible())
-			digitOne[testDigit+direction].show();
+			digitOne[testDigit+direction].setVisible(true)
 
 		float posY;
 
@@ -517,8 +524,8 @@ bool Numbers::getVisible(void)
 			else if (digitOne[testDigit+direction].getSizeY() != 66.0)
 				digitOne[testDigit+direction].setSize(50.0, digitOne[testDigit+direction].getSizeY() + direction);
 
-			digitOne[testDigit].display(digitOne[testDigit].getX(), digitOne[testDigit].getY() + direction);
-			digitOne[testDigit+direction].display(digitOne[testDigit+direction].getX(), digitOne[testDigit+direction].getY() + direction);
+			digitOne[testDigit].setPosition(digitOne[testDigit].getX(), digitOne[testDigit].getY() + direction);
+			digitOne[testDigit+direction].setPosition(digitOne[testDigit+direction].getX(), digitOne[testDigit+direction].getY() + direction);
 
 			posY = digitOne[testDigit].getY();
 
@@ -546,7 +553,7 @@ bool Numbers::getVisible(void)
 
 			if (posY < 53.0)
 				posY = 53.0;
-			digitTwo[i].display(digitTwo[i].getX(), posY);
+			digitTwo[i].setPosition(digitTwo[i].getX(), posY);
 			//visDigit2 = value;
 		}
 		else if (digit == 2)
@@ -559,7 +566,7 @@ bool Numbers::getVisible(void)
 
 			if (posY < 53.0)
 				posY = 53.0;
-			digitThree[i].display(digitThree[i].getX(), posY);
+			digitThree[i].setPosition(digitThree[i].getX(), posY);
 			//visDigit3 = value;
 		}
 	}
@@ -687,11 +694,11 @@ void Numbers::makeNegative(void)
     isPositive = false;
 
     if (useMinus)
-        MinusSign.show();
+        MinusSign.setVisible(true);
     else
     {
-        Parentheses[0].show();
-        Parentheses[1].show();
+        Parentheses[0].setVisible(true);
+        Parentheses[1].setVisible(true);
     }
 }
 
@@ -700,11 +707,11 @@ void Numbers::makePositive(void)
     isPositive = true;
 
     if (useMinus)
-        MinusSign.hide();
+        MinusSign.setVisible(false);
     else
     {
-        Parentheses[0].hide();
-        Parentheses[1].hide();
+        Parentheses[0].setVisible(false);
+        Parentheses[1].setVisible(false);
     }
 }
 
@@ -751,9 +758,9 @@ void Numbers::setColor(unsigned short int red, unsigned short int green, unsigne
 
 	for (short int i = 0; i < 10; i++)
 	{
-		digitOne[i].changeColor(red, green, blue, alpha);
-		digitTwo[i].changeColor(red, green, blue, alpha);
-		digitThree[i].changeColor(red, green, blue, alpha);
+		digitOne[i].setColor(RGBA(red, green, blue, alpha));
+		digitTwo[i].setColor(RGBA(red, green, blue, alpha));
+		digitThree[i].setColor(RGBA(red, green, blue, alpha));
 	}
 }
 
@@ -761,7 +768,7 @@ bool Numbers::isVisible(void)
 {
 	for (short int i = 0; i < 10; i++)
 	{
-		if(digitOne[i].isVisible())
+		if(digitOne[i].getVisible())
 			return true;
 	}
 

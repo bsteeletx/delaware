@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Player.h"
-#include "Pinochle.h"
+#include "Defines.h"
 
 class BidGame
 {
@@ -36,23 +36,14 @@ public:
 	void toggleBidDecided();
 	void togglePass(short int passer);
 
-	short int wPassRound;
-	short int nPassRound;
-	short int ePassRound;
-	short int sPassRound;
+	unsigned short passRound[4];
 
 private:
 	unsigned short int bid;
 	short int bidder;
 	bool bidDecided;
-	bool wPass;
-	bool nPass;
-	bool ePass;
-	bool sPass;
-	bool wBid;
-	bool nBid;
-	bool eBid;
-	bool sBid;
+	bool hasPassed[4];
+	bool hasBid[4];
 	bool meldBidding;
 	short int dealer;
 	short int winner;

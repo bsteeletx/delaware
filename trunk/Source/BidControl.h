@@ -4,8 +4,8 @@
 #include "Buttons.h"
 #include "Numbers.h"
 #include "AnimatedSprite.h"
-#include "Pinochle.h"
-#include "ParentImage.h"
+#include "Defines.h"
+//#include "ParentImage.h"
 
 class BidControl
 {
@@ -33,6 +33,6 @@ public:
 
 private:
 
-    ParentImage Parent;
+    Sprite Parent;
 
 };

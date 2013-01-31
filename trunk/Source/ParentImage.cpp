@@ -96,7 +96,7 @@ void ParentImage::setImage(const char filename[])
 
 unsigned int ParentImage::getImageNumber(const char filename[])
 {
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < 4; i++)
     {
         int tempImgNum;
 
@@ -114,4 +114,10 @@ unsigned int ParentImage::getImageNumber(const char filename[])
     }
 
     return 0;
+}
+
+
+unsigned int *ParentImage::getParentImage(void)
+{
+	return pImageNumber;
 }

@@ -11,6 +11,9 @@
     <Filter Include="Assets">
       <UniqueIdentifier>{6c332e44-1a2f-4af7-8fae-5b37c5250bea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vietnam">
+      <UniqueIdentifier>{13f7f382-4337-4589-afd4-d97cab149197}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp">
@@ -28,25 +31,13 @@
     <ClCompile Include="Player.cpp">
       <Filter>App</Filter>
     </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>App</Filter>
-    </ClCompile>
     <ClCompile Include="TrickGame.cpp">
-      <Filter>App</Filter>
-    </ClCompile>
-    <ClCompile Include="AnimatedSprite.cpp">
       <Filter>App</Filter>
     </ClCompile>
     <ClCompile Include="Card.cpp">
       <Filter>App</Filter>
     </ClCompile>
-    <ClCompile Include="Text.cpp">
-      <Filter>App</Filter>
-    </ClCompile>
     <ClCompile Include="Numbers.cpp">
-      <Filter>App</Filter>
-    </ClCompile>
-    <ClCompile Include="Sound.cpp">
       <Filter>App</Filter>
     </ClCompile>
     <ClCompile Include="BidControl.cpp">
@@ -85,6 +76,69 @@
     <ClCompile Include="template.cpp">
       <Filter>App</Filter>
     </ClCompile>
+    <ClCompile Include="Core\AnimatedSprite.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\EditBox.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\File.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\HTTP.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Image.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Joint.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Music.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\MyParticles.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Network.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\NetworkMessage.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\PhysicsForce.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\PhysicsSprite.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Point.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\RGBA.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Sound.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Sprite.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Text.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Timer.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Vector.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\VirtualButton.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\VirtualJoystick.cpp">
+      <Filter>Vietnam</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CoreForApp.h">
@@ -105,28 +159,13 @@
     <ClInclude Include="Deck.h">
       <Filter>App</Filter>
     </ClInclude>
-    <ClInclude Include="Pinochle.h">
-      <Filter>App</Filter>
-    </ClInclude>
     <ClInclude Include="PinochleGame.h">
       <Filter>App</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>App</Filter>
     </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>App</Filter>
-    </ClInclude>
     <ClInclude Include="Card.h">
-      <Filter>App</Filter>
-    </ClInclude>
-    <ClInclude Include="AnimatedSprite.h">
-      <Filter>App</Filter>
-    </ClInclude>
-    <ClInclude Include="Text.h">
-      <Filter>App</Filter>
-    </ClInclude>
-    <ClInclude Include="Sound.h">
       <Filter>App</Filter>
     </ClInclude>
     <ClInclude Include="Numbers.h">
@@ -163,6 +202,72 @@
       <Filter>App</Filter>
     </ClInclude>
     <ClInclude Include="ParentImage.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\AnimatedSprite.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\EditBox.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\File.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\HTTP.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Image.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Joint.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Music.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\MyParticles.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Network.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\NetworkMessage.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\PhysicsForce.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\PhysicsSprite.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Point.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\RGBA.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Sound.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Sprite.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Text.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Timer.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Vector.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\VirtualButton.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\VirtualJoystick.h">
+      <Filter>Vietnam</Filter>
+    </ClInclude>
+    <ClInclude Include="Defines.h">
       <Filter>App</Filter>
     </ClInclude>
   </ItemGroup>

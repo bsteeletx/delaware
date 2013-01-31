@@ -13,50 +13,52 @@ BidControl::~BidControl(void)
 
 void BidControl::setup(AnimatedSprite *Symbol, const char image[], const char dir[])
 {
-    int frameImageNum;
+    //int frameImageNum;
 
-    Parent.setImage(image);
-    frameImageNum = Parent.getImageNumber("control_bid_bubble.png");
+	Parent = Sprite(Text(image), false);
+    //Parent.setImage(image);
+	Frame = Sprite(Parent.getImageNumber(), Text("control_bid_bubble.png"));
+    //frameImageNum = Parent.getImageNumber("control_bid_bubble.png");
 
 	Bid.setup(Symbol, "bid", Parent);
 	Minus.setup(Symbol, "minus", Parent);
 	Pass.setup(Symbol, "pass", Parent);
 	Plus.setup(Symbol, "plus", Parent);
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
-    Frame.setImageNumber(frameImageNum);
+   // Frame.setImageNumber(frameImageNum);
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	BidValue.setData(dir);
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 }
 
 void BidControl::show(void)
 {
-	Frame.show();
+	Frame.setVisible(true);
 
-	Bid.ButtonUp.show();
-	Minus.ButtonUp.show();
-	Pass.ButtonUp.show();
-	Plus.ButtonUp.show();
+	Bid.ButtonUp.setVisible(true);
+	Minus.ButtonUp.setVisible(true);
+	Pass.ButtonUp.setVisible(true);
+	Plus.ButtonUp.setVisible(true);
 
 	BidValue.showAll();
 }
 
 void BidControl::hide(void)
 {
-	Frame.hide();
+	Frame.setVisible(false);
 
-	Bid.ButtonUp.hide();
-	Minus.ButtonUp.hide();
-	Pass.ButtonUp.hide();
-	Plus.ButtonUp.hide();
+	Bid.ButtonUp.setVisible(false);
+	Minus.ButtonUp.setVisible(false);
+	Pass.ButtonUp.setVisible(false);
+	Plus.ButtonUp.setVisible(false);
 
 	BidValue.hideAll();
 }
@@ -72,17 +74,17 @@ void BidControl::setSize(float x, float y)
 
 void BidControl::setPriority(short unsigned int value)
 {
-	Frame.setPriority(value);
+	Frame.setDepth(value);
 
-	Bid.setPriority(value + 1);
-	Minus.setPriority(value + 1);
-	Pass.setPriority(value + 1);
-	Plus.setPriority(value + 1);
+	Bid.setDepth(value - 1);
+	Minus.setDepth(value - 1);
+	Pass.setDepth(value - 1);
+	Plus.setDepth(value - 1);
 }
 
 void BidControl::display(float x, float y)
 {
-	Frame.display(x, y);
+	Frame.setPosition(x, y);
 
 	Bid.display(x, y);
 	Minus.display(x, y);
@@ -92,7 +94,7 @@ void BidControl::display(float x, float y)
 
 bool BidControl::isVisible(void)
 {
-	if (Frame.isVisible())
+	if (Frame.getVisible())
 		return true;
 
 	return false;

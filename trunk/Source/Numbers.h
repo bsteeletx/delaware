@@ -1,7 +1,7 @@
 #pragma once
 #include "Sprite.h"
 #include "Text.h"
-#include "Pinochle.h"
+#include "Defines.h"
 #include "ParentImage.h"
 
 class Numbers
@@ -11,7 +11,7 @@ public:
 	Numbers();
 	~Numbers(void);
 
-	void changeImage(short int theme);
+	//void changeImage(short int theme);
     void decrementValue(void);
 	void display(short int digit, short int number);
 	void display(short int digit, short int number, float x, float y);
@@ -36,9 +36,9 @@ public:
 	void setData(const char dir[], bool useParentheses=false);
 	//void setDigit(short int digit, float x, float y);
 	void setDigit(short int digit, short int number);
-	void setDigitData(short int digit, char desc[]);
+	//void setDigitData(short int digit, char desc[]);
 	void setLocation(short int digit, float x, float y, float negOffsetX=0, float negOffsetY=0);
-	void setPriority(short unsigned int prioValue);
+	void setDepth(short unsigned int prioValue);
 	void setSize(float x, float y = -1.0f);
 	void setValue(short int newValue);
 	void show(short int digit, short int number);

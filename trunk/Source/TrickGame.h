@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Player.h"
-#include "Pinochle.h"
+#include "Defines.h"
 
 class TrickGame
 {

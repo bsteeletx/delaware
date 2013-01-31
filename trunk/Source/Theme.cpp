@@ -44,7 +44,7 @@ void Theme::setup(AnimatedSprite *Symbol, char dir[], short int state, float _as
 
 	///step 1: setup or setData////////////
 
-    Background.setData("background.jpg", currentDir);
+    Background = Sprite(Text (currentDir) += Text("background.jpg"));
     InGameMenuButton.setData("menu", currentDir);
 
 	strcpy(temp, currentDir);
@@ -95,14 +95,14 @@ void Theme::setup(AnimatedSprite *Symbol, char dir[], short int state, float _as
 			Deck[i].hide();
 		}
 
-        Symbol->incrementSpriteFrame();
+        Symbol->incrementFrame();
         agk::Sync();
 	}
 	setNumberData();
 	setNumberPrio();
 	hide();
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	///step 2: setSize
@@ -114,28 +114,28 @@ void Theme::setup(AnimatedSprite *Symbol, char dir[], short int state, float _as
 	BCBubble.setSize(45.0f);
 
 
-	Background.setSize(100.0, -1.0f, true);
+	Background.setSize(100.0, -1.0f);
 	for (short int i = 0; i < 80; i++)
 		Deck[i].setSize(CARDSIZE);
 
-	BidMeldBubbles.NorthMeld.setSize(57.0f);
-	BidMeldBubbles.SouthMeld.setSize(57.0f);
-	BidMeldBubbles.EastMeld.setSize(57.0f);
-	BidMeldBubbles.WestMeld.setSize(57.0f);
+	BidMeldBubbles.MeldBubble[NORTH].setSize(57.0f);
+	BidMeldBubbles.MeldBubble[SOUTH].setSize(57.0f);
+	BidMeldBubbles.MeldBubble[EAST].setSize(57.0f);
+	BidMeldBubbles.MeldBubble[WEST].setSize(57.0f);
 
 	InGameMenuButton.setSize(100.0f);
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	///step 3: set priority
-	Background.setPriority(2);
-	InGameMenuButton.setPriority(5);
-	BidMeldBubbles.setPriority(3);
+	Background.setDepth(2);
+	InGameMenuButton.setDepth(5);
+	BidMeldBubbles.setDepth(3);
 	BCBubble.setPriority(4);
 	TSBubble.setPriority(3);
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	///step 4: set x, y location with display
@@ -144,7 +144,7 @@ void Theme::setup(AnimatedSprite *Symbol, char dir[], short int state, float _as
 		initNumbers();
 	InGameMenuButton.display(0.f, 0.0f);
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	///step 5: hide
@@ -163,7 +163,7 @@ void Theme::setup(AnimatedSprite *Symbol, char dir[], short int state, float _as
 	PastSouthBid.hideAll();
 	PastWestBid.hideAll();
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	themeReady = true;
@@ -185,13 +185,13 @@ void Theme::initNumbers(void)
 
 	BidScore.setValue(50);
 	BidScore.hideAll();
-	//BidScore.display(0, 0);
-	//BidScore.display(1, 5);
+	//BidScore.setPosition(0, 0);
+	//BidScore.setPosition(1, 5);
 
 	H2Get.setValue(0);
-	//H2Get.display(0, 0);
+	//H2Get.setPosition(0, 0);
 	V2Get.setValue(0);
-	//V2Get.display(0, 0);
+	//V2Get.setPosition(0, 0);
 	H2Get.hideAll();
 	V2Get.hideAll();
 
@@ -208,28 +208,28 @@ void Theme::initNumbers(void)
 void Theme::setNumberPrio(void)
 {
 		//Step 3: Set Priority
-	Bid.setPriority(3);
-	BidScore.setPriority(3);
-	VScore.setPriority(3);
-	HScore.setPriority(3);
-	VMeld.setPriority(3);
-	HMeld.setPriority(3);
-	BCBubble.Bid.setPriority(7);
-	V2Get.setPriority(3);
-	H2Get.setPriority(3);
-	PastNorthBid.setPriority(35); //need to be high to get over cards
-	PastSouthBid.setPriority(35);
-	PastEastBid.setPriority(35);
-	PastWestBid.setPriority(35);
+	Bid.setDepth(3);
+	BidScore.setDepth(3);
+	VScore.setDepth(3);
+	HScore.setDepth(3);
+	VMeld.setDepth(3);
+	HMeld.setDepth(3);
+	BCBubble.Bid.setDepth(7);
+	V2Get.setDepth(3);
+	H2Get.setDepth(3);
+	PastNorthBid.setDepth(35); //need to be high to get over cards
+	PastSouthBid.setDepth(35);
+	PastEastBid.setDepth(35);
+	PastWestBid.setDepth(35);
 }
 
 void Theme::setNumberLoc(void)
 {
     float offset = 0.0f;
 
-    if (PLATFORM == MOBILE)
+#if (PLATFORM == MOBILE)
         offset = 0.25f;
-
+#endif
 	for (short int i = 0; i < 3; i++)
 	{
 		if (strcmp(currentDir, "green/") == 0) //if currentDir is green
@@ -334,7 +334,7 @@ void Theme::setNumberData(void)
 
 void Theme::show(short int state)
 {
-	InGameMenuButton.ButtonUp.show();
+	InGameMenuButton.ButtonUp.setVisible(true);
 
 	for (short int i = 0; i < 80; i++)
 	{
@@ -367,15 +367,15 @@ void Theme::show(short int state)
 	VMeld.showAll();
 	VScore.showAll();
 
-	Background.show();
+	Background.setVisible(true);
 	InGameMenuButton.show();
 }
 
 void Theme::hide(void)
 {
-	InGameMenuButton.ButtonUp.hide();
+	InGameMenuButton.ButtonUp.setVisible(false);
 
-	Background.hide();
+	Background.setVisible(false);
 	for (short int i = 0; i < 80; i++)
 		Deck[i].hide();
 

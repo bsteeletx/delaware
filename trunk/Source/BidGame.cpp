@@ -1,24 +1,19 @@
 #include "BidGame.h"
 //#include "DarkGDK.h"
-#include "Pinochle.h"
+#include "Defines.h"
 
 BidGame::BidGame()
 {
 	bid = 49;
 	meldBidding = true;
-	nPass = false;
-	ePass = false;
-	wPass = false;
-	sPass = false;
-	nBid = false;
-	eBid = false;
-	wBid = false;
-	sBid = false;
+	for (int i = 0; i < 4; i++)
+	{
+		hasPassed[i] = false;
+		hasBid[i] = false;
+		passRound[i] = -1;
+	}
+	
 	bidDecided = false;
-	nPassRound = -1;
-	ePassRound = -1;
-	sPassRound = -1;
-	wPassRound = -1;
 	bidder = -1;
 }
 
@@ -30,19 +25,14 @@ void BidGame::reset()
 {
 	bid = 49;
 	meldBidding = true;
-	nPass = false;
-	ePass = false;
-	wPass = false;
-	sPass = false;
-	nBid = false;
-	eBid = false;
-	wBid = false;
-	sBid = false;
+	for (int i = 0; i < 4; i++)
+	{
+		hasPassed[i] = false;
+		hasBid[i] = false;
+		passRound[i] = -1;
+	}
+	
 	bidDecided = false;
-	nPassRound = -1;
-	ePassRound = -1;
-	sPassRound = -1;
-	wPassRound = -1;
 	bidder = -1;
 }
 
@@ -53,42 +43,12 @@ unsigned short int BidGame::getBid()
 
 bool BidGame::playerBid(unsigned short int playerID)
 {
-	switch (playerID)
-	{
-	case WEST:
-		return wBid;
-		break;
-	case NORTH:
-		return nBid;
-		break;
-	case EAST:
-		return eBid;
-		break;
-	case SOUTH:
-		return sBid;
-		break;
-	}
-
-	return false;
+	return hasBid[playerID];
 }
 
 void BidGame::setPlayerBid(unsigned short int playerID)
 {
-	switch (playerID)
-	{
-	case WEST:
-		wBid = true;
-		break;
-	case NORTH:
-		nBid = true;
-		break;
-	case EAST:
-		eBid = true;
-		break;
-	case SOUTH:
-		sBid = true;
-		break;
-	}
+	hasBid[playerID] = true;
 }
 
 void BidGame::playerMeldBid(Player *South, Player *North, unsigned short int newBid)
@@ -96,7 +56,7 @@ void BidGame::playerMeldBid(Player *South, Player *North, unsigned short int new
 	if (bid == 49)
 		bid++;
 
-	if (wPass && ePass && (newBid - 1 == bid))
+	if (hasPassed[WEST] && hasPassed[EAST] && (newBid - 1 == bid))
 	{
 		South->toggleSaveBid();
 		South->setMeldBid(0);
@@ -458,7 +418,7 @@ void BidGame::meldBid(Player *meldBidder, Player *partner)
 		////dbWait(5 * SECONDS);
 		if ((meldBidder->getID() == WEST) || (meldBidder->getID() == EAST))
 		{
-			if (nPass && sPass)
+			if (hasPassed[NORTH] && hasPassed[SOUTH])
 			{
 				takeBid(meldBidder, partner, 0);
 				meldBidder->setMeldBid(0);
@@ -467,7 +427,7 @@ void BidGame::meldBid(Player *meldBidder, Player *partner)
 		}
 		else
 		{
-			if (ePass && wPass)
+			if (hasPassed[EAST] && hasPassed[WEST])
 			{
 				takeBid(meldBidder, partner, 0);
 				meldBidder->setMeldBid(0);
@@ -525,64 +485,33 @@ void BidGame::setBid(unsigned short int newBid)
 
 void BidGame::setPass(short int player, short int round)
 {
-	if (player == EAST)
+	unsigned short count = 0;
+	unsigned short notPassed = 0;
+	hasPassed[player] = true;
+	passRound[player] = round;
+
+	for (int i = 0; i < 4; i++)
 	{
-		ePass = true;
-		ePassRound = round;
-	}
-	if (player == NORTH)
-	{
-		nPass = true;
-		nPassRound = round;
-	}
-	if (player == WEST)
-	{
-		wPass = true;
-		wPassRound = round;
-	}
-	if (player == SOUTH)
-	{
-		sPass = true;
-		sPassRound = round;
+		if (!hasPassed[i])
+		{
+			count++;
+			notPassed = i;
+
+			if (count > 1)
+				break;
+		}
 	}
 
-	if (ePass && nPass && wPass)
+	if (count == 1)
 	{
 		toggleBidDecided();
-		winner = SOUTH;
-	}
-	else if (nPass && wPass && sPass)
-	{
-		toggleBidDecided();
-		winner = EAST;
-	}
-	else if (wPass && sPass && ePass)
-	{
-		toggleBidDecided();
-		winner = NORTH;
-	}
-	else if (sPass && ePass && nPass)
-	{
-		toggleBidDecided();
-		winner = WEST;
+		winner = notPassed;
 	}
 }
 
 short int BidGame::getPassRound(short int player)
 {
-	switch (player)
-	{
-	case WEST:
-		return wPassRound;
-	case NORTH:
-		return nPassRound;
-	case EAST:
-		return ePassRound;
-	case SOUTH:
-		return sPassRound;
-	}
-
-	return -1;
+	return passRound[player];
 }
 
 void BidGame::setBidder(unsigned short int player)
@@ -620,14 +549,7 @@ void BidGame::toggleBidDecided()
 
 bool BidGame::getPass(unsigned short int player)
 {
-	if (player == WEST)
-		return wPass;
-	if (player == NORTH)
-		return nPass;
-	if (player == EAST)
-		return ePass;
-
-	return sPass;
+	return hasPassed[player];
 }
 
 short int BidGame::getBidWinner()
@@ -865,11 +787,11 @@ void BidGame::takeBid(Player *taker, Player *teammate, short int round)
 				switch (taker->getID() % 2)
 				{
 				case WEST:
-					if (nPass && sPass)
+					if (hasPassed[NORTH] && hasPassed[SOUTH])
 						modValue = 5;
 					break;
 				case NORTH:
-					if (wPass && ePass)
+					if (hasPassed[WEST] && hasPassed[EAST])
 						modValue = 5;
 					break;
 				}
