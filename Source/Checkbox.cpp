@@ -10,11 +10,11 @@ Checkbox::~Checkbox(void)
 {
 }
 
-void Checkbox::setData(const char filename[], ParentImage OptionsParent)
+void Checkbox::setData(const char filename[], Sprite OptionsParent)
 {
     char tempFileCheck[32] = {NULL};
 	char tempFileNotCheck[32] = {NULL};
-    unsigned int imgNum;
+    //unsigned int imgNum;
 
     Parent = OptionsParent;
 
@@ -27,31 +27,28 @@ void Checkbox::setData(const char filename[], ParentImage OptionsParent)
 		strcat(tempFileNotCheck, "_off.png");
 	}
 
-    imgNum = Parent.getImageNumber(tempFileCheck);
-	Checked.setImageNumber(imgNum);
-
-    imgNum = Parent.getImageNumber(tempFileNotCheck);
-	NotChecked.setImageNumber(imgNum);
+	Checked = Sprite(Parent.getImageNumber(), Text(tempFileCheck));
+	NotChecked = Sprite(Parent.getImageNumber(), Text(tempFileNotCheck));
 }
 
 void Checkbox::Check(void)
 {
-	Checked.show();
-	NotChecked.hide();
+	Checked.setVisible(true);
+	NotChecked.setVisible(false);
 
 	isChecked = true;
 }
 
 void Checkbox::UnCheck(void)
 {
-	NotChecked.show();
-	Checked.hide();
+	NotChecked.setVisible(true);
+	Checked.setVisible(false);
 
 	isChecked = false;
 }
 
 void Checkbox::hide(void)
 {
-	NotChecked.hide();
-	Checked.hide();
+	NotChecked.setVisible(false);
+	Checked.setVisible(false);
 }

@@ -17,9 +17,9 @@ Buttons::~Buttons(void)
 void Buttons::setSound(bool playSound)
 {
 	if (playSound)
-		ButtonClick.setMasterVolume(100);
+		ButtonClick.setSystemVolume(100);
 	else
-		ButtonClick.setMasterVolume(0);
+		ButtonClick.setSystemVolume(0);
 }
 
 bool Buttons::animation(short int stage)
@@ -27,19 +27,19 @@ bool Buttons::animation(short int stage)
 	switch (stage)
 	{
 	case 1:
-		ButtonDown.show();
-		ButtonUp.hide();
-		ButtonOver.hide();
+		ButtonDown.setVisible(true);
+		ButtonUp.setVisible(false);
+		ButtonOver.setVisible(false);
 		if (!soundPlaying)
 		{
-			ButtonClick.playOnce();
+			ButtonClick.play();
 			soundPlaying = true;
 		}
 		return false;
 		break;
 	case 2:
-		ButtonDown.hide();
-		ButtonUp.show();
+		ButtonDown.setVisible(false);
+		ButtonUp.setVisible(true);
 		soundPlaying = false;
 		return false;
 		break;
@@ -51,37 +51,31 @@ bool Buttons::animation(short int stage)
 void Buttons::display(float x, float y)
 {
 	if (agk::GetSpriteExists(ButtonUp.getSpriteNumber()))
-		ButtonUp.display(x, y);
+		ButtonUp.setPosition(x, y);
 	if (agk::GetSpriteExists(ButtonDown.getSpriteNumber()))
-		ButtonDown.display(x, y);
+		ButtonDown.setPosition(x, y);
 	if (agk::GetSpriteExists(ButtonOver.getSpriteNumber()))
-		ButtonOver.display(x, y);
+		ButtonOver.setPosition(x, y);
 	if (agk::GetSpriteExists(ButtonGray.getSpriteNumber()))
-		ButtonGray.display(x, y);
+		ButtonGray.setPosition(x, y);
 }
 
 void Buttons::hide(void)
 {
 	if (agk::GetSpriteExists(ButtonUp.getSpriteNumber()))
-		ButtonUp.hide();
+		ButtonUp.setVisible(false);
 	if (agk::GetSpriteExists(ButtonDown.getSpriteNumber()))
-		ButtonDown.hide();
+		ButtonDown.setVisible(false);
 	if (agk::GetSpriteExists(ButtonOver.getSpriteNumber()))
-		ButtonOver.hide();
+		ButtonOver.setVisible(false);
 	if (agk::GetSpriteExists(ButtonGray.getSpriteNumber()))
-		ButtonGray.hide();
+		ButtonGray.setVisible(false);
 }
 
 void Buttons::show(void)
 {
 	if (agk::GetSpriteExists(ButtonUp.getSpriteNumber()))
-		ButtonUp.show();
-	/*if (agk::GetSpriteExists(ButtonDown.getSpriteNumber()))
-		ButtonDown.show();
-	if (agk::GetSpriteExists(ButtonOver.getSpriteNumber()))
-		ButtonOver.show();
-	if (agk::GetSpriteExists(ButtonGray.getSpriteNumber()))
-		ButtonGray.show();*/
+		ButtonUp.setVisible(true);
 }
 
 void Buttons::setSize(float x, float y)
@@ -96,16 +90,16 @@ void Buttons::setSize(float x, float y)
 		ButtonGray.setSize(x, y);
 }
 
-void Buttons::setPriority(short unsigned int value)
+void Buttons::setDepth(short unsigned int value)
 {
 	if (agk::GetSpriteExists(ButtonUp.getSpriteNumber()))
-		ButtonUp.setPriority(value);
+		ButtonUp.setDepth(value);
 	if (agk::GetSpriteExists(ButtonDown.getSpriteNumber()))
-		ButtonDown.setPriority(value);
+		ButtonDown.setDepth(value);
 	if (agk::GetSpriteExists(ButtonOver.getSpriteNumber()))
-		ButtonOver.setPriority(value);
+		ButtonOver.setDepth(value);
 	if (agk::GetSpriteExists(ButtonGray.getSpriteNumber()))
-		ButtonGray.setPriority(value);
+		ButtonGray.setDepth(value);
 }
 
 void Buttons::addFileExtension(char filebase[], short int buttonType)
@@ -143,16 +137,16 @@ void Buttons::setData(const char newFilename[], const char newDir[])
 		switch (i)
 		{
 		case 0:
-			ButtonUp.setData(temp, newDir);
+			ButtonUp = Sprite(Text(temp));
 			break;
 		case 1:
-			ButtonDown.setData(temp, newDir);
+			ButtonDown = Sprite(Text(temp));
 			break;
 		case 2:
-			ButtonOver.setData(temp, newDir);
+			ButtonOver = Sprite(Text(temp));
 			break;
 		case 3:
-			ButtonGray.setData(temp, newDir);
+			ButtonGray = Sprite(Text(temp));
 		}
 	}
 }
@@ -160,44 +154,42 @@ void Buttons::setData(const char newFilename[], const char newDir[])
 void Buttons::setup(AnimatedSprite *Symbol, const char filename[])
 {
 	char temp[32];
-    unsigned tempImageNum;
+ 
+	ButtonClick = Sound(Text("sounds/woodclick1.wav"));
 
-	ButtonClick.setFileName("sounds/woodclick1.wav");
+	if (std::strlen(filename) > 32)
+		return;
 
 	strcpy(temp, filename);
 	addFileExtension(temp, 1);
-    tempImageNum = Parent.getImageNumber(temp);
-	ButtonUp.setImageNumber(tempImageNum);
+	ButtonUp = Sprite(Parent.getImageNumber(), Text(temp));
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	strcpy(temp, filename);
 	addFileExtension(temp, 2);
-    tempImageNum = Parent.getImageNumber(temp);
-	ButtonDown.setImageNumber(tempImageNum);
-
-	Symbol->incrementSpriteFrame();
+    ButtonDown = Sprite(Parent.getImageNumber(), Text(temp));
+	
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	strcpy(temp, filename);
 	addFileExtension(temp, 3);
-    tempImageNum = Parent.getImageNumber(temp);
-	ButtonOver.setImageNumber(tempImageNum);
+    ButtonOver = Sprite(Parent.getImageNumber(), Text(temp));
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	strcpy(temp, filename);
 	addFileExtension(temp, 4);
-    tempImageNum = Parent.getImageNumber(temp);
-	ButtonGray.setImageNumber(tempImageNum);
+    ButtonGray = Sprite(Parent.getImageNumber(), Text(temp));
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 }
 
-void Buttons::setup(AnimatedSprite *Symbol, const char filename[], ParentImage ParentTemp)
+void Buttons::setup(AnimatedSprite *Symbol, const char filename[], Sprite ParentTemp)
 {
     Parent = ParentTemp;
 

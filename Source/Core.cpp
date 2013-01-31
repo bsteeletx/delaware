@@ -11,7 +11,7 @@
 #include "AGK.h"
 #include "resource.h"
 #include "direct.h"
-#include "Pinochle.h"
+#include "Defines.h"
 
 // App specific include for Core (so core can be distributed between apps without editing inside it)
 #if (OS == IOS)

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Sprite.h"
-#include "Pinochle.h"
+#include "Defines.h"
 
 class Player
 {

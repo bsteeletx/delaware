@@ -3,7 +3,7 @@
 #include "Sprite.h"
 #include "Numbers.h"
 #include "AnimatedSprite.h"
-#include "Pinochle.h"
+#include "Defines.h"
 #include "ParentImage.h"
 
 class GameScore

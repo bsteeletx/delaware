@@ -3,7 +3,7 @@
 #include "Buttons.h"
 #include "Sprite.h"
 #include "AnimatedSprite.h"
-#include "Pinochle.h"
+#include "Defines.h"
 #include "ParentImage.h"
 
 class TrumpSelect
@@ -30,5 +30,5 @@ public:
 private:
 	char currentDir[32];
 
-    ParentImage Parent;
+    Sprite Parent;
 };

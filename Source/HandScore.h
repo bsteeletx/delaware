@@ -3,7 +3,7 @@
 #include "Sprite.h"
 #include "Numbers.h"
 #include "AnimatedSprite.h"
-#include "Pinochle.h"
+#include "Defines.h"
 #include "ParentImage.h"
 
 class HandScore
@@ -13,7 +13,7 @@ public:
 	~HandScore(void);
 
 	void hide(void);
-	void setPriority(short unsigned int value);
+	void setDepth(short unsigned int value);
 	void setup(AnimatedSprite *Symbol);
 	void setNumberData(void);
 	void reset(void);

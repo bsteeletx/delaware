@@ -2,8 +2,8 @@
 #include "sprite.h"
 #include "Sound.h"
 #include "AnimatedSprite.h"
-#include "Pinochle.h"
-#include "ParentImage.h"
+#include "Defines.h"
+//#include "ParentImage.h"
 
 class Buttons
 {
@@ -16,10 +16,10 @@ public:
 	void display(float x, float y);
 	void hide(void);
 	void show(void);
-	void setPriority(short unsigned int value);
 	void setData(const char newFilename[], const char newDir[]);
+	void setDepth(short unsigned int value);
 	void setup(AnimatedSprite *Symbol, const char filename[]);
-    void setup(AnimatedSprite *Symbol, const char filename[], ParentImage ParentTemp);
+    void setup(AnimatedSprite *Symbol, const char filename[], Sprite ParentTemp);
 	void setSize(float x, float y = -1.0f);
 	void setSound(bool playSound);
 
@@ -35,6 +35,6 @@ private:
 	static Sound ButtonClick;
     bool soundPlaying;
 
-    ParentImage Parent;
+    Sprite Parent;
 
 };

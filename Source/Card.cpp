@@ -37,23 +37,23 @@ unsigned int Card::getOutlineImage()
 
 void Card::setFrontImage(unsigned int frontImage)
 {
-    Front.setImageNumber(frontImage);
+	Front.setImage(frontImage);
 }
 
 void Card::setBackImage(unsigned int backImage)
 {
-    Back.setImageNumber(backImage);
+    Back.setImage(backImage);
 }
 
 void Card::setBackImage(unsigned int backImage, short place)
 {
-    Back.setImageNumber(backImage);
+    Back.setImage(backImage);
     cardBackImageNumber[place] = backImage;
 }
 
 void Card::setOutlineImage(unsigned int outlineImage)
 {
-    Outlined.setImageNumber(outlineImage);
+    Outlined.setImage(outlineImage);
 }
 
 bool Card::compareBackImageTo(unsigned int image)
@@ -91,7 +91,7 @@ void Card::setData(char dir[], short int rankNum, short int suitNum)
 	strcat(outline, "m.png");
 
     imgNum = Parent.getImageNumber(temp);
-	Front.setImageNumber(imgNum);
+	Front.setImage(imgNum);
 
 	strcpy(temp, dir);
 	strcat(temp, "card_back2.png");
@@ -130,7 +130,7 @@ void Card::setData(char dir[], short int rankNum, short int suitNum)
         setBackImage(imgNum, place);
 
     imgNum = Parent.getImageNumber(outline);
-	Outlined.setImageNumber(imgNum);
+	Outlined.setImage(imgNum);
 
 	rank = rankNum;
 	suit = suitNum;
@@ -190,23 +190,21 @@ void Card::getRank(char buffer[], short int rankNum)
 
 void Card::turnFaceDown(void)
 {
-	Front.hide();
-	Outlined.hide();
-	Back.show();
+	Front.setVisible(false);
+	Outlined.setVisible(false);
+	Back.setVisible(true);
 
 	isFaceDown = true;
 }
 
 void Card::turnFaceUp(void)
 {
-	Back.hide();
-	if (isTrump)
-		Outlined.show();
-	else
-		Front.show();
+	Back.setVisible(false);
+
+	Outlined.setVisible(isTrump);
+	Front.setVisible(!isTrump);
 
 	isFaceDown = false;
-
 }
 
 void Card::rotateLeft()
@@ -412,22 +410,17 @@ void Card::resetHeight(void)
 void Card::unOutlineCard(void)
 {
 	isTrump = false;
-	Outlined.hide();
+	Outlined.setVisible(false);
 
-	if(!isFaceDown)
-		Front.hide();
-	else
-		Front.show();
+	Front.setVisible(!isFaceDown);
 }
 
 void Card::outlineCard(void)
 {
-	Front.hide();
-	if (isFaceDown)
-		Outlined.hide();
-	else
-		Outlined.show();
+	Front.setVisible(false);
 
+	Outlined.setVisible(!isFaceDown);
+	
 	isTrump = true;
 }
 
@@ -493,22 +486,22 @@ void Card::sortVisualCards(Player West, Player North, Player East, Player South,
 			vDeck[South.getCard(i)].display(SOUTH_LOC_X + (i * CARDWIDTHS), SOUTH_LOC_Y);
 		}
 
-		vDeck[West.getCard(i)].setPriority(i + 3);
-		vDeck[North.getCard(i)].setPriority(i + 3);
-		vDeck[East.getCard(i)].setPriority(i + 3);
-		vDeck[South.getCard(i)].setPriority(i + 3);
+		vDeck[West.getCard(i)].setDepth(i - 3);
+		vDeck[North.getCard(i)].setDepth(i - 3);
+		vDeck[East.getCard(i)].setDepth(i - 3);
+		vDeck[South.getCard(i)].setDepth(i - 3);
 
 		i++;
 	}
 
     if (theme == 0)
     {
-        for (short i = 0; i < 20; i++)
+        for (short j = 0; j < 20; j++)
         {
-            float newX = vDeck[North.getCard(i)].getX();
-            float curY = vDeck[North.getCard(i)].getY();
+            float newX = vDeck[North.getCard(j)].getX();
+            float curY = vDeck[North.getCard(j)].getY();
 
-            vDeck[North.getCard(i)].display(newX + offset, curY);
+            vDeck[North.getCard(j)].display(newX + offset, curY);
         }
     }
 }
@@ -533,7 +526,7 @@ void Card::sortVisualCards(Player Selected, Card *vDeck, short theme)
 		else if (playerID == SOUTH)
 			vDeck[Selected.getCard(i)].display((SOUTH_LOC_X + ((10 - (maxCards / 2)) * CARDWIDTHS)) + (i * CARDWIDTHS), SOUTH_LOC_Y);
 
-		vDeck[Selected.getCard(i)].setPriority(i + 3);
+		vDeck[Selected.getCard(i)].setDepth(i - 3);
 	}
 
 }
@@ -1013,9 +1006,9 @@ bool Card::updateCardLocs(short int turn, Card *vDec, short int card1, short int
 
 		vDec[cardSprites[i]].display(curXLocation[i] + moveXperTurn[i], curYLocation[i] + moveYperTurn[i]);
 		//if (turn == EAST)
-			//vDec[cardSprites[i]].setPriority((round * 4) - i + 4);
+			//vDec[cardSprites[i]].setDepth((round * 4) - i + 4);
 		//else
-		vDec[cardSprites[i]].setPriority((round * 4) + i + 2);
+		vDec[cardSprites[i]].setDepth((round * 4) - i - 2);
 		if ((abs(moveXperTurn[i]) <= 0.01f) && (abs(moveYperTurn[i]) <= 0.01f))
 			atLocation[i] = true;
 		vDec[cardSprites[i]].show();
@@ -1139,54 +1132,37 @@ void Card::setSize(float value)
 
 void Card::offset(float x, float y)
 {
-	Front.offset(x, y);
-	Back.offset(x, y);
-	Outlined.offset(x, y);
+	Front.setOffset(x, y);
+	Back.setOffset(x, y);
+	Outlined.setOffset(x, y);
 }
 
-void Card::setPriority(unsigned short int value)
+void Card::setDepth(unsigned short int value)
 {
-	Front.setPriority(value);
-	Back.setPriority(value);
-	Outlined.setPriority(value);
+	Front.setDepth(value);
+	Back.setDepth(value);
+	Outlined.setDepth(value);
 }
 
 void Card::display(float x, float y)
 {
-	Front.display(x, y);
-	Back.display(x, y);
-	Outlined.display(x, y);
+	Front.setPosition(x, y);
+	Back.setPosition(x, y);
+	Outlined.setPosition(x, y);
 
-	if (isFaceDown)
-	{
-		Front.hide();
-		Outlined.hide();
-	}
-	else if (isTrump)
-	{
-		Front.hide();
-		Back.hide();
-	}
-	else
-	{
-		Back.hide();
-		Outlined.hide();
-	}
+	show();
 }
 
 void Card::show(void)
 {
-	if (isFaceDown)
-		Back.show();
-	else if (isTrump)
-		Outlined.show();
-	else
-		Front.show();
+	Front.setVisible(!isFaceDown && !isTrump);
+	Outlined.setVisible(!isFaceDown && isTrump);
+	Back.setVisible(isFaceDown);
 }
 
 void Card::hide(void)
 {
-	Back.hide();
-	Outlined.hide();
-	Front.hide();
+	Back.setVisible(false);
+	Outlined.setVisible(false);
+	Front.setVisible(false);
 }

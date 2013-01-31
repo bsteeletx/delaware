@@ -14,29 +14,22 @@ MyOptions::~MyOptions(void)
 
 void MyOptions::setup(AnimatedSprite *Symbol)
 {
-    int imgNum;
+    Parent = Sprite(Text("default/Options.png"));
 
-    Parent.setImage("default/Options.png");
+	unsigned int imgNum = Parent.getImageNumber();
 
 	///step 1: setup or setData/////////////
 	NewGame.setup(Symbol, "new_game", Parent);
 	ResumeGame.setup(Symbol, "resume", Parent);
 
-    imgNum = Parent.getImageNumber("options_background.png");
-	Background.setImageNumber(imgNum);
+    //imgNum = Parent.getImageNumber("options_background.png");
+	Background = Sprite(Parent.getImageNumber(), Text("options_background.png"));
 
-    imgNum = Parent.getImageNumber("background_g.jpg");
-	ThemeOption[0].setImageNumber(imgNum);
-
-    imgNum = Parent.getImageNumber("background_r.jpg");
-	ThemeOption[1].setImageNumber(imgNum);
-
-    imgNum = Parent.getImageNumber("background_a.jpg");
-	ThemeOption[2].setImageNumber(imgNum);
-
-	imgNum = Parent.getImageNumber("background_x.jpg");
-	ThemeOption[3].setImageNumber(imgNum);
-
+    ThemeOption[GREEN] = Sprite(imgNum, Text("background_g"));
+	ThemeOption[RED] = Sprite(imgNum, Text("background_r"));
+	ThemeOption[ANCIENT] = Sprite(imgNum, Text("background_a"));
+	ThemeOption[NOEL] = Sprite(imgNum, Text("background_x"));
+	
 	//imgNum = Parent.getImageNumber("background_a.jpg");
 	//ThemeOption[4].setImageNumber(imgNum);
 
@@ -45,23 +38,24 @@ void MyOptions::setup(AnimatedSprite *Symbol)
 	Left.setup(Symbol, "left_arrow", Parent);
 	Right.setup(Symbol, "right_arrow", Parent);
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	///step 2: setSize
 	Background.setSize(100.0f);
 
-    if (PLATFORM != MOBILE)
+#if (PLATFORM != MOBILE)
     {
 		SoundCheck.Checked.setSize(37.5f);
         SoundCheck.NotChecked.setSize(37.5f);
 
     }
-    else
+#else
     {
         SoundCheck.Checked.setSize(45.0f);
         SoundCheck.NotChecked.setSize(45.0f);
     }
+#endif
 
 	for (short int i = 0; i < NUM_TABLE_TOP; i++)
 		ThemeOption[i].setSize(45.0f);
@@ -72,20 +66,20 @@ void MyOptions::setup(AnimatedSprite *Symbol)
 	Left.setSize(10.0f);
 	Right.setSize(10.0f);
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	///step 3: set priority
 	setPriority(100);
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	///step 4: set x, y location with display
 #if (PLATFORM != MOBILE)
     {
-        SoundCheck.Checked.display(27.0f, 70.0f);
-        SoundCheck.NotChecked.display(27.0f, 70.0f);
+        SoundCheck.Checked.setPosition(27.0f, 70.0f);
+        SoundCheck.NotChecked.setPosition(27.0f, 70.0f);
         ResumeGame.display(65.0, 82.0);
         NewGame.display(40.0f, 82.0f);
     }
@@ -97,20 +91,20 @@ void MyOptions::setup(AnimatedSprite *Symbol)
         NewGame.display(40.0f, 83.0f);
     }
 #endif
-    Background.display(0.0f, 0.0f);
+    Background.setPosition(0.0f, 0.0f);
 	Left.display(WEST_LOC_X, 39.0f);
 	Right.display(EAST_LOC_X, 39.0f);
 
 	for (short int i = 0; i < NUM_TABLE_TOP; i++)
-		ThemeOption[i].display(27.5f, 23.0f);
+		ThemeOption[i].setPosition(27.5f, 23.0f);
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	///step 5: hide
 	hide();
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	///step 6 (optional): set imprint
@@ -120,21 +114,21 @@ void MyOptions::setup(AnimatedSprite *Symbol)
 
 void MyOptions::show(short int curStyle)
 {
-	Background.show();
+	Background.setVisible(true);
 
-	ThemeOption[curStyle].show();
+	ThemeOption[curStyle].setVisible(true);
 
 	if (isMuted)
-		SoundCheck.NotChecked.show();
+		SoundCheck.NotChecked.setVisible(true);
 	else
-		SoundCheck.Checked.show();
+		SoundCheck.Checked.setVisible(true);
 
-	NewGame.ButtonUp.show();
-	ResumeGame.ButtonUp.show();
+	NewGame.ButtonUp.setVisible(true);
+	ResumeGame.ButtonUp.setVisible(true);
 
 	Left.show();
 	Right.show();
-	//MainMenu.ButtonUp.show();
+	//MainMenu.ButtonUp.setVisible(true)
 }
 
 bool MyOptions::arrowAnimation(short stage, short button)
@@ -160,8 +154,8 @@ void MyOptions::mute(void)
 		return;
 
 	isMuted = true;
-	SoundCheck.NotChecked.show();
-	SoundCheck.Checked.hide();
+	SoundCheck.NotChecked.setVisible(true);
+	SoundCheck.Checked.setVisible(false);
 	muteSound();
 }
 
@@ -171,26 +165,26 @@ void MyOptions::unMute(void)
 		return;
 
 	isMuted = false;
-	SoundCheck.Checked.show();
-	SoundCheck.NotChecked.hide();
+	SoundCheck.Checked.setVisible(true);
+	SoundCheck.NotChecked.setVisible(false);
 	unMuteSound();
 }
 
 void MyOptions::setPriority(short unsigned int value)
 {
 	for (short int i = 0; i < 6; i++)
-		ThemeOption[i].setPriority(value + 1);
+		ThemeOption[i].setDepth(value - 1);
 
-	Background.setPriority(1);
+	Background.setDepth(1);
 
-	SoundCheck.Checked.setPriority(value + 1);
-	SoundCheck.NotChecked.setPriority(value + 1);
+	SoundCheck.Checked.setDepth(value - 1);
+	SoundCheck.NotChecked.setDepth(value - 1);
 
-	NewGame.setPriority(value + 2);
-	ResumeGame.setPriority(value + 2);
+	NewGame.setDepth(value - 2);
+	ResumeGame.setDepth(value - 2);
 
-	Left.setPriority(value + 1);
-	Right.setPriority(value + 1);
+	Left.setDepth(value - 1);
+	Right.setDepth(value - 1);
 }
 
 void MyOptions::update()
@@ -200,15 +194,15 @@ void MyOptions::update()
 	float mouseX = agk::GetPointerX();
 	float mouseY = agk::GetPointerY();
 
-	if (isMuted && SoundCheck.Checked.isVisible())
+	if (isMuted && SoundCheck.Checked.getVisible())
 	{
-		SoundCheck.Checked.hide();
-		SoundCheck.NotChecked.show();
+		SoundCheck.Checked.setVisible(false);
+		SoundCheck.NotChecked.setVisible(true);
 	}
-	else if (!isMuted && SoundCheck.NotChecked.isVisible())
+	else if (!isMuted && SoundCheck.NotChecked.getVisible())
 	{
-		SoundCheck.Checked.show();
-		SoundCheck.NotChecked.hide();
+		SoundCheck.Checked.setVisible(true);
+		SoundCheck.NotChecked.setVisible(false);
 	}
 
 	if ((mouseX >= 40.0f) && (mouseX <= 60.0f))
@@ -217,7 +211,7 @@ void MyOptions::update()
 			choice = 1;
 	}
 
-	if (ResumeGame.ButtonUp.isVisible())
+	if (ResumeGame.ButtonUp.getVisible())
 	{
 		if ((mouseX >= 65.0f) && (mouseX <= 85.0f))
 		{
@@ -228,19 +222,19 @@ void MyOptions::update()
 
 	if (choice == 0)
 	{
-		NewGame.ButtonOver.hide();
-		ResumeGame.ButtonOver.hide();
+		NewGame.ButtonOver.setVisible(false);
+		ResumeGame.ButtonOver.setVisible(false);
 		return;
 	}
 	else if (choice == 1)
 	{
-		NewGame.ButtonOver.show();
-		ResumeGame.ButtonOver.hide();
+		NewGame.ButtonOver.setVisible(true);
+		ResumeGame.ButtonOver.setVisible(false);
 	}
 	else if (choice == 2)
 	{
-		ResumeGame.ButtonOver.show();
-		NewGame.ButtonOver.hide();
+		ResumeGame.ButtonOver.setVisible(true);
+		NewGame.ButtonOver.setVisible(false);
 	}
 }
 

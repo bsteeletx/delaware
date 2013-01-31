@@ -4,7 +4,7 @@
 #include "Sprite.h"
 #include "AnimatedSprite.h"
 #include "Checkbox.h"
-#include "Pinochle.h"
+#include "Defines.h"
 #include "Buttons.h"
 
 const short int MAX_THEMES = 8;
@@ -36,5 +36,5 @@ public:
 private:
 	bool isMuted;
 
-    ParentImage Parent;
+    Sprite Parent;
 };

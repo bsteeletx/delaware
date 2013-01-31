@@ -8,7 +8,7 @@
 #include "Numbers.h"
 #include "Sprite.h"
 #include "TrumpSelect.h"
-#include "Pinochle.h"
+#include "Defines.h"
 #include "ParentImage.h"
 
 class Theme

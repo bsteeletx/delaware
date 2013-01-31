@@ -20,20 +20,20 @@ void GameScore::setup(AnimatedSprite *Symbol, ParentImage *HandParent)
 
     ///step 1: setup or setData/////////////
     imgNum = Parent.getImageNumber("board_background.png");
-	Background.setImageNumber(imgNum);
+	Background.setImage(imgNum);
 
     imgNum = Parent.getImageNumber("board_header.png");
-	Header.setImageNumber(imgNum);
+	Header.setImage(imgNum);
 
     imgNum = Parent.getImageNumber("board_hand score.png");
     for (short int i = 0; i < 11; i++)
-		MiddleSection[i].setImageNumber(imgNum);
+		MiddleSection[i].setImage(imgNum);
 
     imgNum = Parent.getImageNumber("board_total score.png");
-    Total.setImageNumber(imgNum);
+    Total.setImage(imgNum);
 	setNumberData();
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	///step 2: setSize
@@ -46,15 +46,15 @@ void GameScore::setup(AnimatedSprite *Symbol, ParentImage *HandParent)
 	///step 3: set priority
 	setPriority(50);
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	///step 4: set x, y location with display
-	Background.display(20.0f, 15.0f);
+	Background.setPosition(20.0f, 15.0f);
 	for (short int i = 0; i < 11; i++)
-		MiddleSection[i].display(21.0f, 22.5f + (5.0f * i));
-	Header.display(21.0f, 17.0f);
-	Total.display(21.0f, 77.0f);
+		MiddleSection[i].setPosition(21.0f, 22.5f + (5.0f * i));
+	Header.setPosition(21.0f, 17.0f);
+	Total.setPosition(21.0f, 77.0f);
 
 	///step 5: hide
 	hide();
@@ -66,9 +66,9 @@ void GameScore::setup(AnimatedSprite *Symbol, ParentImage *HandParent)
 	{
 		for (char j = 0; j < 2; j++)
 		{
-			MinusSign[i][j].createT("-");
-			MinusSign[i][j].color(0, 0, 0);
-			MinusSign[i][j].position(66.0f - (14.25f * j), 23.5f + (4.95f * i));
+			MinusSign[i][j] = Text("-");
+			MinusSign[i][j].setColor(RGBA(0, 0, 0);
+			MinusSign[i][j].setPosition(Point((66.0f - (14.25f * j), 23.5f + (4.95f * i));
 			MinusSign[i][j].hide();
 			showMinus[i][j] = false;
 		}
@@ -98,7 +98,7 @@ void GameScore::setNumberData()
 	{
 		for (short int h = 0; h < 3; h++)
 		{
-			GameScoreData[g][h].setPriority(52);
+			GameScoreData[g][h].setDepth(52);
 			GameScoreData[g][h].setSize(1.5f);
 			//GameResults.GameScoreData[g][h].hideAll();
 			GameScoreData[g][h].setValue(0);
@@ -109,39 +109,39 @@ void GameScore::setNumberData()
 
 void GameScore::hide(void)
 {
-	Background.hide();
+	Background.setVisible(false);
 
-	Header.hide();
+	Header.setVisible(false);
 
 	for (short int i = 0; i < 12; i++)
 	{
 		if (i != 11)
-			MiddleSection[i].hide();
+			MiddleSection[i].setVisible(false);
 
 		for (short int j = 0; j < 3; j++)
 			GameScoreData[i][j].hideAll();
 	}
 
-	Total.hide();
+	Total.setVisible(false);
 }
 
 void GameScore::setPriority(short unsigned int value)
 {
-	Background.setPriority(value);
+	Background.setDepth(value);
 
-	Header.setPriority(value + 1);
+	Header.setDepth(value - 1);
 
 	for (short int i = 0; i < 11; i++)
 	{
-		MiddleSection[i].setPriority(value + 1);
+		MiddleSection[i].setDepth(value - 1);
 
 		for (short int j = 0; j < 3; j++)
 		{
-			GameScoreData[i][j].setPriority(value + 2);
+			GameScoreData[i][j].setDepth(value - 2);
 		}
 	}
 
-	Total.setPriority(value + 1);
+	Total.setDepth(value - 1);
 }
 
 void GameScore::reset(void)

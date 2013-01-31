@@ -18,56 +18,38 @@ Bubbles::~Bubbles(void)
 void Bubbles::setup(AnimatedSprite *Symbol, const char fullname[], const char dir[])
 {
 	float offset = 5.0f;
-    unsigned int imgNum;
 
-    Parent.setImage(fullname);
-
-    imgNum = Parent.getImageNumber("east_bid.png");
-	EastBid.setImageNumber(imgNum);
-
-    imgNum = Parent.getImageNumber("north_bid.png");
-	NorthBid.setImageNumber(imgNum);
-
-    imgNum = Parent.getImageNumber("south_bid.png");
-	SouthBid.setImageNumber(imgNum);
-
-    imgNum = Parent.getImageNumber("west_bid.png");
-	WestBid.setImageNumber(imgNum);
-
-    imgNum = Parent.getImageNumber("east_meld.png");
-	EastMeld.setImageNumber(imgNum);
-
-    imgNum = Parent.getImageNumber("north_meld.png");
-	NorthMeld.setImageNumber(imgNum);
-
-    imgNum = Parent.getImageNumber("south_meld.png");
-	SouthMeld.setImageNumber(imgNum);
-
-    imgNum = Parent.getImageNumber("west_meld.png");
-	WestMeld.setImageNumber(imgNum);
+	Parent = Sprite(Text(fullname));
+	
+	BidBubble[EAST] = Sprite(Parent.getImageNumber(), Text("east_bid.png"));
+	MeldBubble[EAST] = Sprite(Parent.getImageNumber(), Text("east_meld.png"));
+	BidBubble[NORTH] = Sprite(Parent.getImageNumber(), Text("north_bid.png"));
+	MeldBubble[NORTH] = Sprite(Parent.getImageNumber(), Text("north_meld.png"));
+    BidBubble[SOUTH] = Sprite(Parent.getImageNumber(), Text("south_bid.png"));
+	MeldBubble[SOUTH] = Sprite(Parent.getImageNumber(), Text("south_meld.png"));
+	BidBubble[WEST] = Sprite(Parent.getImageNumber(), Text("west_bid.png"));
+    MeldBubble[WEST] = Sprite(Parent.getImageNumber(), Text("west_meld.png"));
 
 	Bid.setData(dir);
 
 	for (short int i = 0; i < 4; i++)
-    {
-        imgNum = Parent.getImageNumber("pass_bid.png");
-		BidPass[i].setImageNumber(imgNum);
-    }
+		BidPass[i] = Sprite(Parent.getImageNumber(), Text("pass_bid.png"));
 
 	///display--Needs to be offset!!
 	if(! (strcmp (dir, "green/") || strcmp(dir, "red/") || strcmp(dir, "xmas/")))
 		offset = 5.0f;
 
-	WestBid.display(14.5f + offset, 12.0f);
-	NorthBid.display(30.0f, 13.0f); //green felt doesn't need offset, do others?
-	EastBid.display(46.0f - offset, 12.0f);
+	BidBubble[WEST].setPosition(14.5f + offset, 12.0f);
+	BidBubble[NORTH].setPosition(30.0f, 13.0f); //green felt doesn't need offset, do others?
+	BidBubble[EAST].setPosition(46.0f - offset, 12.0f);
 
-    if (PLATFORM != MOBILE)
-        SouthBid.display(30.0f, 35.0f); //green felt doesn't need offset, do others?
-    else
-        SouthBid.display(30.0f, 35.0f - offset); //green felt doesn't need offset, do others?
+#if (PLATFORM != MOBILE)
+        BidBubble[SOUTH].setPosition(30.0f, 35.0f); //green felt doesn't need offset, do others?
+#else
+        BidBubble[SOUTH].setPosition(30.0f, 35.0f - offset); //green felt doesn't need offset, do others?
+#endif
 
-	Symbol->incrementSpriteFrame();
+	Symbol->incrementFrame();
 	agk::Sync();
 
 	hide();
@@ -100,23 +82,23 @@ void Bubbles::setup(AnimatedSprite *Symbol, const char fullname[], const char di
 	firstCardPos[ANCIENT][SOUTH][X] = 28.25f;
 	firstCardPos[ANCIENT][SOUTH][Y] = 38.0f; //
 
-	firstCardPos[WINTER][WEST][X] = 31.5f; //bubble needs moving west
-	firstCardPos[WINTER][WEST][Y] = 36.75f;
-	firstCardPos[WINTER][NORTH][X] = 31.0f;
-	firstCardPos[WINTER][NORTH][Y] = 36.5f;
-	firstCardPos[WINTER][EAST][X] = 34.0;
-	firstCardPos[WINTER][EAST][Y] = 37.0f;
-	firstCardPos[WINTER][SOUTH][X] = 35.4f;
-	firstCardPos[WINTER][SOUTH][Y] = 44.5f;
+	firstCardPos[NOEL][WEST][X] = 31.5f; //bubble needs moving west
+	firstCardPos[NOEL][WEST][Y] = 36.75f;
+	firstCardPos[NOEL][NORTH][X] = 31.0f;
+	firstCardPos[NOEL][NORTH][Y] = 36.5f;
+	firstCardPos[NOEL][EAST][X] = 34.0;
+	firstCardPos[NOEL][EAST][Y] = 37.0f;
+	firstCardPos[NOEL][SOUTH][X] = 35.4f;
+	firstCardPos[NOEL][SOUTH][Y] = 44.5f;
 
-	firstCardPos[ELECTRIC][WEST][X] = 27.5f; //bubble needs moving west
+	/*firstCardPos[ELECTRIC][WEST][X] = 27.5f; //bubble needs moving west
 	firstCardPos[ELECTRIC][WEST][Y] = 33.5f;
 	firstCardPos[ELECTRIC][NORTH][X] = 28.0f;
 	firstCardPos[ELECTRIC][NORTH][Y] = 41.0f;
 	firstCardPos[ELECTRIC][EAST][X] = 32.0f;
 	firstCardPos[ELECTRIC][EAST][Y] = 40.5f;
 	firstCardPos[ELECTRIC][SOUTH][X] = 26.0f;
-	firstCardPos[ELECTRIC][SOUTH][Y] = 40.0f;
+	firstCardPos[ELECTRIC][SOUTH][Y] = 40.0f;*/
 #else
     firstCardPos[GREEN][WEST][X] = 32.5f;
 	firstCardPos[GREEN][WEST][Y] = 40.5f; //
@@ -145,26 +127,26 @@ void Bubbles::setup(AnimatedSprite *Symbol, const char fullname[], const char di
 	firstCardPos[ANCIENT][SOUTH][X] = 28.25f;
 	firstCardPos[ANCIENT][SOUTH][Y] = 37.0f; //
 
-	firstCardPos[WINTER][WEST][X] = 32.5f;
-	firstCardPos[WINTER][WEST][Y] = 40.5f; //
-	firstCardPos[WINTER][NORTH][X] = 30.0f;
-	firstCardPos[WINTER][NORTH][Y] = 45.0f; //
-	firstCardPos[WINTER][EAST][X] = 29.5f;
-	firstCardPos[WINTER][EAST][Y] = 40.5f; //
-	firstCardPos[WINTER][SOUTH][X] = 32.4f;
-	firstCardPos[WINTER][SOUTH][Y] = 38.5f;
+	firstCardPos[NOEL][WEST][X] = 32.5f;
+	firstCardPos[NOEL][WEST][Y] = 40.5f; //
+	firstCardPos[NOEL][NORTH][X] = 30.0f;
+	firstCardPos[NOEL][NORTH][Y] = 45.0f; //
+	firstCardPos[NOEL][EAST][X] = 29.5f;
+	firstCardPos[NOEL][EAST][Y] = 40.5f; //
+	firstCardPos[NOEL][SOUTH][X] = 32.4f;
+	firstCardPos[NOEL][SOUTH][Y] = 38.5f;
 
-	firstCardPos[ELECTRIC][WEST][X] = 27.5f; //bubble needs moving west
+	/*firstCardPos[ELECTRIC][WEST][X] = 27.5f; //bubble needs moving west
 	firstCardPos[ELECTRIC][WEST][Y] = 41.0f;
 	firstCardPos[ELECTRIC][NORTH][X] = 28.0f;
 	firstCardPos[ELECTRIC][NORTH][Y] = 40.0f;
 	firstCardPos[ELECTRIC][EAST][X] = 39.0f;
 	firstCardPos[ELECTRIC][EAST][Y] = 47.5f;
 	firstCardPos[ELECTRIC][SOUTH][X] = 32.0f;
-	firstCardPos[ELECTRIC][SOUTH][Y] = 47.5f;
+	firstCardPos[ELECTRIC][SOUTH][Y] = 47.5f;*/
 #endif
 
-	firstCardPos[FUTURE][WEST][X] = 27.5f; //bid bubble needs moving south and west
+	/*firstCardPos[FUTURE][WEST][X] = 27.5f; //bid bubble needs moving south and west
 	firstCardPos[FUTURE][WEST][Y] = 41.0f;
 	firstCardPos[FUTURE][NORTH][X] = 28.0f;
 	firstCardPos[FUTURE][NORTH][Y] = 40.0f;
@@ -173,7 +155,7 @@ void Bubbles::setup(AnimatedSprite *Symbol, const char fullname[], const char di
 	firstCardPos[FUTURE][SOUTH][X] = 32.0f;
 	firstCardPos[FUTURE][SOUTH][Y] = 47.5f;
 
-
+	*/
 }
 
 float Bubbles::getFirstCardPos(int theme, int player, bool getX)
@@ -186,66 +168,40 @@ float Bubbles::getFirstCardPos(int theme, int player, bool getX)
 
 void Bubbles::setBidSize(float x, float y)
 {
-	EastBid.setSize(x, y);
-	NorthBid.setSize(x, y);
-	SouthBid.setSize(x, y);
-	WestBid.setSize(x, y);
-
-	for (short int i = 0; i < 4; i++)
+	for (int i = 0; i < 4; i++)
+	{
+		BidBubble[i].setSize(x, y);
 		BidPass[i].setSize(x/2.0f, y/2.0f);
+	}
 }
 
 void Bubbles::hide(void)
 {
-	EastBid.hide();
-	EastMeld.hide();
-	NorthBid.hide();
-	NorthMeld.hide();
-	SouthBid.hide();
-	SouthMeld.hide();
-	WestBid.hide();
-	WestMeld.hide();
+	for (int i = 0; i < 4; i++)
+	{
+		BidBubble[i].setVisible(false);
+		MeldBubble[i].setVisible(false);
+		BidPass[i].setVisible(false);
+	}
 
 	Bid.hideAll();
-
-	for (short int i = 0; i < 4; i++)
-		BidPass[i].hide();
 }
 
-void Bubbles::setPriority(short unsigned int value)
+void Bubbles::setDepth(short unsigned int value)
 {
-	EastBid.setPriority(value);
-	EastMeld.setPriority(value);
-	NorthBid.setPriority(value);
-	NorthMeld.setPriority(value);
-	SouthBid.setPriority(value);
-	SouthMeld.setPriority(value);
-	WestBid.setPriority(value);
-	WestMeld.setPriority(value);
+	for (int i = 0; i < 4; i++)
+	{
+		BidBubble[i].setDepth(value);
+		MeldBubble[i].setDepth(value);
+		BidPass[i].setDepth(value - 1);
+	}
 
-	Bid.setPriority(value + 1);
-
-	for (short int i = 0; i < 4; i++)
-		BidPass[i].setPriority(value + 1);
+	Bid.setDepth(value - 1);
 }
 
 void Bubbles::show(short int meldBubble)
 {
-	switch (meldBubble)
-	{
-	case 0:
-		WestMeld.show();
-		break;
-	case 1:
-		NorthMeld.show();
-		break;
-	case 2:
-		EastMeld.show();
-		break;
-	case 3:
-		SouthMeld.show();
-		break;
-	}
+	MeldBubble[meldBubble].setVisible(true);
 }
 
 bool Bubbles::updateBid(short int turn, short int dealer, BidGame NewBidGame, short int theme)  //returns true if bid, false if not
@@ -262,41 +218,32 @@ bool Bubbles::updateBid(short int turn, short int dealer, BidGame NewBidGame, sh
 
 	if (NewBidGame.getBidder() == -1)
 	{
-		if (turn % 4 == WEST)
-			WestBid.show();
-		else if (turn %4 == NORTH)
-			NorthBid.show();
-		else if (turn % 4 == EAST)
-			EastBid.show();
-		else
-			SouthBid.show();
-
+		BidBubble[turn%4].setVisible(true);
 		agk::Sync();
 
 		return true;
 	}
 
+	if ((!NewBidGame.getPass(turn%4)) && (!NewBidGame.getBidDecided()))
+		BidBubble[turn%4].setVisible(true);
+
+	if (NewBidGame.getPass(turn%4))
+	{
+		if (NewBidGame.passRound[turn%4] == round)
+		{
+			bid = 0;
+			BidBubble[turn%4].setVisible(true);
+		}
+		else
+		{
+			BidBubble[turn%4].setVisible(false);
+			return false;
+		}
+	}
+
 	switch (turn % 4)
 	{
 	case WEST:
-		if ((!NewBidGame.getPass(WEST)) && (!NewBidGame.getBidDecided()))
-			WestBid.show();
-
-		if (NewBidGame.getPass(WEST))
-		{
-			if (NewBidGame.wPassRound == round)
-			{
-				bid = 0;
-				WestBid.show();
-			}
-			else
-			{
-				WestBid.hide();
-				//passed = true;
-				return false;
-			}
-		}
-
 		if (bid)
 		{//bid
 #if (PLATFORM != MOBILE)
@@ -308,7 +255,7 @@ bool Bubbles::updateBid(short int turn, short int dealer, BidGame NewBidGame, sh
 #endif
 			if (theme == ELECTRIC)
 				x += 5.0f;
-			else if (theme == WINTER)
+			else if (theme == NOEL)
 			{
 				x -= 1.0f;
 				y += 1.0f;
@@ -321,28 +268,11 @@ bool Bubbles::updateBid(short int turn, short int dealer, BidGame NewBidGame, sh
 
 			if (theme == ELECTRIC)
 				x += 5.0f;
-			else if (theme == WINTER)
+			else if (theme == NOEL)
 				x -= 1.0f;
 		}
 		break;
 	case NORTH:
-		if (!NewBidGame.getPass(NORTH) && (!NewBidGame.getBidDecided()))
-			NorthBid.show();
-
-		if (NewBidGame.getPass(NORTH))
-		{
-			if (NewBidGame.nPassRound == round)
-			{
-				bid = 0;
-				NorthBid.show();
-			}
-			else
-			{
-				NorthBid.hide();
-				//passed = true;
-				return false;
-			}
-		}
 		if (bid)
 		{//did not pass
 #if (PLATFORM != MOBILE)
@@ -352,7 +282,7 @@ bool Bubbles::updateBid(short int turn, short int dealer, BidGame NewBidGame, sh
             x = 52.5f;
             y = 34.5f + offset;
 #endif
-			if (theme == WINTER)
+			if (theme == NOEL)
 				y -= 2.5f;
 		}
 		else
@@ -364,7 +294,7 @@ bool Bubbles::updateBid(short int turn, short int dealer, BidGame NewBidGame, sh
             x = 35.25f + offset;
             y = 30.0f;
 #endif
-			if (theme == WINTER)
+			if (theme == NOEL)
 			{
 				x += 0.0f;
 				y -= 3.0f;
@@ -372,24 +302,6 @@ bool Bubbles::updateBid(short int turn, short int dealer, BidGame NewBidGame, sh
 		}
 		break;
 	case EAST:
-		if (!NewBidGame.getPass(EAST) && (!NewBidGame.getBidDecided()))
-			EastBid.show();
-
-		if (NewBidGame.getPass(EAST))
-		{
-			if (NewBidGame.ePassRound == round)
-			{
-				bid = 0;
-				EastBid.show();
-			}
-			else
-			{
-				EastBid.hide();
-				//passed = true;
-				return false;
-			}
-		}
-
 		if (bid)
 		{
 #if (PLATFORM != MOBILE)
@@ -399,7 +311,7 @@ bool Bubbles::updateBid(short int turn, short int dealer, BidGame NewBidGame, sh
             x = 67.0f - offset;
             y = 35.0f;
 #endif
-			if (theme == WINTER)
+			if (theme == NOEL)
 			{
 				y += 0.75f;
 				x += 2.0f;
@@ -410,15 +322,15 @@ bool Bubbles::updateBid(short int turn, short int dealer, BidGame NewBidGame, sh
 			x = 54.0f - offset;
 			y = 25.0f;
 
-			if (theme == WINTER)
+			if (theme == NOEL)
 				x += 2.5f;
 		}
 
 		break;
 	case SOUTH:
-		if (!NewBidGame.getPass(SOUTH) && (!NewBidGame.getBidDecided()))
+		/*if (!NewBidGame.getPass(SOUTH) && (!NewBidGame.getBidDecided()))
 		{
-			SouthBid.show();
+			SouthBid.setVisible(true)
 		}
 
 		if (NewBidGame.getPass(SOUTH))
@@ -426,7 +338,7 @@ bool Bubbles::updateBid(short int turn, short int dealer, BidGame NewBidGame, sh
 			if (NewBidGame.sPassRound == round)
 			{
 				bid = 0;
-				SouthBid.show();
+				SouthBid.setVisible(true)
 			}
 			else
 			{
@@ -434,7 +346,7 @@ bool Bubbles::updateBid(short int turn, short int dealer, BidGame NewBidGame, sh
 				//passed = true;
 				return false;
 			}
-		}
+		}*/
 
 		if (bid)
 		{
@@ -447,7 +359,7 @@ bool Bubbles::updateBid(short int turn, short int dealer, BidGame NewBidGame, sh
 #endif
       		if (theme == ELECTRIC)
 				x += 1.0f;
-			else if (theme == WINTER)
+			else if (theme == NOEL)
 				y += 3.0f;
 		}
 		else
@@ -459,7 +371,7 @@ bool Bubbles::updateBid(short int turn, short int dealer, BidGame NewBidGame, sh
             x = 40.0f;
             y = 45.0f - offset;
 #endif
-			if (theme == WINTER)
+			if (theme == NOEL)
 			{
 				x += 1.0f;
 				y += 2.5f;
@@ -489,9 +401,10 @@ bool Bubbles::updateBid(short int turn, short int dealer, BidGame NewBidGame, sh
 	}
 	else
 	{
-		BidPass[turn%4].display(x, y);
-		BidPass[turn%4].show();
+		BidPass[turn%4].setPosition(x, y);
+		BidPass[turn%4].setVisible(true);
 
 		return true;
 	}
 }
+

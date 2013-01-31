@@ -51,9 +51,10 @@
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Program Files (x86)\The Game Creators\AGK\IDE\platform\windows\Lib\Release;$(LibraryPath)</LibraryPath>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Double Pinochle</TargetName>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
-    <RunCodeAnalysis Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</RunCodeAnalysis>
+    <RunCodeAnalysis Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</RunCodeAnalysis>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName)$(PlatformName)$(Configuration)</TargetName>
+    <CodeAnalysisIgnoreGeneratedCode Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -64,7 +65,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <EnablePREfast>false</EnablePREfast>
+      <EnablePREfast>true</EnablePREfast>
       <Optimization>Disabled</Optimization>
       <CompileAsManaged>
       </CompileAsManaged>
@@ -126,7 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AnimatedSprite.cpp" />
     <ClCompile Include="BidControl.cpp" />
     <ClCompile Include="BidGame.cpp" />
     <ClCompile Include="Bubbles.cpp" />
@@ -134,6 +134,27 @@
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Checkbox.cpp" />
     <ClCompile Include="Core.cpp" />
+    <ClCompile Include="Core\AnimatedSprite.cpp" />
+    <ClCompile Include="Core\EditBox.cpp" />
+    <ClCompile Include="Core\File.cpp" />
+    <ClCompile Include="Core\HTTP.cpp" />
+    <ClCompile Include="Core\Image.cpp" />
+    <ClCompile Include="Core\Joint.cpp" />
+    <ClCompile Include="Core\Music.cpp" />
+    <ClCompile Include="Core\MyParticles.cpp" />
+    <ClCompile Include="Core\Network.cpp" />
+    <ClCompile Include="Core\NetworkMessage.cpp" />
+    <ClCompile Include="Core\PhysicsForce.cpp" />
+    <ClCompile Include="Core\PhysicsSprite.cpp" />
+    <ClCompile Include="Core\Point.cpp" />
+    <ClCompile Include="Core\RGBA.cpp" />
+    <ClCompile Include="Core\Sound.cpp" />
+    <ClCompile Include="Core\Sprite.cpp" />
+    <ClCompile Include="Core\Text.cpp" />
+    <ClCompile Include="Core\Timer.cpp" />
+    <ClCompile Include="Core\Vector.cpp" />
+    <ClCompile Include="Core\VirtualButton.cpp" />
+    <ClCompile Include="Core\VirtualJoystick.cpp" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="GameScore.cpp" />
     <ClCompile Include="HandScore.cpp" />
@@ -143,16 +164,12 @@
     <ClCompile Include="ParentImage.cpp" />
     <ClCompile Include="PinochleGame.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Sound.cpp" />
-    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="template.cpp" />
-    <ClCompile Include="Text.cpp" />
     <ClCompile Include="Theme.cpp" />
     <ClCompile Include="TrickGame.cpp" />
     <ClCompile Include="TrumpSelect.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AnimatedSprite.h" />
     <ClInclude Include="BidControl.h" />
     <ClInclude Include="BidGame.h" />
     <ClInclude Include="Bubbles.h" />
@@ -160,6 +177,27 @@
     <ClInclude Include="Card.h" />
     <ClInclude Include="Checkbox.h" />
     <ClInclude Include="CoreForApp.h" />
+    <ClInclude Include="Core\AnimatedSprite.h" />
+    <ClInclude Include="Core\EditBox.h" />
+    <ClInclude Include="Core\File.h" />
+    <ClInclude Include="Core\HTTP.h" />
+    <ClInclude Include="Core\Image.h" />
+    <ClInclude Include="Core\Joint.h" />
+    <ClInclude Include="Core\Music.h" />
+    <ClInclude Include="Core\MyParticles.h" />
+    <ClInclude Include="Core\Network.h" />
+    <ClInclude Include="Core\NetworkMessage.h" />
+    <ClInclude Include="Core\PhysicsForce.h" />
+    <ClInclude Include="Core\PhysicsSprite.h" />
+    <ClInclude Include="Core\Point.h" />
+    <ClInclude Include="Core\RGBA.h" />
+    <ClInclude Include="Core\Sound.h" />
+    <ClInclude Include="Core\Sprite.h" />
+    <ClInclude Include="Core\Text.h" />
+    <ClInclude Include="Core\Timer.h" />
+    <ClInclude Include="Core\Vector.h" />
+    <ClInclude Include="Core\VirtualButton.h" />
+    <ClInclude Include="Core\VirtualJoystick.h" />
     <ClInclude Include="Deck.h" />
     <ClInclude Include="GameScore.h" />
     <ClInclude Include="HandScore.h" />
@@ -167,14 +205,11 @@
     <ClInclude Include="Numbers.h" />
     <ClInclude Include="MyOptions.h" />
     <ClInclude Include="ParentImage.h" />
-    <ClInclude Include="Pinochle.h" />
+    <ClInclude Include="Defines.h" />
     <ClInclude Include="PinochleGame.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="Sound.h" />
-    <ClInclude Include="Sprite.h" />
     <ClInclude Include="template.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="Text.h" />
     <ClInclude Include="Theme.h" />
     <ClInclude Include="TrickGame.h" />
     <ClInclude Include="TrumpSelect.h" />
