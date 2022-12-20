@@ -1,2 +1,0 @@
-background_fire.jpg:0:0:1024:600
-suit rotation.png:0:600:600:300

@@ -1,3 +1,0 @@
-clubs_selection_off.png:0:0:225:175
-clubs_selection_negative.png:225:0:225:175
-clubs_selection_down.png:0:175:225:175

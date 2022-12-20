@@ -1,9 +1,0 @@
-resume_on.png:0:0:95:44
-resume_off.png:95:0:95:44
-resume_down.png:0:44:95:44
-options_on.png:95:44:95:44
-options_off.png:0:88:95:44
-options_down.png:95:88:95:44
-new_game_on.png:0:132:95:44
-new_game_off.png:95:132:95:44
-new_game_down.png:0:176:95:44
