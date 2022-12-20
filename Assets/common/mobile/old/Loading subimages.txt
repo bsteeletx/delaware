@@ -1,0 +1,4 @@
+load_landscape.png:0:0:480:320
+steele_logo_plate.png:0:320:427:320
+Load Suit Rotation_iphone.png:0:640:200:100
+loading.jpg:200:640:176:24

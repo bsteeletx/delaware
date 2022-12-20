@@ -1,0 +1,2 @@
+steele_logo_plate.png:0:0:1024:768
+loading.jpg:0:768:380:51
