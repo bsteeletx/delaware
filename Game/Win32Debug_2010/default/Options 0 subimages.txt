@@ -1,8 +1,0 @@
-background_x.jpg:0:0:1024:768
-sound_btn_on.png:0:768:600:120
-sound_btn_off.png:0:888:600:120
-right_arrow_off.png:600:888:125:125
-left_arrow_off.png:725:888:125:125
-left_arrow_down.png:850:888:125:125
-resume_down.png:600:768:169:79
-resume_on.png:769:768:169:79

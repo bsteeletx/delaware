@@ -1,6 +1,0 @@
-background_g.jpg:0:0:1024:768
-left_arrow_off.png:0:768:125:125
-resume_down.png:125:768:169:79
-resume_on.png:125:847:169:79
-new_game_on.png:125:926:169:79
-new_game_off.png:294:768:169:79

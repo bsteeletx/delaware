@@ -1,4 +1,0 @@
-load suit rotation.png:0:0:600:300
-load_landscape.png:0:300:480:320
-steele_logo_transparent.png:480:300:512:293
-loading.jpg:600:0:380:51

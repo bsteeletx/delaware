@@ -1,4 +1,0 @@
-load_landscape.png:0:0:480:320
-steele_logo_plate.png:0:320:427:320
-Load Suit Rotation.png:0:640:200:100
-loading.jpg:0:740:380:51
